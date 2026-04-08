@@ -4,40 +4,44 @@
 
 @section('content')
 
-{{-- Hero --}}
-<div class="news-single-hero" style="background-image: url('{{ $item->{'image_'.$lang} ?? 'https://picsum.photos/1200/500?random='.$item->id }}')">
-    <div class="news-single-hero-overlay">
-        <div class="container">
-            <span class="news-badge" style="font-size:.9rem;padding:.4rem 1.25rem">{{ $item->category }}</span>
-            <h1 class="news-single-title">{{ $item->{'title_'.$lang} }}</h1>
-            <p class="news-single-date">📅 {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
-        </div>
-    </div>
-</div>
-
 <section class="section">
     <div class="container">
-        <div class="news-single-layout">
+        <div class="blog-post-layout">
 
-            {{-- Article --}}
-            <article class="news-single-article">
-                <p class="news-single-summary">{{ $item->{'summary_'.$lang} }}</p>
-                <div class="news-single-back">
-                    <a href="/media" class="btn btn-outline btn-sm">
+            {{-- Article — same structure as blog-post --}}
+            <article class="blog-post">
+                <div class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span>📅 {{ \Carbon\Carbon::parse($item->date)->format('d M Y') }}</span>
+                        <span class="news-badge" style="font-size:.75rem;padding:.2rem .75rem;border-radius:99px">{{ $item->category }}</span>
+                    </div>
+                    <h1 class="blog-post-title">{{ $item->{'title_'.$lang} }}</h1>
+                </div>
+
+                <img src="{{ $item->{'image_'.$lang} ?? 'https://picsum.photos/800/400?random='.$item->id }}"
+                     alt="{{ $item->{'title_'.$lang} }}" class="blog-post-hero-img" loading="lazy">
+
+                <div class="prose-content blog-post-content">
+                    <p>{{ $item->{'summary_'.$lang} }}</p>
+                </div>
+
+                <div class="blog-post-nav">
+                    <a href="/media" class="btn btn-outline">
                         {{ $isRTL ? '→' : '←' }} {{ $lang === 'en' ? 'Back to News' : 'العودة للأخبار' }}
                     </a>
                 </div>
             </article>
 
-            {{-- Sidebar: related news --}}
-            <aside class="news-single-sidebar">
+            {{-- Sidebar — same as blog-post --}}
+            <aside class="blog-sidebar">
                 <h3 class="sidebar-title">{{ $lang === 'en' ? 'Related News' : 'أخبار ذات صلة' }}</h3>
                 @foreach ($relatedNews as $related)
-                    <a href="/media/{{ $related->id }}" class="sidebar-post-link">
+                    <a href="/media/{{ $related->id }}" class="sidebar-post-link {{ $related->id === $item->id ? 'active' : '' }}">
                         <p class="sidebar-post-title">{{ $related->{'title_'.$lang} }}</p>
                         <p class="sidebar-post-date">
-                            <span class="news-badge" style="font-size:.7rem;padding:.15rem .5rem">{{ $related->category }}</span>
-                            &nbsp; {{ \Carbon\Carbon::parse($related->date)->format('d M Y') }}
+                            {{ \Carbon\Carbon::parse($related->date)->format('d M Y') }}
+                            &nbsp;
+                            <span style="background:#B04C2C;color:#fff;padding:.1rem .5rem;border-radius:99px;font-size:.7rem">{{ $related->category }}</span>
                         </p>
                     </a>
                 @endforeach

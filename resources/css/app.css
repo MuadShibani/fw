@@ -403,3 +403,13 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   .news-single-sidebar { position: static; }
   .news-single-hero { height: 280px; }
 }
+
+/* ── Event cards styled like news cards (3-col on homepage) ── */
+.event-news-card .news-img-wrap { background: linear-gradient(135deg, #524037 0%, #3d2e27 100%); min-height: 200px; display: flex; align-items: center; justify-content: center; }
+.event-card-img-placeholder { display: flex; align-items: center; justify-content: center; width: 100%; height: 200px; }
+.event-card-date-large { text-align: center; color: #fff; }
+.event-day-lg { display: block; font-size: 3.5rem; font-weight: 800; color: var(--beige); line-height: 1; }
+.event-month-lg { display: block; font-size: 1rem; font-weight: 600; color: rgba(250,250,238,.7); margin-top: .25rem; text-transform: uppercase; letter-spacing: .08em; }
+.event-type-badge-card { top: .75rem; left: .75rem; }
+.event-register-cta { display: inline-block; margin-top: .75rem; font-weight: 700; font-size: .85rem; color: var(--rust); }
+.event-news-card:hover .event-register-cta { text-decoration: underline; }
