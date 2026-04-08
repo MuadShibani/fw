@@ -22,7 +22,7 @@
 
         <div class="news-grid mt-8" id="newsGrid">
             @forelse ($news as $item)
-                <div class="news-card" data-category="{{ $item->category }}" style="cursor:pointer" onclick="window.location='/media'">
+                <a href="/media/{{ $item->id }}" class="news-card" data-category="{{ $item->category }}">
                     <div class="news-img-wrap">
                         <img src="{{ $item->{'image_' . $lang} ?? 'https://picsum.photos/400/250?random=' . $item->id }}"
                              alt="{{ $item->{'title_' . $lang} }}" class="news-img" loading="lazy">
@@ -33,7 +33,7 @@
                         <h3 class="news-title">{{ $item->{'title_' . $lang} }}</h3>
                         <p class="news-summary">{{ $item->{'summary_' . $lang} }}</p>
                     </div>
-                </div>
+                </a>
             @empty
                 <p class="empty-state col-span-full">{{ $lang === 'en' ? 'No news items.' : 'لا توجد أخبار.' }}</p>
             @endforelse

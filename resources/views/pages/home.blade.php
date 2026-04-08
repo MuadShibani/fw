@@ -51,9 +51,9 @@
                     <p class="program-desc">{{ $program->{'description_'.$lang} }}</p>
                     @if ($program->features)
                         <ul class="program-features">
-{{--                            @foreach ($program->features as $feature)--}}
+                            @foreach ($program->features as $feature)
 {{--                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>--}}
-{{--                            @endforeach--}}
+                            @endforeach
                         </ul>
                     @endif
                     <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
@@ -71,7 +71,7 @@
         </div>
         <div class="news-grid">
             @foreach ($latestNews as $item)
-                <a href="/media" class="news-card">
+                <a href="/media/{{ $item->id }}" class="news-card">
                     <div class="news-img-wrap">
                         <img src="{{ $item->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.$item->id }}"
                              alt="{{ $item->{'title_'.$lang} }}" class="news-img" loading="lazy">
@@ -95,9 +95,9 @@
         <div class="section-header">
             <h2 class="section-title">{{ $lang==='en'?'Upcoming Events':'الفعاليات القادمة' }}</h2>
         </div>
-        <div class="events-list">
+        <div class="events-home-grid">
             @forelse ($upcomingEvents as $event)
-                <a href="/events" class="event-row">
+                <a href="/events" class="event-home-card">
                     <div class="event-date-box">
                         <span class="event-day">{{ \Carbon\Carbon::parse($event->event_date)->format('d') }}</span>
                         <span class="event-month">{{ \Carbon\Carbon::parse($event->event_date)->format('M') }}</span>
@@ -113,7 +113,7 @@
                         </a>
                     @endif
                 </a>
-            @empty
+                @empty
                 <p class="empty-state">{{ $lang==='en'?'No upcoming events.':'لا توجد فعاليات قادمة.' }}</p>
             @endforelse
         </div>

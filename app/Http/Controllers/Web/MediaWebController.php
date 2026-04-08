@@ -14,4 +14,12 @@ class MediaWebController extends Controller
             'categories' => News::distinct()->orderBy('category')->pluck('category'),
         ]);
     }
+
+    public function show(int $id)
+    {
+        return view('pages.media-single', [
+            'item'       => News::findOrFail($id),
+            'relatedNews' => News::where('id', '!=', $id)->orderBy('date', 'desc')->limit(3)->get(),
+        ]);
+    }
 }

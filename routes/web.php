@@ -36,7 +36,8 @@ Route::middleware(['web', \App\Http\Middleware\SetLanguage::class])->group(funct
     Route::get('/blog/{id}',   [BlogWebController::class,    'show'])->name('blog.show');
     Route::get('/events',      [EventsWebController::class,  'index'])->name('events.index');
     Route::get('/library',     [LibraryWebController::class, 'index'])->name('library.index');
-    Route::get('/media',       [MediaWebController::class,   'index'])->name('media.index');
+    Route::get('/media',          [MediaWebController::class,   'index'])->name('media.index');
+    Route::get('/media/{id}',     [MediaWebController::class,   'show'])->name('media.show');
     Route::get('/contact',     [ContactWebController::class, 'index'])->name('contact.index');
     Route::post('/contact',    [ContactWebController::class, 'store'])->name('contact.store');
 });
