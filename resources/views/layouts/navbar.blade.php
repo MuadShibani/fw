@@ -33,7 +33,7 @@
         <div class="navbar-inner">
 
             {{-- Logo --}}
-            <a href="/" class="navbar-brand">
+            <a href="/" class="navbar-brand" style="width: 100px">
                 <img src="{{ asset('images/logo-wathba.jpg') }}" alt="Wathba | وثبة" class="navbar-logo-img">
             </a>
 
