@@ -34,8 +34,7 @@
 
             {{-- Logo --}}
             <a href="/" class="navbar-brand">
-                <span class="logo-arabic">وثبة</span>
-                <span class="logo-english">wathba</span>
+                <img src="{{ asset('images/logo-wathba.jpg') }}" alt="Wathba | وثبة" class="navbar-logo-img">
             </a>
 
             {{-- Desktop Nav --}}
@@ -71,7 +70,6 @@
 
             {{-- Actions --}}
             <div class="navbar-actions">
-                {{-- Language Toggle --}}
                 <form action="/lang" method="POST" class="inline">
                     @csrf
                     <input type="hidden" name="lang" value="{{ $lang === 'en' ? 'ar' : 'en' }}">
@@ -79,8 +77,6 @@
                         🌐 {{ $lang === 'en' ? 'العربية' : 'English' }}
                     </button>
                 </form>
-
-                {{-- Mobile hamburger --}}
                 <button class="hamburger lg:hidden" id="mobileMenuToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>

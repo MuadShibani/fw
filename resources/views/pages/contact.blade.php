@@ -72,28 +72,22 @@
                         <div class="contact-info-icon">📍</div>
                         <div>
                             <h4>{{ $lang === 'en' ? 'Address' : 'العنوان' }}</h4>
-                            <p>{{ $lang === 'en' ? 'Hadda Street, Sanaa, Yemen' : 'شارع حدة، صنعاء، اليمن' }}</p>
+                            <p>{{ $lang === 'en' ? 'Inma - Aden, Yemen' : 'إنما - عدن، اليمن' }}</p>
                         </div>
                     </div>
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">📞</div>
-                        <div>
-                            <h4>{{ $lang === 'en' ? 'Phone' : 'الهاتف' }}</h4>
-                            <p><a href="tel:+96712345679">+967 1 234 567</a></p>
-                        </div>
-                    </div>
+                    
                     <div class="contact-info-item">
                         <div class="contact-info-icon">✉️</div>
                         <div>
                             <h4>{{ $lang === 'en' ? 'Email' : 'البريد الإلكتروني' }}</h4>
-                            <p><a href="mailto:info@wathba.ye">info@wathba.ye</a></p>
+                            <p><a href="mailto:wathba@deeproot.consulting">wathba@deeproot.consulting</a></p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <div class="contact-info-icon">🕐</div>
                         <div>
                             <h4>{{ $lang === 'en' ? 'Office Hours' : 'ساعات العمل' }}</h4>
-                            <p>{{ $lang === 'en' ? 'Sun – Thu: 8:00 AM – 4:00 PM' : 'الأحد – الخميس: 8:00 صباحاً – 4:00 مساءً' }}</p>
+                            <p>{{ $lang === 'en' ? 'Sun – Thu: 9:00 AM – 5:00 PM' : 'الأحد – الخميس: 9:00 صباحاً – 5:00 مساءً' }}</p>
                         </div>
                     </div>
                 </div>
