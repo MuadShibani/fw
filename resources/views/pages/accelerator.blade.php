@@ -25,8 +25,10 @@
 @if (!empty($cf['features']))
 <section class="section section-alt">
     <div class="container">
-        <div class="section-header"><h2 class="section-title">{{ $lang==='en'?'Program Features':'مميزات البرنامج' }}</h2></div>
-        <div class="features-grid">
+        <div class="section-header">
+            <h2 class="section-title">{{ $lang==='en'?'Program Features':'مميزات البرنامج' }}</h2>
+        </div>
+        <div class="chips-center">
             @foreach ($cf['features'] as $feature)
                 <div class="feature-chip">✓ {{ $feature[$lang] ?? $feature['en'] }}</div>
             @endforeach

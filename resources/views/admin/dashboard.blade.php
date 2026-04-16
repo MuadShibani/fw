@@ -155,6 +155,7 @@
             <a href="/admin/yain/startups/create"     class="quick-action-btn">🚀 Add Startup</a>
             <a href="/admin/accelerator/cohorts/create" class="quick-action-btn">🎓 New Cohort</a>
             <a href="/admin/wiif/create"              class="quick-action-btn">💼 Add Portfolio Co.</a>
+            <a href="/admin/stats"                  class="quick-action-btn">📈 Edit Homepage Stats</a>
         </div>
     </div>
 </div>

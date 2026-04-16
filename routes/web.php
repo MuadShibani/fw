@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ImageUploadController;
+use App\Http\Controllers\Admin\StatsController;
 
 Route::post('/lang', [LanguageController::class, 'switch'])->name('lang.switch');
 
@@ -36,8 +37,7 @@ Route::middleware(['web', \App\Http\Middleware\SetLanguage::class])->group(funct
     Route::get('/blog/{id}',   [BlogWebController::class,    'show'])->name('blog.show');
     Route::get('/events',      [EventsWebController::class,  'index'])->name('events.index');
     Route::get('/library',     [LibraryWebController::class, 'index'])->name('library.index');
-    Route::get('/media',          [MediaWebController::class,   'index'])->name('media.index');
-    Route::get('/media/{id}',     [MediaWebController::class,   'show'])->name('media.show');
+    Route::get('/media',       [MediaWebController::class,   'index'])->name('media.index');
     Route::get('/contact',     [ContactWebController::class, 'index'])->name('contact.index');
     Route::post('/contact',    [ContactWebController::class, 'store'])->name('contact.store');
 });
@@ -121,6 +121,14 @@ Route::prefix('admin')->name('admin.')->middleware(\App\Http\Middleware\AdminAut
     Route::get('/settings',          [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings',         [SettingsController::class, 'update'])->name('settings.update');
     Route::post('/settings/password',[SettingsController::class, 'changePassword'])->name('settings.password');
+
+    // Stats
+    Route::get('/stats',              [StatsController::class, 'index'])->name('stats.index');
+    Route::get('/stats/create',       [StatsController::class, 'create'])->name('stats.create');
+    Route::post('/stats',             [StatsController::class, 'store'])->name('stats.store');
+    Route::get('/stats/{id}/edit',    [StatsController::class, 'edit'])->name('stats.edit');
+    Route::put('/stats/{id}',         [StatsController::class, 'update'])->name('stats.update');
+    Route::delete('/stats/{id}',      [StatsController::class, 'destroy'])->name('stats.destroy');
 
     // Image upload (AJAX)
     Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');

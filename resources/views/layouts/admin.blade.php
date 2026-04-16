@@ -47,6 +47,7 @@
                         <span class="badge-count">{{ $unread }}</span>
                     @endif
                 </a>
+                <a href="/admin/stats"     class="sidebar-link {{ request()->is('admin/stats*')    ? 'active' : '' }}"><span class="sidebar-icon">📈</span> Homepage Stats</a>
                 <a href="/admin/settings" class="sidebar-link {{ request()->is('admin/settings*')? 'active' : '' }}"><span class="sidebar-icon">⚙️</span> Settings</a>
             </nav>
 

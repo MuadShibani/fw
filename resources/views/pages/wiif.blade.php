@@ -40,9 +40,24 @@
             <h2 class="section-title">{{ $cf['sdgTitle'][$lang] ?? '' }}</h2>
             <p class="section-subtitle">{{ $cf['sdgDesc'][$lang] ?? '' }}</p>
         </div>
-        <div class="sdg-goals-grid">
+        <div class="sdg-goals-grid chips-center">
+            @php
+            $sdgInfo = [
+                1  => ['en' => 'No Poverty — End poverty in all its forms everywhere.', 'ar' => 'القضاء على الفقر — إنهاء الفقر بجميع أشكاله في كل مكان.'],
+                3  => ['en' => 'Good Health & Well-being — Ensure healthy lives and well-being for all.', 'ar' => 'الصحة الجيدة والرفاهية — ضمان حياة صحية وتعزيز الرفاهية للجميع.'],
+                4  => ['en' => 'Quality Education — Ensure inclusive and equitable quality education.', 'ar' => 'التعليم الجيد — ضمان التعليم الجيد المنصف والشامل للجميع.'],
+                5  => ['en' => 'Gender Equality — Achieve gender equality and empower all women and girls.', 'ar' => 'المساواة بين الجنسين — تحقيق المساواة بين الجنسين وتمكين جميع النساء والفتيات.'],
+                8  => ['en' => 'Decent Work & Economic Growth — Promote sustained, inclusive and sustainable economic growth.', 'ar' => 'العمل اللائق ونمو الاقتصاد — تعزيز النمو الاقتصادي المطرد والشامل والمستدام.'],
+                9  => ['en' => 'Industry, Innovation & Infrastructure — Build resilient infrastructure, promote sustainable industrialization.', 'ar' => 'الصناعة والابتكار والبنية التحتية — بناء بنية تحتية قادرة على الصمود وتعزيز التصنيع.'],
+                10 => ['en' => 'Reduced Inequalities — Reduce inequality within and among countries.', 'ar' => 'الحد من أوجه عدم المساواة — الحد من أوجه عدم المساواة داخل البلدان وفيما بينها.'],
+                17 => ['en' => 'Partnerships for the Goals — Strengthen implementation means and revitalize global partnerships.', 'ar' => 'عقد الشراكات لتحقيق الأهداف — تعزيز وسائل التنفيذ وتنشيط الشراكة العالمية.'],
+            ];
+            @endphp
             @foreach ([1,3,4,5,8,9,10,17] as $goal)
-                <div class="sdg-goal">SDG {{ $goal }}</div>
+                <div class="sdg-goal sdg-interactive" data-tooltip="{{ $sdgInfo[$goal][$lang] }}">
+                    SDG {{ $goal }}
+                    <span class="sdg-tooltip">{{ $sdgInfo[$goal][$lang] }}</span>
+                </div>
             @endforeach
         </div>
     </div>

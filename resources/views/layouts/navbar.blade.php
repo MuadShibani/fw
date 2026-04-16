@@ -18,10 +18,10 @@
         [
             'en' => 'Info Center', 'ar' => 'مركز المعلومات', 'path' => '#',
             'children' => [
-                ['en' => 'Library',       'ar' => 'المكتبة',              'path' => '/library'],
-                ['en' => 'Blog',          'ar' => 'المدونة',              'path' => '/blog'],
-                ['en' => 'Events',        'ar' => 'الفعاليات',            'path' => '/events'],
-                ['en' => 'News & Media',  'ar' => 'الأخبار والوسائط',    'path' => '/media'],
+                ['en' => 'Library',      'ar' => 'المكتبة',           'path' => '/library'],
+                ['en' => 'Blog',         'ar' => 'المدونة',           'path' => '/blog'],
+                ['en' => 'Events',       'ar' => 'الفعاليات',         'path' => '/events'],
+                ['en' => 'News & Media', 'ar' => 'الأخبار والوسائط', 'path' => '/media'],
             ]
         ],
         ['en' => 'Contact Us', 'ar' => 'تواصل معنا', 'path' => '/contact'],
@@ -33,18 +33,20 @@
         <div class="navbar-inner">
 
             {{-- Logo --}}
-            <a href="/" class="navbar-brand" style="width: 100px">
+            <a href="/" class="navbar-brand">
                 <img src="{{ asset('images/logo-wathba.jpg') }}" alt="Wathba | وثبة" class="navbar-logo-img">
             </a>
 
-            {{-- Desktop Nav --}}
-            <ul class="nav-links hidden lg:flex">
+            {{-- Desktop Nav — horizontal --}}
+            <ul class="nav-links">
                 @foreach ($navLinks as $link)
                     @if (isset($link['children']))
                         <li class="nav-item has-dropdown">
                             <button class="nav-link dropdown-toggle">
                                 {{ $link[$lang] }}
-                                <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
                             </button>
                             <ul class="dropdown-menu">
                                 @foreach ($link['children'] as $child)
@@ -77,7 +79,7 @@
                         🌐 {{ $lang === 'en' ? 'العربية' : 'English' }}
                     </button>
                 </form>
-                <button class="hamburger lg:hidden" id="mobileMenuToggle" aria-label="Toggle menu">
+                <button class="hamburger" id="mobileMenuToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>

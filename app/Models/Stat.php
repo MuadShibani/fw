@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Stat extends Model
 {
     protected $table = 'stats';
-
-    protected $fillable = ['value', 'label_en', 'label_ar', 'icon'];
+    protected $fillable = ['value', 'label_en', 'label_ar', 'icon', 'sort_order'];
+    protected $casts = ['sort_order' => 'integer'];
 }
