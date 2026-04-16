@@ -51,9 +51,9 @@
                     <p class="program-desc">{{ $program->{'description_'.$lang} }}</p>
                     @if ($program->features)
                         <ul class="program-features">
-                            @foreach ($program->features as $feature)
-                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>
-                            @endforeach
+{{--                            @foreach ($program->features as $feature)--}}
+{{--                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>--}}
+{{--                            @endforeach--}}
                         </ul>
                     @endif
                     <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
