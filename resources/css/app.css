@@ -549,3 +549,185 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER PARTNERS — horizontal row
+═══════════════════════════════════════════════════════════════ */
+.footer-partners-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+.footer-partners-row .partner-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: .4rem .6rem;
+}
+.partner-logo-eu-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+}
+.partner-logo-sm {
+  height: 44px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVBAR — bigger centered logo
+═══════════════════════════════════════════════════════════════ */
+.navbar-logo-img-lg {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FEATURES TABLE (accelerator page)
+═══════════════════════════════════════════════════════════════ */
+.features-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.features-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+  background: #fff;
+}
+.features-table thead tr {
+  background: var(--brown);
+  color: var(--cream);
+}
+.features-table th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.features-table tbody tr {
+  border-bottom: 1px solid #f0ede6;
+  transition: background .15s;
+}
+.features-table tbody tr:hover {
+  background: #faf7f2;
+}
+.features-table tbody tr:last-child {
+  border-bottom: none;
+}
+.features-table td {
+  padding: .9rem 1.25rem;
+  vertical-align: top;
+  color: #4b4038;
+  line-height: 1.6;
+}
+.features-table-name {
+  font-weight: 700;
+  color: var(--brown) !important;
+  width: 240px;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .features-table-name { white-space: normal; width: auto; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VERTICAL TIMELINE (accelerator page)
+═══════════════════════════════════════════════════════════════ */
+.timeline-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.timeline-v-item {
+  display: grid;
+  grid-template-columns: 56px 32px 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+.timeline-v-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: .75rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  z-index: 1;
+}
+.timeline-v-connector {
+  width: 3px;
+  background: linear-gradient(to bottom, #d1cbc5, #e8e4de);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.timeline-v-item:last-child .timeline-v-connector {
+  display: none;
+}
+.timeline-v-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-left: .75rem;
+}
+.timeline-v-card-header {
+  padding: 1.1rem 1.4rem;
+}
+.timeline-v-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: .2rem;
+}
+.timeline-v-purpose {
+  font-size: .875rem;
+  opacity: .8;
+}
+.timeline-v-card-body {
+  background: #fff;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+.timeline-v-section { display: flex; flex-direction: column; gap: .3rem; }
+.timeline-v-label {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #9ca3af;
+}
+.timeline-v-section p {
+  font-size: .9rem;
+  color: #4b4038;
+  line-height: 1.65;
+}
+.timeline-v-output {
+  border-top: 1px solid #f0ede6;
+  padding-top: .9rem;
+}
+.output-label { color: #059669 !important; }
+.timeline-v-output p { color: #065f46; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .timeline-v-item { grid-template-columns: 44px 20px 1fr; }
+  .timeline-v-badge { width: 44px; height: 44px; font-size: 1.1rem; }
+}
