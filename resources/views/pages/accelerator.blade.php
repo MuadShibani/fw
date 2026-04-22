@@ -121,7 +121,7 @@
                 'purpose'=> 'Showcase startups to investors, partners, and ecosystem stakeholders',
                 'activities' => 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.',
                 'output' => 'Graduated startups connected to funding, partners, and market opportunities',
-            ],
+            ]
         ] : [
             [
                 'num'  => '1',
@@ -154,7 +154,7 @@
                 'purpose'=> 'عرض الشركات الناشئة على المستثمرين والشركاء',
                 'activities' => 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.',
                 'output' => 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق',
-            ],
+            ]
         ];
         @endphp
 
