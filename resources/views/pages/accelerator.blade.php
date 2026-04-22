@@ -177,7 +177,7 @@
         <div class="timeline-vertical">
             @php $x = 0;  @endphp
             @foreach($timelineStages as $stage)
-                @php if($x == 4) {
+                @php if($x == 5) {
         break;
  }  @endphp
             <div class="timeline-v-item">
