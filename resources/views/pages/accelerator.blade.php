@@ -164,7 +164,7 @@
             @php $x = 0;  @endphp
             @foreach($timelineStages as $stage)
                 @php if($x == 3) {
-        return(1);
+        break;
  }  @endphp
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:{{ $stage['color'] }};color:{{ $stage['color']==='#B04C2C'?'#fff':'#524037' }}">
