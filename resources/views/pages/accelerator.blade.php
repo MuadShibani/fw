@@ -175,7 +175,11 @@
         @endphp
 
         <div class="timeline-vertical">
+            @php $x = 0;  @endphp
             @foreach($timelineStages as $stage)
+                @php if($x == 4) {
+        break;
+ }  @endphp
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:{{ $stage['color'] }};color:{{ $stage['color']==='#B04C2C'?'#fff':'#524037' }}">
                     {{ $stage['num'] }}
@@ -198,6 +202,7 @@
                     </div>
                 </div>
             </div>
+                @php $x++;  @endphp
             @endforeach
         </div>
     </div>
