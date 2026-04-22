@@ -122,14 +122,7 @@
                 'activities' => 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.',
                 'output' => 'Graduated startups connected to funding, partners, and market opportunities',
             ],
-             [
-                'num'  => '4',
-                'title'=> 'Demo Day',
-                'color'=> '#B04C2C',
-                'purpose'=> 'Showcase startups to investors, partners, and ecosystem stakeholders',
-                'activities' => 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.',
-                'output' => 'Graduated startups connected to funding, partners, and market opportunities',
-            ]
+
         ] : [
             [
                 'num'  => '1',
@@ -163,21 +156,14 @@
                 'activities' => 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.',
                 'output' => 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق',
             ],
-             [
-                'num'  => '4',
-                'title'=> 'يوم العرض',
-                'color'=> '#B04C2C',
-                'purpose'=> 'عرض الشركات الناشئة على المستثمرين والشركاء',
-                'activities' => 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.',
-                'output' => 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق',
-            ]
+
         ];
         @endphp
 
         <div class="timeline-vertical">
             @php $x = 0;  @endphp
             @foreach($timelineStages as $stage)
-                @php if($x == 5) {
+                @php if($x == 3) {
         return(1);
  }  @endphp
             <div class="timeline-v-item">
