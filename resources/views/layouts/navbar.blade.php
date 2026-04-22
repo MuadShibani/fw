@@ -34,7 +34,7 @@
 
             {{-- Logo --}}
             <a href="/" class="navbar-brand">
-                <img style="height: 110px" src="{{ asset('images/wathba.png') }}" alt="Wathba | وثبة" class="navbar-logo-img-lg">
+                <img style="height: 80px" src="{{ asset('images/wathba.png') }}" alt="Wathba | وثبة" class="navbar-logo-img-lg">
             </a>
 
             {{-- Desktop Nav — horizontal --}}
