@@ -10,7 +10,7 @@
     <div class="container">
         <div class="hero-content">
             @if($hp?->content_en || $hp?->content_ar)
-            <span class="hero-badge">🇾🇪 {{ $hp->{'content_'.$lang} }}</span>
+            <span class="hero-badge">{!!   $hp->{'content_'.$lang} !!}</span>
             @endif
             <h1 class="hero-title">{{ $hp?->{'title_'.$lang} ?? '' }}</h1>
             <p class="hero-subtitle">{{ $hp?->{'subtitle_'.$lang} ?? '' }}</p>
