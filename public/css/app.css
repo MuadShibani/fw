@@ -731,3 +731,48 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   .timeline-v-item { grid-template-columns: 44px 20px 1fr; }
   .timeline-v-badge { width: 44px; height: 44px; font-size: 1.1rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   3-LINE CLAMP — applied to all content snippets sitewide
+═══════════════════════════════════════════════════════════════ */
+.line-clamp-3,
+.news-summary,
+.blog-summary,
+.library-desc,
+.program-desc,
+.investor-bio,
+.event-card-desc,
+.news-single-summary p,
+.startup-info p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: calc(1.6em * 3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIBRARY — YouTube embed cards
+═══════════════════════════════════════════════════════════════ */
+.library-video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #000;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+.library-video-iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIBRARY FORM — upload zone style for docs
+═══════════════════════════════════════════════════════════════ */
+.text-rust { color: var(--rust); }
+.lib-type-section { animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }

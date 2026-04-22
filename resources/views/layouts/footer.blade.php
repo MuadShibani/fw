@@ -59,14 +59,15 @@
             <div class="footer-col">
                 <h4 class="footer-heading">{{ $lang === 'en' ? 'Funded & Implemented By' : 'بتمويل وتنفيذ' }}</h4>
                 <div class="footer-partners-row">
+                    {{-- Order: 1. EU  2. DeepRoot  3. Rowad --}}
                     <div class="partner-logo-wrap partner-logo-eu">
                         <img src="{{ asset('images/logo-eu.png') }}" alt="Funded by the European Union" class="partner-logo-eu-img">
                     </div>
                     <div class="partner-logo-wrap partner-logo-light">
-                        <img src="{{ asset('images/logo-rowad.jpg') }}" alt="Rowad Foundation" class="partner-logo-sm">
+                        <img src="{{ asset('images/logo-deeproot.png') }}" alt="DeepRoot Consulting" class="partner-logo-sm">
                     </div>
                     <div class="partner-logo-wrap partner-logo-light">
-                        <img src="{{ asset('images/logo-deeproot.png') }}" alt="DeepRoot Consulting" class="partner-logo-sm">
+                        <img src="{{ asset('images/logo-rowad.jpg') }}" alt="Rowad Foundation" class="partner-logo-sm">
                     </div>
                 </div>
             </div>

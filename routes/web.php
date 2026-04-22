@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ImageUploadController;
+use App\Http\Controllers\Admin\DocumentUploadController;
 use App\Http\Controllers\Admin\StatsController;
 
 Route::post('/lang', [LanguageController::class, 'switch'])->name('lang.switch');
@@ -132,4 +133,10 @@ Route::prefix('admin')->name('admin.')->middleware(\App\Http\Middleware\AdminAut
 
     // Image upload (AJAX)
     Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
+
+    // Document/PDF upload (AJAX)
+    Route::post('/upload-document', [DocumentUploadController::class, 'upload'])->name('upload.document');
+
+    // YouTube metadata fetch (AJAX)
+    Route::post('/library/youtube-info', [\App\Http\Controllers\Admin\LibraryController::class, 'youtubeInfo'])->name('library.youtube-info');
 });

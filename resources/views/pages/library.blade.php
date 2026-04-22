@@ -27,24 +27,36 @@
 
         <div class="library-grid" id="libraryGrid">
             @forelse ($items as $item)
-                <div class="library-card" data-type="{{ $item->type }}" data-title="{{ strtolower($item->{'title_' . $lang}) }}" style="cursor:pointer" onclick="if('{{ $item->url }}' !== '#') window.open('{{ $item->url }}', '_blank')">
+                @php $isYoutube = str_contains($item->url ?? '', 'youtube.com/embed'); @endphp
+                <div class="library-card" data-type="{{ $item->type }}" data-title="{{ strtolower($item->{'title_' . $lang}) }}">
+                    {{-- YouTube embed --}}
+                    @if($isYoutube)
+                    <div class="library-video-wrap">
+                        <iframe src="{{ $item->url }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen class="library-video-iframe"></iframe>
+                    </div>
+                    @else
                     <div class="library-card-icon">
                         @if ($item->type === 'document') 📄
                         @elseif ($item->type === 'image') 🖼
                         @else 🎬
                         @endif
                     </div>
+                    @endif
                     <div class="library-card-body">
                         <h3 class="library-title">{{ $item->{'title_' . $lang} }}</h3>
-                        <p class="library-desc">{{ $item->{'description_' . $lang} }}</p>
+                        <p class="library-desc line-clamp-3">{{ $item->{'description_' . $lang} }}</p>
                         <div class="library-meta">
                             <span>📅 {{ \Carbon\Carbon::parse($item->file_date)->format('d M Y') }}</span>
                             @if ($item->size) <span>💾 {{ $item->size }}</span> @endif
                         </div>
                     </div>
+                    @if(!$isYoutube)
                     <a href="{{ $item->url }}" target="_blank" class="btn btn-outline btn-sm">
-                        {{ $lang === 'en' ? 'Download / View' : 'تنزيل / عرض' }}
+                        {{ $item->type === 'document' ? ($lang === 'en' ? '⬇ Download' : '⬇ تنزيل') : ($lang === 'en' ? '👁 View' : '👁 عرض') }}
                     </a>
+                    @endif
                 </div>
             @empty
                 <p class="empty-state col-span-full">{{ $lang === 'en' ? 'No items in the library.' : 'لا توجد عناصر في المكتبة.' }}</p>
