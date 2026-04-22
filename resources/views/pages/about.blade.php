@@ -38,7 +38,7 @@
 <section class="section">
     <div class="container">
         <div class="eu-partnership-banner">
-            <div class="eu-flag-large">★ ★ ★ ★ ★</div>
+{{--            <div class="eu-flag-large">★ ★ ★ ★ ★</div>--}}
             <div>
                 <h3>{{ $lang==='en'?'Funded by the European Union':'بتمويل من الاتحاد الأوروبي' }}</h3>
                 <p>{{ $lang==='en'?'Wathba is funded by the European Union as part of efforts to promote economic resilience and recovery in Yemen.':'وثبة ممولة من الاتحاد الأوروبي في إطار جهود تعزيز المرونة الاقتصادية والتعافي في اليمن.' }}</p>
