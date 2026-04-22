@@ -114,14 +114,14 @@
                 'activities' => 'Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.',
                 'output' => 'Startups improve business models, operations, investment readiness, and scale plans',
             ],
-            [
-                'num'  => '4',
-                'title'=> 'Demo Day',
-                'color'=> '#B04C2C',
-                'purpose'=> 'Showcase startups to investors, partners, and ecosystem stakeholders',
-                'activities' => 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.',
-                'output' => 'Graduated startups connected to funding, partners, and market opportunities',
-            ]
+//            [
+//                'num'  => '4',
+//                'title'=> 'Demo Day',
+//                'color'=> '#B04C2C',
+//                'purpose'=> 'Showcase startups to investors, partners, and ecosystem stakeholders',
+//                'activities' => 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.',
+//                'output' => 'Graduated startups connected to funding, partners, and market opportunities',
+//            ]
         ] : [
             [
                 'num'  => '1',
@@ -147,14 +147,14 @@
                 'activities' => 'تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.',
                 'output' => 'تحسين الشركات الناشئة لنماذج أعمالها والاستعداد للاستثمار',
             ],
-            [
-                'num'  => '4',
-                'title'=> 'يوم العرض',
-                'color'=> '#B04C2C',
-                'purpose'=> 'عرض الشركات الناشئة على المستثمرين والشركاء',
-                'activities' => 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.',
-                'output' => 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق',
-            ]
+//            [
+//                'num'  => '4',
+//                'title'=> 'يوم العرض',
+//                'color'=> '#B04C2C',
+//                'purpose'=> 'عرض الشركات الناشئة على المستثمرين والشركاء',
+//                'activities' => 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.',
+//                'output' => 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق',
+//            ]
         ];
         @endphp
 
