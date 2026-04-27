@@ -641,109 +641,6 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   .features-table-name { white-space: normal; width: auto; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   VERTICAL TIMELINE (accelerator page) — FLEXBOX LAYOUT
-   No grid columns, so the last item never breaks layout.
-═══════════════════════════════════════════════════════════════ */
-.timeline-vertical {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-}
-.timeline-v-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  position: relative;
-}
-.timeline-v-item:last-child { margin-bottom: 0; }
-
-/* Left rail: badge on top + thin vertical line beneath it */
-.timeline-v-rail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 56px;
-}
-.timeline-v-badge {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  font-weight: 800;
-  flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(0,0,0,.15);
-  z-index: 2;
-}
-.timeline-v-connector {
-  flex: 1;
-  width: 3px;
-  background: linear-gradient(to bottom, #d1cbc5, #e8e4de);
-  border-radius: 2px;
-  margin-top: .25rem;
-  min-height: 1.5rem;
-}
-/* Last item — hide connector entirely, no layout impact */
-.timeline-v-item:last-child .timeline-v-connector { display: none; }
-
-/* Card takes the remaining space */
-.timeline-v-card {
-  flex: 1;
-  min-width: 0;            /* allow text to wrap inside flex item */
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-.timeline-v-card-header {
-  padding: 1.1rem 1.4rem;
-}
-.timeline-v-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  margin-bottom: .2rem;
-}
-.timeline-v-purpose {
-  font-size: .875rem;
-  opacity: .8;
-}
-.timeline-v-card-body {
-  background: #fff;
-  padding: 1.2rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: .9rem;
-}
-.timeline-v-section { display: flex; flex-direction: column; gap: .3rem; }
-.timeline-v-label {
-  font-size: .72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: #9ca3af;
-}
-.timeline-v-section p {
-  font-size: .9rem;
-  color: #4b4038;
-  line-height: 1.65;
-}
-.timeline-v-output {
-  border-top: 1px solid #f0ede6;
-  padding-top: .9rem;
-}
-.output-label { color: #059669 !important; }
-.timeline-v-output p { color: #065f46; font-weight: 600; }
-
-@media (max-width: 640px) {
-  .timeline-v-rail { width: 44px; }
-  .timeline-v-badge { width: 44px; height: 44px; font-size: 1.1rem; }
-  .timeline-v-item { gap: .75rem; }
-}
 
 /* ═══════════════════════════════════════════════════════════════
    3-LINE CLAMP — applied to all content snippets sitewide
@@ -815,4 +712,104 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   color: #6b5e57;
   line-height: 1.65;
   font-size: .95rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCELERATOR TIMELINE — SIMPLE BLOCK STACK
+   No flex, no grid, no :last-child tricks. Just stacked cards.
+═══════════════════════════════════════════════════════════════ */
+.timeline-vertical {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.tl-stage {
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(82,64,55,.12);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.tl-stage:last-child { margin-bottom: 0; }
+
+/* Header — colored band with number + title + purpose */
+.tl-stage > header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  color: #524037;
+}
+.tl-stage > header > div { flex: 1; }
+.tl-stage > header h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 .2rem 0;
+}
+.tl-stage > header p {
+  font-size: .875rem;
+  margin: 0;
+  opacity: .85;
+}
+
+/* Stage colors */
+.tl-stage-1 > header { background: #9FD4D5; color: #524037; }
+.tl-stage-2 > header { background: #A2C59A; color: #524037; }
+.tl-stage-3 > header { background: #ECCE9E; color: #524037; }
+.tl-stage-4 > header { background: #B04C2C; color: #ffffff; }
+
+/* Stage number badge */
+.tl-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.6);
+  color: #524037;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+.tl-stage-4 .tl-num { background: rgba(255,255,255,.25); color: #ffffff; }
+
+/* Body */
+.tl-body {
+  padding: 1.2rem 1.4rem;
+}
+.tl-block {
+  margin-bottom: .9rem;
+}
+.tl-block:last-child { margin-bottom: 0; }
+
+.tl-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #9ca3af;
+  margin-bottom: .3rem;
+}
+.tl-block p {
+  font-size: .9rem;
+  color: #4b4038;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Output block — green emphasis */
+.tl-out {
+  border-top: 1px solid #f0ede6;
+  padding-top: .9rem;
+  margin-top: .9rem;
+}
+.tl-out-label { color: #059669; }
+.tl-out p { color: #065f46; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .tl-num { width: 38px; height: 38px; font-size: 1.05rem; }
+  .tl-stage > header { padding: .9rem 1rem; }
+  .tl-body { padding: 1rem; }
 }
