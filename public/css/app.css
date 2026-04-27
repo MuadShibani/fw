@@ -776,3 +776,13 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
 .text-rust { color: var(--rust); }
 .lib-type-section { animation: fadeIn .2s ease; }
 @keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── Programs grid: 2 columns x 2 rows on desktop ─────────────── */
+.programs-grid-2x2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .programs-grid-2x2 { grid-template-columns: 1fr !important; }
+}

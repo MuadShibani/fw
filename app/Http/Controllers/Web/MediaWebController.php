@@ -18,8 +18,10 @@ class MediaWebController extends Controller
     public function show(int $id)
     {
         return view('pages.media-single', [
-            'item'       => News::findOrFail($id),
-            'relatedNews' => News::where('id', '!=', $id)->orderBy('date', 'desc')->limit(3)->get(),
+            'item'        => News::findOrFail($id),
+            'relatedNews' => News::where('id', '!=', $id)
+                                 ->orderBy('date', 'desc')
+                                 ->limit(5)->get(),
         ]);
     }
 }

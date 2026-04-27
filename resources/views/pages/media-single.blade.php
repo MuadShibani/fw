@@ -3,12 +3,11 @@
 @section('description', $item->{'summary_'.$lang})
 
 @section('content')
-
 <section class="section">
     <div class="container">
         <div class="blog-post-layout">
 
-            {{-- Article — same structure as blog-post --}}
+            {{-- Article (same structure as blog-post) --}}
             <article class="blog-post">
                 <div class="blog-post-header">
                     <div class="blog-post-meta">
@@ -32,11 +31,11 @@
                 </div>
             </article>
 
-            {{-- Sidebar — same as blog-post --}}
+            {{-- Sidebar --}}
             <aside class="blog-sidebar">
                 <h3 class="sidebar-title">{{ $lang === 'en' ? 'Related News' : 'أخبار ذات صلة' }}</h3>
                 @foreach ($relatedNews as $related)
-                    <a href="/media/{{ $related->id }}" class="sidebar-post-link {{ $related->id === $item->id ? 'active' : '' }}">
+                    <a href="/media/{{ $related->id }}" class="sidebar-post-link">
                         <p class="sidebar-post-title">{{ $related->{'title_'.$lang} }}</p>
                         <p class="sidebar-post-date">
                             {{ \Carbon\Carbon::parse($related->date)->format('d M Y') }}
@@ -50,5 +49,4 @@
         </div>
     </div>
 </section>
-
 @endsection
