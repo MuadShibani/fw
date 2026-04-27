@@ -786,3 +786,20 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
 @media (max-width: 700px) {
   .programs-grid-2x2 { grid-template-columns: 1fr !important; }
 }
+
+/* ── About / SIL: clean icon-card without emoji icons ─────────── */
+.icon-card-clean {
+  border-top: 4px solid var(--rust);
+  padding-top: 1.75rem;
+}
+.icon-card-clean h3 {
+  font-size: 1.15rem;
+  margin-bottom: .75rem;
+  color: var(--brown);
+  font-weight: 700;
+}
+.icon-card-clean p {
+  color: #6b5e57;
+  line-height: 1.65;
+  font-size: .95rem;
+}

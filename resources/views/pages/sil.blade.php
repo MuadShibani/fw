@@ -22,11 +22,8 @@
         <div class="cards-3">
             @foreach(['grants','community','impact'] as $i => $block)
             @if(!empty($cf[$block.'_title']))
-            <div class="icon-card">
-                <div class="icon-card-icon" style="background:{{ $i===0?'#9FD4D5':($i===1?'#A2C59A':'#B04C2C') }};{{ $i===2?'color:white':'' }}">
-                    {{ $i===0?'💡':($i===1?'👥':'📊') }}
-                </div>
-                <h3>{{ $cf[$block.'_title'][$lang] ?? $cf[$block.'_title']['en'] ?? ucfirst($block) }}</h3>
+            <div class="icon-card icon-card-clean">
+                                <h3>{{ $cf[$block.'_title'][$lang] ?? $cf[$block.'_title']['en'] ?? ucfirst($block) }}</h3>
                 <p>{{ $cf[$block.'_body'][$lang] ?? $cf[$block.'_body']['en'] ?? '' }}</p>
             </div>
             @endif
@@ -34,4 +31,6 @@
         </div>
     </div>
 </section>
+
+@include('partials.related-news')
 @endsection

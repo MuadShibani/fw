@@ -84,4 +84,6 @@
         </div>
     </div>
 </section>
+
+@include('partials.related-news')
 @endsection

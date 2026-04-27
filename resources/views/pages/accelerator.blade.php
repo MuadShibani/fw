@@ -94,9 +94,7 @@
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
                             <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>{{ $lang==='en'
-                                ? 'Announce the program, promote the call for applications, explain eligibility, hold info sessions, and receive applications — with active outreach to women and youth entrepreneurs.'
-                                : 'الإعلان عن البرنامج، والترويج لدعوة تقديم الطلبات، وتوضيح شروط الأهلية، وعقد جلسات معلوماتية، واستقبال الطلبات — مع التوعية النشطة لرواد الأعمال من النساء والشباب.' }}</p>
+                            <p>@if($lang==='en')Announce the program, promote the call for applications, explain eligibility, hold info sessions, and receive applications — with active outreach to women and youth entrepreneurs.@else الإعلان عن البرنامج، والترويج لدعوة تقديم الطلبات، وتوضيح شروط الأهلية، وعقد جلسات معلوماتية، واستقبال الطلبات — مع التوعية النشطة لرواد الأعمال من النساء والشباب.@endif</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
                             <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
@@ -118,9 +116,7 @@
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
                             <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>{{ $lang==='en'
-                                ? 'Screen applications, shortlist candidates, conduct interviews and pitch reviews, assess team, market, product, impact, and readiness — then select up to 10 startups.'
-                                : 'مراجعة الطلبات، وإدراج المرشحين في القائمة المختصرة، وإجراء المقابلات ومراجعات العروض، وتقييم الفريق والسوق والمنتج والأثر والاستعداد — ثم اختيار ما يصل إلى 10 شركات ناشئة.' }}</p>
+                            <p>@if($lang==='en')Screen applications, shortlist candidates, conduct interviews and pitch reviews, assess team, market, product, impact, and readiness — then select up to 10 startups.@else مراجعة الطلبات، وإدراج المرشحين في القائمة المختصرة، وإجراء المقابلات ومراجعات العروض، وتقييم الفريق والسوق والمنتج والأثر والاستعداد — ثم اختيار ما يصل إلى 10 شركات ناشئة.@endif</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
                             <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
@@ -142,9 +138,7 @@
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
                             <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>{{ $lang==='en'
-                                ? 'Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.'
-                                : 'تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.' }}</p>
+                            <p>@if($lang==='en')Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.@else تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.@endif</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
                             <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
@@ -166,9 +160,7 @@
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
                             <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>{{ $lang==='en'
-                                ? 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.'
-                                : 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.' }}</p>
+                            <p>@if($lang==='en')Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.@else فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.@endif</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
                             <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
@@ -214,4 +206,6 @@
         </div>
     </div>
 </section>
+
+@include('partials.related-news')
 @endsection
