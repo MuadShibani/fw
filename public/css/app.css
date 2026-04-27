@@ -642,22 +642,31 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   VERTICAL TIMELINE (accelerator page)
+   VERTICAL TIMELINE (accelerator page) — FLEXBOX LAYOUT
+   No grid columns, so the last item never breaks layout.
 ═══════════════════════════════════════════════════════════════ */
 .timeline-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
 }
 .timeline-v-item {
-  display: grid;
-  grid-template-columns: 56px 32px 1fr;
-  gap: 0;
-  align-items: stretch;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   margin-bottom: 2rem;
+  position: relative;
+}
+.timeline-v-item:last-child { margin-bottom: 0; }
+
+/* Left rail: badge on top + thin vertical line beneath it */
+.timeline-v-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 56px;
 }
 .timeline-v-badge {
   width: 56px;
@@ -669,26 +678,27 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   font-size: 1.4rem;
   font-weight: 800;
   flex-shrink: 0;
-  margin-top: .75rem;
   box-shadow: 0 3px 10px rgba(0,0,0,.15);
-  z-index: 1;
+  z-index: 2;
 }
 .timeline-v-connector {
+  flex: 1;
   width: 3px;
   background: linear-gradient(to bottom, #d1cbc5, #e8e4de);
-  margin: 0 auto;
   border-radius: 2px;
+  margin-top: .25rem;
+  min-height: 1.5rem;
 }
-/* Last item: hide connector but KEEP its grid column slot —
-   visibility:hidden preserves the grid track so card stays aligned */
-.timeline-v-item:last-child .timeline-v-connector {
-  visibility: hidden;
-}
+/* Last item — hide connector entirely, no layout impact */
+.timeline-v-item:last-child .timeline-v-connector { display: none; }
+
+/* Card takes the remaining space */
 .timeline-v-card {
+  flex: 1;
+  min-width: 0;            /* allow text to wrap inside flex item */
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  margin-left: .75rem;
 }
 .timeline-v-card-header {
   padding: 1.1rem 1.4rem;
@@ -730,8 +740,9 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
 .timeline-v-output p { color: #065f46; font-weight: 600; }
 
 @media (max-width: 640px) {
-  .timeline-v-item { grid-template-columns: 44px 20px 1fr; }
+  .timeline-v-rail { width: 44px; }
   .timeline-v-badge { width: 44px; height: 44px; font-size: 1.1rem; }
+  .timeline-v-item { gap: .75rem; }
 }
 
 /* ═══════════════════════════════════════════════════════════════

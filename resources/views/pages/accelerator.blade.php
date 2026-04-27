@@ -86,8 +86,10 @@
 
             {{-- ENGLISH TIMELINE --}}
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
-                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
+                    <div class="timeline-v-connector"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#9FD4D5;color:#524037">
                         <h3 class="timeline-v-title">Start</h3>
@@ -107,8 +109,10 @@
             </div>
 
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
-                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
+                    <div class="timeline-v-connector"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#A2C59A;color:#524037">
                         <h3 class="timeline-v-title">Selection</h3>
@@ -128,8 +132,10 @@
             </div>
 
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
-                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
+                    <div class="timeline-v-connector"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#ECCE9E;color:#524037">
                         <h3 class="timeline-v-title">Training / Acceleration</h3>
@@ -149,8 +155,10 @@
             </div>
 
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
-                <div class="timeline-v-connector" style="visibility:hidden"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
+                    <div class="timeline-v-connector" style="visibility:hidden"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
                         <h3 class="timeline-v-title">Demo Day</h3>
@@ -173,8 +181,10 @@
 
             {{-- ARABIC TIMELINE --}}
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
-                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
+                    <div class="timeline-v-connector"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#9FD4D5;color:#524037">
                         <h3 class="timeline-v-title">البداية</h3>
@@ -194,8 +204,10 @@
             </div>
 
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
-                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
+                    <div class="timeline-v-connector"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#A2C59A;color:#524037">
                         <h3 class="timeline-v-title">الاختيار</h3>
@@ -215,8 +227,10 @@
             </div>
 
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
-                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
+                    <div class="timeline-v-connector"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#ECCE9E;color:#524037">
                         <h3 class="timeline-v-title">التدريب والتسريع</h3>
@@ -236,8 +250,10 @@
             </div>
 
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
-                <div class="timeline-v-connector" style="visibility:hidden"></div>
+                <div class="timeline-v-rail">
+                    <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
+                    <div class="timeline-v-connector" style="visibility:hidden"></div>
+                </div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
                         <h3 class="timeline-v-title">يوم العرض</h3>
