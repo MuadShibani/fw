@@ -10,7 +10,7 @@
     <div class="container">
         <div class="hero-content">
             @if($hp?->content_en || $hp?->content_ar)
-            <span class="hero-badge">{!!   $hp->{'content_'.$lang} !!}</span>
+            <span class="hero-badge">🇾🇪 {{ $hp->{'content_'.$lang} }}</span>
             @endif
             <h1 class="hero-title">{{ $hp?->{'title_'.$lang} ?? '' }}</h1>
             <p class="hero-subtitle">{{ $hp?->{'subtitle_'.$lang} ?? '' }}</p>
@@ -51,9 +51,9 @@
                     <p class="program-desc">{{ $program->{'description_'.$lang} }}</p>
                     @if ($program->features)
                         <ul class="program-features">
-{{--                            @foreach ($program->features as $feature)--}}
-{{--                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>--}}
-{{--                            @endforeach--}}
+                            @foreach ($program->features as $feature)
+                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>
+                            @endforeach
                         </ul>
                     @endif
                     <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>

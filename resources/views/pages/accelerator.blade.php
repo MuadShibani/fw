@@ -11,13 +11,12 @@
         <p class="page-hero-subtitle">{{ $page->{'subtitle_'.$lang} }}</p>
         @if(!empty($cf['apply_link']))
         <a href="{{ $cf['apply_link'] }}" target="_blank" class="btn btn-brown mt-6">
-            {{ $lang==='en'?'Apply Now':'قدّم الآن' }}
+            {{ $lang==='en' ? 'Apply Now' : 'قدّم الآن' }}
         </a>
         @endif
     </div>
 </section>
 
-{{-- Main Content --}}
 @if($page->{'content_'.$lang})
 <section class="section">
     <div class="container prose-content">
@@ -26,187 +25,176 @@
 </section>
 @endif
 
-{{-- ── PROGRAM FEATURES — table layout ────────────────────────────── --}}
+{{-- ── PROGRAM FEATURES TABLE ─────────────────────────────────── --}}
 <section class="section section-alt">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">{{ $lang==='en'?'Program Features':'مميزات البرنامج' }}</h2>
+            <h2 class="section-title">{{ $lang==='en' ? 'Program Features' : 'مميزات البرنامج' }}</h2>
         </div>
         <div class="features-table-wrap">
             <table class="features-table">
                 <thead>
                     <tr>
-                        <th>{{ $lang==='en'?'Feature':'الميزة' }}</th>
-                        <th>{{ $lang==='en'?'Description':'الوصف' }}</th>
+                        <th>{{ $lang==='en' ? 'Feature' : 'الميزة' }}</th>
+                        <th>{{ $lang==='en' ? 'Description' : 'الوصف' }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                    $features = $lang==='en' ? [
-                        ['6-Month Acceleration Program', 'Each cohort goes through a structured 6-month journey focused on business growth, scaling, and investment readiness.'],
-                        ['Cohort-Based Model', 'Each cohort includes up to <strong>10 selected startups</strong>, allowing focused support and peer learning.'],
-                        ['Five Cohorts', 'The program will deliver <strong>five accelerator cohorts</strong>, graduating up to <strong>50 startups</strong> over the project period.'],
-                        ['Tailored Mentorship', 'Each startup receives customized mentorship and advisory support based on its business needs and growth objectives.'],
-                        ['Expert Masterclasses', 'Startups participate in practical sessions led by experts on entrepreneurship, business development, finance, market access, and scaling.'],
-                        ['Technical Assistance Grant', 'Each startup can access up to <strong>USD 10,000</strong> for value-added services such as legal advice, registration, patent filing, team training, or specialized business support.'],
-                        ['Women and Youth Inclusion', 'The program actively targets women and youth entrepreneurs, with an aim for <strong>30%–50% women-led startups</strong> in the accelerator.'],
-                        ['Networking Opportunities', 'Startups are connected with mentors, experts, investors, ecosystem actors, and potential partners.'],
-                        ['Investment Readiness Support', 'Startups receive support to strengthen their business models, financial planning, pitch decks, and investor communication.'],
-                        ['Demo Day', 'Each cohort concludes with a showcase event where startups pitch to investors, partners, and ecosystem stakeholders.'],
-                        ['Linkage to Wathba Ecosystem', 'Graduated startups may be connected to other Wathba components, including the Yemen Angel Investment Network and the Wathba Impact Investment Fund.'],
-                    ] : [
-                        ['برنامج تسريع لمدة 6 أشهر', 'تمر كل دفعة برحلة منظمة مدتها 6 أشهر تركز على نمو الأعمال والتوسع والاستعداد للاستثمار.'],
-                        ['نموذج قائم على الدفعات', 'تضم كل دفعة ما يصل إلى <strong>10 شركات ناشئة مختارة</strong>، مما يتيح دعماً مركزاً وتعلماً بين الأقران.'],
-                        ['خمس دفعات', 'سيقدم البرنامج <strong>خمس دفعات مسرّعة</strong>، يتخرج منها ما يصل إلى <strong>50 شركة ناشئة</strong> خلال فترة المشروع.'],
-                        ['إرشاد مخصص', 'تحصل كل شركة ناشئة على إرشاد واستشارة مخصصة بناءً على احتياجاتها وأهداف نموها.'],
-                        ['دروس إتقانية من خبراء', 'تشارك الشركات الناشئة في جلسات عملية يقودها خبراء في ريادة الأعمال والتمويل والوصول إلى الأسواق.'],
-                        ['منحة المساعدة التقنية', 'يمكن لكل شركة ناشئة الحصول على ما يصل إلى <strong>10,000 دولار أمريكي</strong> للخدمات ذات القيمة المضافة.'],
-                        ['إدماج المرأة والشباب', 'يستهدف البرنامج بنشاط رواد الأعمال من النساء والشباب، بهدف <strong>30%-50% من الشركات التي تقودها نساء</strong>.'],
-                        ['فرص التواصل', 'يتم ربط الشركات الناشئة بالمرشدين والخبراء والمستثمرين وجهات النظام البيئي والشركاء المحتملين.'],
-                        ['دعم الاستعداد للاستثمار', 'تتلقى الشركات الناشئة دعماً لتعزيز نماذج أعمالها والتخطيط المالي وعروض المستثمرين.'],
-                        ['يوم العرض', 'تختتم كل دفعة بفعالية عرض يقدم فيها رواد الأعمال مشاريعهم للمستثمرين والشركاء.'],
-                        ['الارتباط بمنظومة وثبة', 'قد يتم ربط الشركات الناشئة الخريجة بمكونات وثبة الأخرى، بما في ذلك شبكة YAIN وصندوق WIIF.'],
-                    ];
-                    @endphp
-                    @foreach($features as $row)
-                    <tr>
-                        <td class="features-table-name">{!! $row[0] !!}</td>
-                        <td>{!! $row[1] !!}</td>
-                    </tr>
-                    @endforeach
+                @if($lang==='en')
+                    <tr><td class="features-table-name">6-Month Acceleration Program</td><td>Each cohort goes through a structured 6-month journey focused on business growth, scaling, and investment readiness.</td></tr>
+                    <tr><td class="features-table-name">Cohort-Based Model</td><td>Each cohort includes up to <strong>10 selected startups</strong>, allowing focused support and peer learning.</td></tr>
+                    <tr><td class="features-table-name">Five Cohorts</td><td>The program will deliver <strong>five accelerator cohorts</strong>, graduating up to <strong>50 startups</strong> over the project period.</td></tr>
+                    <tr><td class="features-table-name">Tailored Mentorship</td><td>Each startup receives customized mentorship and advisory support based on its business needs and growth objectives.</td></tr>
+                    <tr><td class="features-table-name">Expert Masterclasses</td><td>Startups participate in practical sessions led by experts on entrepreneurship, business development, finance, market access, and scaling.</td></tr>
+                    <tr><td class="features-table-name">Technical Assistance Grant</td><td>Each startup can access up to <strong>USD 10,000</strong> for value-added services such as legal advice, registration, patent filing, team training, or specialized business support.</td></tr>
+                    <tr><td class="features-table-name">Women and Youth Inclusion</td><td>The program actively targets women and youth entrepreneurs, with an aim for <strong>30%–50% women-led startups</strong> in the accelerator.</td></tr>
+                    <tr><td class="features-table-name">Networking Opportunities</td><td>Startups are connected with mentors, experts, investors, ecosystem actors, and potential partners.</td></tr>
+                    <tr><td class="features-table-name">Investment Readiness Support</td><td>Startups receive support to strengthen their business models, financial planning, pitch decks, and investor communication.</td></tr>
+                    <tr><td class="features-table-name">Demo Day</td><td>Each cohort concludes with a showcase event where startups pitch to investors, partners, and ecosystem stakeholders.</td></tr>
+                    <tr><td class="features-table-name">Linkage to Wathba Ecosystem</td><td>Graduated startups may be connected to other Wathba components, including the Yemen Angel Investment Network and the Wathba Impact Investment Fund.</td></tr>
+                @else
+                    <tr><td class="features-table-name">برنامج تسريع لمدة 6 أشهر</td><td>تمر كل دفعة برحلة منظمة مدتها 6 أشهر تركز على نمو الأعمال والتوسع والاستعداد للاستثمار.</td></tr>
+                    <tr><td class="features-table-name">نموذج قائم على الدفعات</td><td>تضم كل دفعة ما يصل إلى <strong>10 شركات ناشئة مختارة</strong>، مما يتيح دعماً مركزاً وتعلماً بين الأقران.</td></tr>
+                    <tr><td class="features-table-name">خمس دفعات</td><td>سيقدم البرنامج <strong>خمس دفعات مسرّعة</strong>، يتخرج منها ما يصل إلى <strong>50 شركة ناشئة</strong> خلال فترة المشروع.</td></tr>
+                    <tr><td class="features-table-name">إرشاد مخصص</td><td>تحصل كل شركة ناشئة على إرشاد واستشارة مخصصة بناءً على احتياجاتها وأهداف نموها.</td></tr>
+                    <tr><td class="features-table-name">دروس إتقانية من خبراء</td><td>تشارك الشركات الناشئة في جلسات عملية يقودها خبراء في ريادة الأعمال والتمويل والوصول إلى الأسواق.</td></tr>
+                    <tr><td class="features-table-name">منحة المساعدة التقنية</td><td>يمكن لكل شركة ناشئة الحصول على ما يصل إلى <strong>10,000 دولار أمريكي</strong> للخدمات ذات القيمة المضافة.</td></tr>
+                    <tr><td class="features-table-name">إدماج المرأة والشباب</td><td>يستهدف البرنامج بنشاط رواد الأعمال من النساء والشباب، بهدف <strong>30%-50% من الشركات التي تقودها نساء</strong>.</td></tr>
+                    <tr><td class="features-table-name">فرص التواصل</td><td>يتم ربط الشركات الناشئة بالمرشدين والخبراء والمستثمرين وجهات النظام البيئي والشركاء المحتملين.</td></tr>
+                    <tr><td class="features-table-name">دعم الاستعداد للاستثمار</td><td>تتلقى الشركات الناشئة دعماً لتعزيز نماذج أعمالها والتخطيط المالي وعروض المستثمرين.</td></tr>
+                    <tr><td class="features-table-name">يوم العرض</td><td>تختتم كل دفعة بفعالية عرض يقدم فيها رواد الأعمال مشاريعهم للمستثمرين والشركاء.</td></tr>
+                    <tr><td class="features-table-name">الارتباط بمنظومة وثبة</td><td>قد يتم ربط الشركات الناشئة الخريجة بمكونات وثبة الأخرى، بما في ذلك شبكة YAIN وصندوق WIIF.</td></tr>
+                @endif
                 </tbody>
             </table>
         </div>
     </div>
 </section>
 
-{{-- ── PROGRAM TIMELINE — vertical card layout ─────────────────────── --}}
+{{-- ── PROGRAM TIMELINE — vertical cards ──────────────────────── --}}
 <section class="section">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">
-                {{ $cf['timelineTitle'][$lang] ?? ($lang==='en'?'Program Timeline':'الجدول الزمني للبرنامج') }}
+                {{ $cf['timelineTitle'][$lang] ?? ($lang==='en' ? 'Program Timeline' : 'الجدول الزمني للبرنامج') }}
             </h2>
         </div>
-        @php
-        $timelineStages = $lang==='en' ? [
-            [
-                'num'  => '1',
-                'title'=> 'Start',
-                'color'=> '#9FD4D5',
-                'purpose'=> 'Launch the cohort and attract strong applicants',
-                'activities' => 'Announce the program, promote the call for applications, explain eligibility, hold info sessions, and receive applications — with active outreach to women and youth entrepreneurs.',
-                'output' => 'Application pipeline created',
-            ],
-            [
-                'num'  => '2',
-                'title'=> 'Selection',
-                'color'=> '#A2C59A',
-                'purpose'=> 'Identify startups with the strongest potential to grow and scale',
-                'activities' => 'Screen applications, shortlist candidates, conduct interviews and pitch reviews, assess team, market, product, impact, and readiness — then select up to 10 startups.',
-                'output' => 'Final cohort selected',
-            ],
-            [
-                'num'  => '3',
-                'title'=> 'Training / Acceleration',
-                'color'=> '#ECCE9E',
-                'purpose'=> 'Strengthen startup capacity and prepare them for growth and investment',
-                'activities' => 'Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.',
-                'output' => 'Startups improve business models, operations, investment readiness, and scale plans',
-            ],
-            [
-                'num'  => '4',
-                'title'=> 'Demo Day',
-                'color'=> '#B04C2C',
-                'purpose'=> 'Showcase startups to investors, partners, and ecosystem stakeholders',
-                'activities' => 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.',
-                'output' => 'Graduated startups connected to funding, partners, and market opportunities',
-            ],
-
-        ] : [
-            [
-                'num'  => '1',
-                'title'=> 'البداية',
-                'color'=> '#9FD4D5',
-                'purpose'=> 'إطلاق الدفعة وجذب المتقدمين الأقوياء',
-                'activities' => 'الإعلان عن البرنامج، والترويج لدعوة تقديم الطلبات، وتوضيح شروط الأهلية، وعقد جلسات معلوماتية، واستقبال الطلبات — مع التوعية النشطة لرواد الأعمال من النساء والشباب.',
-                'output' => 'إنشاء قاعدة الطلبات',
-            ],
-            [
-                'num'  => '2',
-                'title'=> 'الاختيار',
-                'color'=> '#A2C59A',
-                'purpose'=> 'تحديد الشركات الناشئة ذات أعلى إمكانات النمو',
-                'activities' => 'مراجعة الطلبات، وإدراج المرشحين في القائمة المختصرة، وإجراء المقابلات ومراجعات العروض، وتقييم الفريق والسوق والمنتج والأثر والاستعداد — ثم اختيار ما يصل إلى 10 شركات ناشئة.',
-                'output' => 'اختيار الدفعة النهائية',
-            ],
-            [
-                'num'  => '3',
-                'title'=> 'التدريب والتسريع',
-                'color'=> '#ECCE9E',
-                'purpose'=> 'تعزيز قدرات الشركات الناشئة وإعدادها للنمو والاستثمار',
-                'activities' => 'تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.',
-                'output' => 'تحسين الشركات الناشئة لنماذج أعمالها والاستعداد للاستثمار',
-            ],
-            [
-                'num'  => '4',
-                'title'=> 'يوم العرض',
-                'color'=> '#B04C2C',
-                'purpose'=> 'عرض الشركات الناشئة على المستثمرين والشركاء',
-                'activities' => 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.',
-                'output' => 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق',
-            ],
-
-        ];
-        @endphp
 
         <div class="timeline-vertical">
-            @php $x = 0;  @endphp
-            @foreach($timelineStages as $stage)
-                @php if($x == 3) {
-        break;
- }  @endphp
+
+            {{-- Stage 1 --}}
             <div class="timeline-v-item">
-                <div class="timeline-v-badge" style="background:{{ $stage['color'] }};color:{{ $stage['color']==='#B04C2C'?'#fff':'#524037' }}">
-                    {{ $stage['num'] }}
-                </div>
+                <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
                 <div class="timeline-v-connector"></div>
                 <div class="timeline-v-card">
-                    <div class="timeline-v-card-header" style="background:{{ $stage['color'] }};color:{{ $stage['color']==='#B04C2C'?'#fff':'#524037' }}">
-                        <h3 class="timeline-v-title">{{ $stage['title'] }}</h3>
-                        <p class="timeline-v-purpose">{{ $stage['purpose'] }}</p>
+                    <div class="timeline-v-card-header" style="background:#9FD4D5;color:#524037">
+                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Start' : 'البداية' }}</h3>
+                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Launch the cohort and attract strong applicants' : 'إطلاق الدفعة وجذب المتقدمين الأقوياء' }}</p>
                     </div>
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
-                            <span class="timeline-v-label">{{ $lang==='en'?'Key Activities':'الأنشطة الرئيسية' }}</span>
-                            <p>{{ $stage['activities'] }}</p>
+                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
+                            <p>{{ $lang==='en'
+                                ? 'Announce the program, promote the call for applications, explain eligibility, hold info sessions, and receive applications — with active outreach to women and youth entrepreneurs.'
+                                : 'الإعلان عن البرنامج، والترويج لدعوة تقديم الطلبات، وتوضيح شروط الأهلية، وعقد جلسات معلوماتية، واستقبال الطلبات — مع التوعية النشطة لرواد الأعمال من النساء والشباب.' }}</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
-                            <span class="timeline-v-label output-label">{{ $lang==='en'?'Main Output':'المخرج الرئيسي' }}</span>
-                            <p>✅ {{ $stage['output'] }}</p>
+                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
+                            <p>✅ {{ $lang==='en' ? 'Application pipeline created' : 'إنشاء قاعدة الطلبات' }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-                @php $x++;  @endphp
-            @endforeach
-        </div>
+
+            {{-- Stage 2 --}}
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
+                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#A2C59A;color:#524037">
+                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Selection' : 'الاختيار' }}</h3>
+                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Identify startups with the strongest potential to grow and scale' : 'تحديد الشركات الناشئة ذات أعلى إمكانات النمو' }}</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
+                            <p>{{ $lang==='en'
+                                ? 'Screen applications, shortlist candidates, conduct interviews and pitch reviews, assess team, market, product, impact, and readiness — then select up to 10 startups.'
+                                : 'مراجعة الطلبات، وإدراج المرشحين في القائمة المختصرة، وإجراء المقابلات ومراجعات العروض، وتقييم الفريق والسوق والمنتج والأثر والاستعداد — ثم اختيار ما يصل إلى 10 شركات ناشئة.' }}</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
+                            <p>✅ {{ $lang==='en' ? 'Final cohort selected' : 'اختيار الدفعة النهائية' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Stage 3 --}}
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
+                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#ECCE9E;color:#524037">
+                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Training / Acceleration' : 'التدريب والتسريع' }}</h3>
+                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Strengthen startup capacity and prepare them for growth and investment' : 'تعزيز قدرات الشركات الناشئة وإعدادها للنمو والاستثمار' }}</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
+                            <p>{{ $lang==='en'
+                                ? 'Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.'
+                                : 'تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.' }}</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
+                            <p>✅ {{ $lang==='en' ? 'Startups improve business models, operations, investment readiness, and scale plans' : 'تحسين الشركات الناشئة لنماذج أعمالها والاستعداد للاستثمار' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Stage 4 --}}
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
+                <div class="timeline-v-connector" style="display:none"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
+                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Demo Day' : 'يوم العرض' }}</h3>
+                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Showcase startups to investors, partners, and ecosystem stakeholders' : 'عرض الشركات الناشئة على المستثمرين والشركاء' }}</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
+                            <p>{{ $lang==='en'
+                                ? 'Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.'
+                                : 'فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.' }}</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
+                            <p>✅ {{ $lang==='en' ? 'Graduated startups connected to funding, partners, and market opportunities' : 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>{{-- end timeline-vertical --}}
     </div>
 </section>
 
 {{-- Cohorts --}}
 <section class="section section-alt">
     <div class="container">
-        <div class="section-header"><h2 class="section-title">{{ $lang==='en'?'Cohorts':'الدفعات' }}</h2></div>
+        <div class="section-header"><h2 class="section-title">{{ $lang==='en' ? 'Cohorts' : 'الدفعات' }}</h2></div>
         <div class="table-wrap">
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>{{ $lang==='en'?'Cohort':'الدفعة' }}</th>
-                        <th>{{ $lang==='en'?'Status':'الحالة' }}</th>
-                        <th>{{ $lang==='en'?'Start Date':'تاريخ البدء' }}</th>
-                        <th>{{ $lang==='en'?'End Date':'تاريخ الانتهاء' }}</th>
-                        <th>{{ $lang==='en'?'Startups':'الشركات' }}</th>
+                        <th>{{ $lang==='en' ? 'Cohort' : 'الدفعة' }}</th>
+                        <th>{{ $lang==='en' ? 'Status' : 'الحالة' }}</th>
+                        <th>{{ $lang==='en' ? 'Start Date' : 'تاريخ البدء' }}</th>
+                        <th>{{ $lang==='en' ? 'End Date' : 'تاريخ الانتهاء' }}</th>
+                        <th>{{ $lang==='en' ? 'Startups' : 'الشركات' }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -219,7 +207,7 @@
                         <td>{{ $cohort->startups_count }}</td>
                     </tr>
                     @empty
-                    <tr><td colspan="5" class="empty-state">{{ $lang==='en'?'No cohorts yet.':'لا توجد دفعات بعد.' }}</td></tr>
+                    <tr><td colspan="5" class="empty-state">{{ $lang==='en' ? 'No cohorts yet.' : 'لا توجد دفعات بعد.' }}</td></tr>
                     @endforelse
                 </tbody>
             </table>

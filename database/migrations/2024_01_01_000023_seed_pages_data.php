@@ -153,6 +153,18 @@ return new class extends Migration
                 $page
             );
         }
+
+        // Ensure all 5 stats exist (add governorates + beneficiaries if missing)
+        $statsToAdd = [
+            ['value' => '5',     'label_en' => 'Governorates',  'label_ar' => 'محافظة', 'icon' => 'map',   'sort_order' => 4],
+            ['value' => '1000+', 'label_en' => 'Beneficiaries', 'label_ar' => 'مستفيد', 'icon' => 'heart', 'sort_order' => 5],
+        ];
+        foreach ($statsToAdd as $stat) {
+            DB::table('stats')->updateOrInsert(
+                ['label_en' => $stat['label_en']],
+                array_merge($stat, ['created_at' => now(), 'updated_at' => now()])
+            );
+        }
     }
 
     public function down(): void
