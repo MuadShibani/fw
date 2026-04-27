@@ -82,93 +82,181 @@
 
         <div class="timeline-vertical">
 
-            {{-- Stage 1 --}}
+@if ($lang === 'en')
+
+            {{-- ENGLISH TIMELINE --}}
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
                 <div class="timeline-v-connector"></div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#9FD4D5;color:#524037">
-                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Start' : 'البداية' }}</h3>
-                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Launch the cohort and attract strong applicants' : 'إطلاق الدفعة وجذب المتقدمين الأقوياء' }}</p>
+                        <h3 class="timeline-v-title">Start</h3>
+                        <p class="timeline-v-purpose">Launch the cohort and attract strong applicants</p>
                     </div>
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
-                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>@if($lang==='en')Announce the program, promote the call for applications, explain eligibility, hold info sessions, and receive applications — with active outreach to women and youth entrepreneurs.@else الإعلان عن البرنامج، والترويج لدعوة تقديم الطلبات، وتوضيح شروط الأهلية، وعقد جلسات معلوماتية، واستقبال الطلبات — مع التوعية النشطة لرواد الأعمال من النساء والشباب.@endif</p>
+                            <span class="timeline-v-label">Key Activities</span>
+                            <p>Announce the program, promote the call for applications, explain eligibility, hold info sessions, and receive applications &mdash; with active outreach to women and youth entrepreneurs.</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
-                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
-                            <p>✅ {{ $lang==='en' ? 'Application pipeline created' : 'إنشاء قاعدة الطلبات' }}</p>
+                            <span class="timeline-v-label output-label">Main Output</span>
+                            <p>&#9989; Application pipeline created</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- Stage 2 --}}
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
                 <div class="timeline-v-connector"></div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#A2C59A;color:#524037">
-                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Selection' : 'الاختيار' }}</h3>
-                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Identify startups with the strongest potential to grow and scale' : 'تحديد الشركات الناشئة ذات أعلى إمكانات النمو' }}</p>
+                        <h3 class="timeline-v-title">Selection</h3>
+                        <p class="timeline-v-purpose">Identify startups with the strongest potential to grow and scale</p>
                     </div>
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
-                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>@if($lang==='en')Screen applications, shortlist candidates, conduct interviews and pitch reviews, assess team, market, product, impact, and readiness — then select up to 10 startups.@else مراجعة الطلبات، وإدراج المرشحين في القائمة المختصرة، وإجراء المقابلات ومراجعات العروض، وتقييم الفريق والسوق والمنتج والأثر والاستعداد — ثم اختيار ما يصل إلى 10 شركات ناشئة.@endif</p>
+                            <span class="timeline-v-label">Key Activities</span>
+                            <p>Screen applications, shortlist candidates, conduct interviews and pitch reviews, assess team, market, product, impact, and readiness &mdash; then select up to 10 startups.</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
-                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
-                            <p>✅ {{ $lang==='en' ? 'Final cohort selected' : 'اختيار الدفعة النهائية' }}</p>
+                            <span class="timeline-v-label output-label">Main Output</span>
+                            <p>&#9989; Final cohort selected</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- Stage 3 --}}
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
                 <div class="timeline-v-connector"></div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#ECCE9E;color:#524037">
-                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Training / Acceleration' : 'التدريب والتسريع' }}</h3>
-                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Strengthen startup capacity and prepare them for growth and investment' : 'تعزيز قدرات الشركات الناشئة وإعدادها للنمو والاستثمار' }}</p>
+                        <h3 class="timeline-v-title">Training / Acceleration</h3>
+                        <p class="timeline-v-purpose">Strengthen startup capacity and prepare them for growth and investment</p>
                     </div>
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
-                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>@if($lang==='en')Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.@else تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.@endif</p>
+                            <span class="timeline-v-label">Key Activities</span>
+                            <p>Deliver tailored mentorship, business advisory, masterclasses, networking, market validation, financial modelling, pitch preparation, and technical assistance grants for legal advice, registration, patent filing, or team training.</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
-                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
-                            <p>✅ {{ $lang==='en' ? 'Startups improve business models, operations, investment readiness, and scale plans' : 'تحسين الشركات الناشئة لنماذج أعمالها والاستعداد للاستثمار' }}</p>
+                            <span class="timeline-v-label output-label">Main Output</span>
+                            <p>&#9989; Startups improve business models, operations, investment readiness, and scale plans</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- Stage 4 --}}
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
                 <div class="timeline-v-connector" style="display:none"></div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
-                        <h3 class="timeline-v-title">{{ $lang==='en' ? 'Demo Day' : 'يوم العرض' }}</h3>
-                        <p class="timeline-v-purpose">{{ $lang==='en' ? 'Showcase startups to investors, partners, and ecosystem stakeholders' : 'عرض الشركات الناشئة على المستثمرين والشركاء' }}</p>
+                        <h3 class="timeline-v-title">Demo Day</h3>
+                        <p class="timeline-v-purpose">Showcase startups to investors, partners, and ecosystem stakeholders</p>
                     </div>
                     <div class="timeline-v-card-body">
                         <div class="timeline-v-section">
-                            <span class="timeline-v-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                            <p>@if($lang==='en')Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.@else فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.@endif</p>
+                            <span class="timeline-v-label">Key Activities</span>
+                            <p>Final pitch event, startup presentations, investor matchmaking, feedback sessions, media visibility, and follow-up investment or partnership discussions.</p>
                         </div>
                         <div class="timeline-v-section timeline-v-output">
-                            <span class="timeline-v-label output-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
-                            <p>✅ {{ $lang==='en' ? 'Graduated startups connected to funding, partners, and market opportunities' : 'ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق' }}</p>
+                            <span class="timeline-v-label output-label">Main Output</span>
+                            <p>&#9989; Graduated startups connected to funding, partners, and market opportunities</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+@else
+
+            {{-- ARABIC TIMELINE --}}
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#9FD4D5;color:#524037">1</div>
+                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#9FD4D5;color:#524037">
+                        <h3 class="timeline-v-title">البداية</h3>
+                        <p class="timeline-v-purpose">إطلاق الدفعة وجذب المتقدمين الأقوياء</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">الأنشطة الرئيسية</span>
+                            <p>الإعلان عن البرنامج، والترويج لدعوة تقديم الطلبات، وتوضيح شروط الأهلية، وعقد جلسات معلوماتية، واستقبال الطلبات &mdash; مع التوعية النشطة لرواد الأعمال من النساء والشباب.</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">المخرج الرئيسي</span>
+                            <p>&#9989; إنشاء قاعدة الطلبات</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#A2C59A;color:#524037">2</div>
+                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#A2C59A;color:#524037">
+                        <h3 class="timeline-v-title">الاختيار</h3>
+                        <p class="timeline-v-purpose">تحديد الشركات الناشئة ذات أعلى إمكانات النمو</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">الأنشطة الرئيسية</span>
+                            <p>مراجعة الطلبات، وإدراج المرشحين في القائمة المختصرة، وإجراء المقابلات ومراجعات العروض، وتقييم الفريق والسوق والمنتج والأثر والاستعداد &mdash; ثم اختيار ما يصل إلى 10 شركات ناشئة.</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">المخرج الرئيسي</span>
+                            <p>&#9989; اختيار الدفعة النهائية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#ECCE9E;color:#524037">3</div>
+                <div class="timeline-v-connector"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#ECCE9E;color:#524037">
+                        <h3 class="timeline-v-title">التدريب والتسريع</h3>
+                        <p class="timeline-v-purpose">تعزيز قدرات الشركات الناشئة وإعدادها للنمو والاستثمار</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">الأنشطة الرئيسية</span>
+                            <p>تقديم الإرشاد المخصص والاستشارات التجارية والدروس الإتقانية والتواصل والتحقق من السوق والنمذجة المالية وإعداد العروض ومنح المساعدة التقنية.</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">المخرج الرئيسي</span>
+                            <p>&#9989; تحسين الشركات الناشئة لنماذج أعمالها والاستعداد للاستثمار</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-v-item">
+                <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
+                <div class="timeline-v-connector" style="display:none"></div>
+                <div class="timeline-v-card">
+                    <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
+                        <h3 class="timeline-v-title">يوم العرض</h3>
+                        <p class="timeline-v-purpose">عرض الشركات الناشئة على المستثمرين والشركاء</p>
+                    </div>
+                    <div class="timeline-v-card-body">
+                        <div class="timeline-v-section">
+                            <span class="timeline-v-label">الأنشطة الرئيسية</span>
+                            <p>فعالية العرض النهائي، وعروض الشركات الناشئة، ومطابقة المستثمرين، وجلسات التغذية الراجعة، والوضوح الإعلامي، ومتابعة مناقشات الاستثمار أو الشراكة.</p>
+                        </div>
+                        <div class="timeline-v-section timeline-v-output">
+                            <span class="timeline-v-label output-label">المخرج الرئيسي</span>
+                            <p>&#9989; ربط الشركات الناشئة المتخرجة بالتمويل والشركاء وفرص السوق</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+@endif
 
         </div>{{-- end timeline-vertical --}}
     </div>
