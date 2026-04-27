@@ -50,11 +50,11 @@
                     <h3 class="program-title">{{ $program->{'title_'.$lang} }}</h3>
                     <p class="program-desc">{{ $program->{'description_'.$lang} }}</p>
                     @if ($program->features)
-                        <ul class="program-features">
-                            @foreach ($program->features as $feature)
-                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>
-                            @endforeach
-                        </ul>
+{{--                        <ul class="program-features">--}}
+{{--                            @foreach ($program->features as $feature)--}}
+{{--                                <li>✓ {{ $feature[$lang] ?? $feature['en'] }}</li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
                     @endif
                     <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
                 </a>
