@@ -150,7 +150,7 @@
 
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
-                <div class="timeline-v-connector" style="display:none"></div>
+                <div class="timeline-v-connector" style="visibility:hidden"></div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
                         <h3 class="timeline-v-title">Demo Day</h3>
@@ -237,7 +237,7 @@
 
             <div class="timeline-v-item">
                 <div class="timeline-v-badge" style="background:#B04C2C;color:#fff">4</div>
-                <div class="timeline-v-connector" style="display:none"></div>
+                <div class="timeline-v-connector" style="visibility:hidden"></div>
                 <div class="timeline-v-card">
                     <div class="timeline-v-card-header" style="background:#B04C2C;color:#fff">
                         <h3 class="timeline-v-title">يوم العرض</h3>

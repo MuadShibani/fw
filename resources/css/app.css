@@ -679,8 +679,10 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   margin: 0 auto;
   border-radius: 2px;
 }
+/* Last item: hide connector but KEEP its grid column slot —
+   visibility:hidden preserves the grid track so card stays aligned */
 .timeline-v-item:last-child .timeline-v-connector {
-  display: none;
+  visibility: hidden;
 }
 .timeline-v-card {
   border-radius: var(--radius);
