@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Page;
 
 class BlogWebController extends Controller
 {
     public function index()
     {
         return view('pages.blog', [
+            'page'  => Page::find('blog'),
             'posts' => Blog::orderBy('date', 'desc')->paginate(9),
         ]);
     }

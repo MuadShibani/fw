@@ -77,10 +77,10 @@ a{text-decoration:none;color:inherit}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
 
 /* Page hero */
-.page-hero{padding:4rem 0 3rem;color:var(--cream)}
+.page-hero{padding:7rem 0 6rem;color:var(--cream);position:relative}
 .page-hero .container{max-width:800px}
-.page-hero-title{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;margin-bottom:.75rem}
-.page-hero-subtitle{font-size:1.05rem;opacity:.85}
+.page-hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1rem;line-height:1.15}
+.page-hero-subtitle{font-size:1.15rem;opacity:.9;line-height:1.6;max-width:700px}
 
 /* Stats */
 .stats-section{background:var(--brown);padding:3rem 0}
@@ -813,3 +813,27 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   .tl-stage > header { padding: .9rem 1rem; }
   .tl-body { padding: 1rem; }
 }
+
+/* Page hero overlay for readability over images */
+.page-hero[style*="background-image"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(82,64,55,.75) 0%, rgba(82,64,55,.55) 100%);
+  z-index: 0;
+}
+.page-hero[style*="background-image"] .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Library cover image ───────────────────────────────────── */
+.library-cover-link { display: block; overflow: hidden; border-radius: var(--radius) var(--radius) 0 0; }
+.library-cover-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s;
+}
+.library-card:hover .library-cover-img { transform: scale(1.04); }

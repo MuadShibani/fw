@@ -3,12 +3,7 @@
 
 @section('content')
 
-<section class="page-hero" style="background-color:#524037;">
-    <div class="container">
-        <h1 class="page-hero-title">{{ $lang === 'en' ? 'Library' : 'المكتبة' }}</h1>
-        <p class="page-hero-subtitle">{{ $lang === 'en' ? 'Documents, images, and videos from Wathba.' : 'وثائق وصور ومقاطع فيديو من وثبة.' }}</p>
-    </div>
-</section>
+@include('partials.page-hero', ['fallbackBg' => '#524037'])
 
 <section class="section">
     <div class="container">
@@ -29,20 +24,24 @@
             @forelse ($items as $item)
                 @php $isYoutube = str_contains($item->url ?? '', 'youtube.com/embed'); @endphp
                 <div class="library-card" data-type="{{ $item->type }}" data-title="{{ strtolower($item->{'title_' . $lang}) }}">
-                    {{-- YouTube embed --}}
-                    @if($isYoutube)
-                    <div class="library-video-wrap">
-                        <iframe src="{{ $item->url }}" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen class="library-video-iframe"></iframe>
-                    </div>
+                    {{-- Top: cover image, YouTube embed, or icon fallback --}}
+                    @if ($isYoutube)
+                        <div class="library-video-wrap">
+                            <iframe src="{{ $item->url }}" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen class="library-video-iframe"></iframe>
+                        </div>
+                    @elseif (!empty($item->cover_url))
+                        <a href="{{ $item->url }}" target="_blank" class="library-cover-link">
+                            <img src="{{ $item->cover_url }}" alt="{{ $item->{'title_' . $lang} }}" class="library-cover-img" loading="lazy">
+                        </a>
                     @else
-                    <div class="library-card-icon">
-                        @if ($item->type === 'document') 📄
-                        @elseif ($item->type === 'image') 🖼
-                        @else 🎬
-                        @endif
-                    </div>
+                        <div class="library-card-icon">
+                            @if ($item->type === 'document') 📄
+                            @elseif ($item->type === 'image') 🖼
+                            @else 🎬
+                            @endif
+                        </div>
                     @endif
                     <div class="library-card-body">
                         <h3 class="library-title">{{ $item->{'title_' . $lang} }}</h3>
@@ -52,10 +51,10 @@
                             @if ($item->size) <span>💾 {{ $item->size }}</span> @endif
                         </div>
                     </div>
-                    @if(!$isYoutube)
-                    <a href="{{ $item->url }}" target="_blank" class="btn btn-outline btn-sm">
-                        {{ $item->type === 'document' ? ($lang === 'en' ? '⬇ Download' : '⬇ تنزيل') : ($lang === 'en' ? '👁 View' : '👁 عرض') }}
-                    </a>
+                    @if (!$isYoutube)
+                        <a href="{{ $item->url }}" target="_blank" class="btn btn-outline btn-sm">
+                            {{ $item->type === 'document' ? ($lang === 'en' ? '⬇ Download' : '⬇ تنزيل') : ($lang === 'en' ? '👁 View' : '👁 عرض') }}
+                        </a>
                     @endif
                 </div>
             @empty

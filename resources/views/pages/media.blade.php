@@ -3,12 +3,7 @@
 
 @section('content')
 
-<section class="page-hero" style="background-color:#524037;">
-    <div class="container">
-        <h1 class="page-hero-title">{{ $lang === 'en' ? 'News & Media' : 'الأخبار والوسائط' }}</h1>
-        <p class="page-hero-subtitle">{{ $lang === 'en' ? 'Latest updates and press coverage.' : 'آخر المستجدات والتغطية الإعلامية.' }}</p>
-    </div>
-</section>
+@include('partials.page-hero', ['fallbackBg' => '#524037'])
 
 <section class="section">
     <div class="container">
@@ -22,7 +17,7 @@
 
         <div class="news-grid mt-8" id="newsGrid">
             @forelse ($news as $item)
-                <a href="/media/{{ $item->id }}" class="news-card" data-category="{{ $item->category }}">
+                <div class="news-card" data-category="{{ $item->category }}" style="cursor:pointer" onclick="window.location='/media'">
                     <div class="news-img-wrap">
                         <img src="{{ $item->{'image_' . $lang} ?? 'https://picsum.photos/400/250?random=' . $item->id }}"
                              alt="{{ $item->{'title_' . $lang} }}" class="news-img" loading="lazy">
@@ -33,7 +28,7 @@
                         <h3 class="news-title">{{ $item->{'title_' . $lang} }}</h3>
                         <p class="news-summary">{{ $item->{'summary_' . $lang} }}</p>
                     </div>
-                </a>
+                </div>
             @empty
                 <p class="empty-state col-span-full">{{ $lang === 'en' ? 'No news items.' : 'لا توجد أخبار.' }}</p>
             @endforelse

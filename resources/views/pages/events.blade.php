@@ -3,12 +3,7 @@
 
 @section('content')
 
-<section class="page-hero" style="background-color:#524037;">
-    <div class="container">
-        <h1 class="page-hero-title">{{ $lang === 'en' ? 'Events' : 'الفعاليات' }}</h1>
-        <p class="page-hero-subtitle">{{ $lang === 'en' ? 'Workshops, webinars, networking events and pitch days.' : 'ورش عمل وندوات وفعاليات تواصل وأيام العرض.' }}</p>
-    </div>
-</section>
+@include('partials.page-hero', ['fallbackBg' => '#524037'])
 
 {{-- Filter tabs --}}
 <section class="section">

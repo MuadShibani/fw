@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin') | Wathba Admin</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     @stack('styles')
@@ -47,7 +49,6 @@
                         <span class="badge-count">{{ $unread }}</span>
                     @endif
                 </a>
-                <a href="/admin/stats"     class="sidebar-link {{ request()->is('admin/stats*')    ? 'active' : '' }}"><span class="sidebar-icon">📈</span> Homepage Stats</a>
                 <a href="/admin/settings" class="sidebar-link {{ request()->is('admin/settings*')? 'active' : '' }}"><span class="sidebar-icon">⚙️</span> Settings</a>
             </nav>
 

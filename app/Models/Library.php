@@ -11,7 +11,7 @@ class Library extends Model
     protected $fillable = [
         'title_en', 'title_ar',
         'description_en', 'description_ar',
-        'type', 'url', 'file_date', 'size',
+        'type', 'url', 'cover_url', 'file_date', 'size',
     ];
 
     protected $casts = [

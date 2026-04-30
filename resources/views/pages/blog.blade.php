@@ -3,12 +3,7 @@
 
 @section('content')
 
-<section class="page-hero" style="background-color:#524037;">
-    <div class="container">
-        <h1 class="page-hero-title">{{ $lang === 'en' ? 'Blog' : 'المدونة' }}</h1>
-        <p class="page-hero-subtitle">{{ $lang === 'en' ? 'Insights, stories and updates from the Wathba ecosystem.' : 'رؤى وقصص وتحديثات من منظومة وثبة.' }}</p>
-    </div>
-</section>
+@include('partials.page-hero', ['fallbackBg' => '#524037'])
 
 <section class="section">
     <div class="container">

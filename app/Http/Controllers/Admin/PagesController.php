@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     private function allPages(): \Illuminate\Support\Collection
     {
-        $order = ['home', 'about', 'accelerator', 'yain', 'wiif', 'sil'];
+        $order = ['home', 'about', 'accelerator', 'yain', 'wiif', 'sil', 'blog', 'events', 'library', 'media', 'contact'];
         $pages = Page::all()->keyBy('page_key');
         return collect($order)->map(fn($k) => $pages->get($k))->filter()->values();
     }

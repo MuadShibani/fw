@@ -3,12 +3,7 @@
 
 @section('content')
 
-<section class="page-hero" style="background-color:#524037;">
-    <div class="container">
-        <h1 class="page-hero-title">{{ $lang === 'en' ? 'Contact Us' : 'تواصل معنا' }}</h1>
-        <p class="page-hero-subtitle">{{ $lang === 'en' ? 'We\'d love to hear from you.' : 'يسعدنا أن نسمع منك.' }}</p>
-    </div>
-</section>
+@include('partials.page-hero', ['fallbackBg' => '#524037'])
 
 <section class="section">
     <div class="container">
@@ -72,22 +67,28 @@
                         <div class="contact-info-icon">📍</div>
                         <div>
                             <h4>{{ $lang === 'en' ? 'Address' : 'العنوان' }}</h4>
-                            <p>{{ $lang === 'en' ? 'Inma - Aden, Yemen' : 'إنما - عدن، اليمن' }}</p>
+                            <p>{{ $lang === 'en' ? 'Hadda Street, Sanaa, Yemen' : 'شارع حدة، صنعاء، اليمن' }}</p>
                         </div>
                     </div>
-                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">📞</div>
+                        <div>
+                            <h4>{{ $lang === 'en' ? 'Phone' : 'الهاتف' }}</h4>
+                            <p><a href="tel:+96712345679">+967 1 234 567</a></p>
+                        </div>
+                    </div>
                     <div class="contact-info-item">
                         <div class="contact-info-icon">✉️</div>
                         <div>
                             <h4>{{ $lang === 'en' ? 'Email' : 'البريد الإلكتروني' }}</h4>
-                            <p><a href="mailto:wathba@deeproot.consulting">wathba@deeproot.consulting</a></p>
+                            <p><a href="mailto:info@wathba.ye">info@wathba.ye</a></p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <div class="contact-info-icon">🕐</div>
                         <div>
                             <h4>{{ $lang === 'en' ? 'Office Hours' : 'ساعات العمل' }}</h4>
-                            <p>{{ $lang === 'en' ? 'Sun – Thu: 9:00 AM – 5:00 PM' : 'الأحد – الخميس: 9:00 صباحاً – 5:00 مساءً' }}</p>
+                            <p>{{ $lang === 'en' ? 'Sun – Thu: 8:00 AM – 4:00 PM' : 'الأحد – الخميس: 8:00 صباحاً – 4:00 مساءً' }}</p>
                         </div>
                     </div>
                 </div>
