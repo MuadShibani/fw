@@ -8,7 +8,7 @@
             <h2>{{ $message->first_name }} {{ $message->last_name }}</h2>
             <a href="mailto:{{ $message->email }}" class="message-email-link">{{ $message->email }}</a>
         </div>
-        <span class="text-gray-400 text-sm">{{ $message->created_at->format('d M Y, H:i') }}</span>
+        <span class="text-gray-400 text-sm">{{ optional($message->created_at)->format('d M Y, H:i') ?? '—' }}</span>
     </div>
     <div class="message-body">{{ $message->message }}</div>
     <div class="form-actions">

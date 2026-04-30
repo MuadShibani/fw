@@ -28,6 +28,8 @@ class MessageSeeder extends Seeder
             ],
         ];
 
-        Message::insert($items);
+        foreach ($items as $row) {
+            Message::create($row);
+        }
     }
 }

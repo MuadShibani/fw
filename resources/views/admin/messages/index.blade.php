@@ -12,7 +12,7 @@
             <td>{{ $msg->first_name }} {{ $msg->last_name }}</td>
             <td>{{ $msg->email }}</td>
             <td>{{ Str::limit($msg->message, 60) }}</td>
-            <td>{{ $msg->created_at->format('d M Y') }}</td>
+            <td>{{ optional($msg->created_at)->format('d M Y') ?? '—' }}</td>
             <td class="actions-cell">
                 <a href="/admin/messages/{{ $msg->id }}" class="btn btn-xs">View</a>
                 <form action="/admin/messages/{{ $msg->id }}" method="POST" class="inline" onsubmit="return confirm('Delete?')">
