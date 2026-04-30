@@ -13,7 +13,7 @@
 
 <section class="section">
     <div class="container prose-content">
-        {!! $page->{'content_'.$lang} !!}
+        {!! \App\Support\Content::format($page->{'content_'.$lang}) !!}
     </div>
 </section>
 

@@ -18,7 +18,7 @@
                 <img src="{{ $post->{'image_' . $lang} ?? 'https://picsum.photos/800/400?random=' . $post->id }}"
                      alt="{{ $post->{'title_' . $lang} }}" class="blog-post-hero-img" loading="lazy">
                 <div class="prose-content blog-post-content">
-                    {!! $post->{'content_' . $lang} !!}
+                    {!! \App\Support\Content::format($post->{'content_' . $lang}) !!}
                 </div>
                 <div class="blog-post-nav">
                     <a href="/blog" class="btn btn-outline">

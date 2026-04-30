@@ -15,7 +15,7 @@
     <div class="container">
         <div class="content-split">
             <div>
-                <div class="prose-content">{!! $page->{'content_'.$lang} !!}</div>
+                <div class="prose-content">{!! \App\Support\Content::format($page->{'content_'.$lang}) !!}</div>
                 @if (!empty($cf['listItems']))
                 <ul class="check-list mt-6">
                     @foreach ($cf['listItems'] as $item)
