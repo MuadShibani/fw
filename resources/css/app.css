@@ -837,3 +837,7 @@ a.event-row:hover { text-decoration:none; background:#f9f5ef; }
   transition: transform .35s;
 }
 .library-card:hover .library-cover-img { transform: scale(1.04); }
+
+/* ── Footer social icon SVG support ───────────────────────── */
+.social-icon svg { display: block; }
+.social-icon-wa { font-size: 0; }  /* hide any stray text inside SVG-only buttons */
