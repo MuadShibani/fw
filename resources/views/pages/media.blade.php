@@ -17,7 +17,7 @@
 
         <div class="news-grid mt-8" id="newsGrid">
             @forelse ($news as $item)
-                <div class="news-card" data-category="{{ $item->category }}" style="cursor:pointer" onclick="window.location='/media'">
+                <div class="news-card" data-category="{{ $item->category }}" style="cursor:pointer" onclick="window.location='/media/{{ $item->id }}'">
                     <div class="news-img-wrap">
                         <img src="{{ $item->{'image_' . $lang} ?? 'https://picsum.photos/400/250?random=' . $item->id }}"
                              alt="{{ $item->{'title_' . $lang} }}" class="news-img" loading="lazy">

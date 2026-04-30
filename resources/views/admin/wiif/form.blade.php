@@ -3,7 +3,7 @@
 @section('page-title', $item ? 'Edit Portfolio Company' : 'Add Portfolio Company')
 @section('content')
 <div class="admin-panel">
-    <form action="{{ $item ? '/admin/wiif/'.$item->id : '/admin/wiif' }}" method="POST">
+    <form action="{{ $item ? '/admin/wiif/'.$item->id : '/admin/wiif' }}" method="POST" id="wiifForm">
         @csrf
         @if($item) @method('PUT') @endif
         <div class="form-grid-2">
@@ -27,14 +27,12 @@
         <div class="mt-4">
             <x-image-upload name="logo_url" label="Company Logo *" :value="old('logo_url', $item->logo_url ?? '')" :required="true" />
         </div>
-        <div class="form-group mt-4">
-            <label>Description (English) *</label>
-            <textarea name="description_en" rows="3" class="form-input" required>{{ old('description_en', $item->description_en ?? '') }}</textarea>
+
+        <div class="mt-4">
+            <x-quill-editor name="description_en" label="Description (English)" :value="old('description_en', $item->description_en ?? '')" :required="true" />
+            <x-quill-editor name="description_ar" label="Description (Arabic)" :value="old('description_ar', $item->description_ar ?? '')" :required="true" dir="rtl" />
         </div>
-        <div class="form-group">
-            <label>Description (Arabic) *</label>
-            <textarea name="description_ar" rows="3" class="form-input" dir="rtl" required>{{ old('description_ar', $item->description_ar ?? '') }}</textarea>
-        </div>
+
         <div class="form-actions">
             <a href="/admin/wiif" class="btn btn-outline">Cancel</a>
             <button type="submit" class="btn btn-primary">{{ $item ? 'Update' : 'Add' }} Company</button>

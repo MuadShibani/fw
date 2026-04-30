@@ -3,7 +3,7 @@
 @section('page-title', $item ? 'Edit News Article' : 'New News Article')
 @section('content')
 <div class="admin-panel">
-    <form action="{{ $item ? '/admin/news/'.$item->id : '/admin/news' }}" method="POST">
+    <form action="{{ $item ? '/admin/news/'.$item->id : '/admin/news' }}" method="POST" id="newsForm">
         @csrf
         @if($item) @method('PUT') @endif
         <div class="form-grid-2">
@@ -37,6 +37,12 @@
             <x-image-upload name="image_en" label="Image (English)" :value="old('image_en', $item->image_en ?? '')" />
             <x-image-upload name="image_ar" label="Image (Arabic)" :value="old('image_ar', $item->image_ar ?? '')" />
         </div>
+
+        <div class="mt-4">
+            <x-quill-editor name="content_en" label="Content (English)" :value="old('content_en', $item->content_en ?? '')" hint="Rich text — full article body" />
+            <x-quill-editor name="content_ar" label="Content (Arabic)" :value="old('content_ar', $item->content_ar ?? '')" hint="Rich text — full article body" dir="rtl" />
+        </div>
+
         <div class="form-actions">
             <a href="/admin/news" class="btn btn-outline">Cancel</a>
             <button type="submit" class="btn btn-primary">{{ $item ? 'Update' : 'Create' }} Article</button>

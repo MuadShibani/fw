@@ -45,7 +45,7 @@
                     @endif
                     <div class="library-card-body">
                         <h3 class="library-title">{{ $item->{'title_' . $lang} }}</h3>
-                        <p class="library-desc line-clamp-3">{{ $item->{'description_' . $lang} }}</p>
+                        <div class="library-desc line-clamp-3 prose-content">{!! \App\Support\Content::format($item->{'description_' . $lang}) !!}</div>
                         <div class="library-meta">
                             <span>📅 {{ \Carbon\Carbon::parse($item->file_date)->format('d M Y') }}</span>
                             @if ($item->size) <span>💾 {{ $item->size }}</span> @endif

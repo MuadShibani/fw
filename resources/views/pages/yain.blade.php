@@ -30,7 +30,7 @@
                     <div class="investor-info">
                         <h3>{{ $investor->{'name_'.$lang} }}</h3>
                         <p class="investor-role">{{ $investor->{'role_'.$lang} }}</p>
-                        <p class="investor-bio">{{ $investor->{'bio_'.$lang} }}</p>
+                        <div class="investor-bio prose-content">{!! \App\Support\Content::format($investor->{'bio_'.$lang}) !!}</div>
                         <div class="investor-social">
                             @if ($investor->linkedin_url)<a href="{{ $investor->linkedin_url }}" target="_blank">LinkedIn</a>@endif
                             @if ($investor->twitter_url)<a href="{{ $investor->twitter_url }}" target="_blank">Twitter</a>@endif
@@ -58,7 +58,7 @@
                         <h3>{{ $startup->name }}</h3>
                         <span class="startup-sector">{{ $startup->sector }}</span>
                         <span class="startup-stage stage-{{ strtolower(str_replace([' ','-'],'-',$startup->stage)) }}">{{ $startup->stage }}</span>
-                        <p>{{ $startup->{'description_'.$lang} }}</p>
+                        <div class="prose-content">{!! \App\Support\Content::format($startup->{'description_'.$lang}) !!}</div>
                         @if ($startup->founder_name)<p class="startup-founder">👤 {{ $startup->founder_name }}</p>@endif
                     </div>
                 </div>

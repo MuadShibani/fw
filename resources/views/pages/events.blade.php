@@ -29,7 +29,7 @@
                         </span>
                     </div>
                     <h3 class="event-card-title">{{ $event->{'title_' . $lang} }}</h3>
-                    <p class="event-card-desc">{{ $event->{'description_' . $lang} }}</p>
+                    <div class="event-card-desc prose-content">{!! \App\Support\Content::format($event->{'description_' . $lang}) !!}</div>
                     <div class="event-card-meta">
                         <span>🕐 {{ $event->event_time }}</span>
                         <span>{{ $event->is_virtual ? '🌐' : '📍' }} {{ $event->{'location_' . $lang} }}</span>

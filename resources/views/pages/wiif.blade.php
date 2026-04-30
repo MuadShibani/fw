@@ -74,7 +74,7 @@
                     <div class="startup-info">
                         <h3>{{ $company->name }}</h3>
                         <span class="startup-sector">{{ $company->{'sector_'.$lang} }}</span>
-                        <p>{{ $company->{'description_'.$lang} }}</p>
+                        <div class="prose-content">{!! \App\Support\Content::format($company->{'description_'.$lang}) !!}</div>
                         <p class="text-sm text-gray-500">📅 {{ \Carbon\Carbon::parse($company->investment_date)->format('M Y') }}</p>
                     </div>
                 </div>

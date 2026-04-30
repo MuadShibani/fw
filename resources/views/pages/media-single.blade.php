@@ -21,7 +21,11 @@
                      alt="{{ $item->{'title_'.$lang} }}" class="blog-post-hero-img" loading="lazy">
 
                 <div class="prose-content blog-post-content">
-                    <p>{{ $item->{'summary_'.$lang} }}</p>
+                    @if (!empty($item->{'content_'.$lang}))
+                        {!! \App\Support\Content::format($item->{'content_'.$lang}) !!}
+                    @else
+                        <p>{{ $item->{'summary_'.$lang} }}</p>
+                    @endif
                 </div>
 
                 <div class="blog-post-nav">

@@ -56,15 +56,11 @@
                 <ul class="footer-contact-list">
                     <li>
                         <span class="contact-icon">📍</span>
-                        <span>{{ $lang === 'en' ? 'Hadda Street, Sanaa, Yemen' : 'شارع حدة، صنعاء، اليمن' }}</span>
-                    </li>
-                    <li>
-                        <span class="contact-icon">📞</span>
-                        <a href="tel:+96712345679">+967 1 234 567</a>
+                        <span>{{ $lang === 'en' ? 'Inma, Aden, Yemen' : 'إنما، عدن، اليمن' }}</span>
                     </li>
                     <li>
                         <span class="contact-icon">✉️</span>
-                        <a href="mailto:info@wathba.ye">info@wathba.ye</a>
+                        <a href="mailto:wathba@deeproot.consulting">wathba@deeproot.consulting</a>
                     </li>
                 </ul>
 

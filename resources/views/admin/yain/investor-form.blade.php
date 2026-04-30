@@ -3,7 +3,7 @@
 @section('page-title', $item ? 'Edit Investor' : 'Add Investor')
 @section('content')
 <div class="admin-panel">
-    <form action="{{ $item ? '/admin/yain/investors/'.$item->id : '/admin/yain/investors' }}" method="POST">
+    <form action="{{ $item ? '/admin/yain/investors/'.$item->id : '/admin/yain/investors' }}" method="POST" id="investorForm">
         @csrf
         @if($item) @method('PUT') @endif
         <div class="form-grid-2">
@@ -35,14 +35,12 @@
         <div class="mt-4">
             <x-image-upload name="image_url" label="Profile Photo *" :value="old('image_url', $item->image_url ?? '')" :required="true" />
         </div>
-        <div class="form-group mt-4">
-            <label>Bio (English) *</label>
-            <textarea name="bio_en" rows="4" class="form-input" required>{{ old('bio_en', $item->bio_en ?? '') }}</textarea>
+
+        <div class="mt-4">
+            <x-quill-editor name="bio_en" label="Bio (English)" :value="old('bio_en', $item->bio_en ?? '')" :required="true" />
+            <x-quill-editor name="bio_ar" label="Bio (Arabic)" :value="old('bio_ar', $item->bio_ar ?? '')" :required="true" dir="rtl" />
         </div>
-        <div class="form-group">
-            <label>Bio (Arabic) *</label>
-            <textarea name="bio_ar" rows="4" class="form-input" dir="rtl" required>{{ old('bio_ar', $item->bio_ar ?? '') }}</textarea>
-        </div>
+
         <div class="form-actions">
             <a href="/admin/yain" class="btn btn-outline">Cancel</a>
             <button type="submit" class="btn btn-primary">{{ $item ? 'Update' : 'Add' }} Investor</button>

@@ -3,7 +3,7 @@
 @section('page-title', $item ? 'Edit Library Item' : 'Add Library Item')
 @section('content')
 <div class="admin-panel">
-    <form action="{{ $item ? '/admin/library/'.$item->id : '/admin/library' }}" method="POST">
+    <form action="{{ $item ? '/admin/library/'.$item->id : '/admin/library' }}" method="POST" id="libraryForm">
         @csrf
         @if($item) @method('PUT') @endif
         <div class="form-grid-2">
@@ -37,15 +37,10 @@
                 <span class="form-hint">For documents/videos paste URL. For images use the uploader below.</span>
             </div>
         </div>
-        <div class="form-grid-2 mt-4">
-            <div class="form-group">
-                <label>Description (English)</label>
-                <textarea name="description_en" rows="2" class="form-input">{{ old('description_en', $item->description_en ?? '') }}</textarea>
-            </div>
-            <div class="form-group">
-                <label>Description (Arabic)</label>
-                <textarea name="description_ar" rows="2" class="form-input" dir="rtl">{{ old('description_ar', $item->description_ar ?? '') }}</textarea>
-            </div>
+
+        <div class="mt-4">
+            <x-quill-editor name="description_en" label="Description (English)" :value="old('description_en', $item->description_en ?? '')" />
+            <x-quill-editor name="description_ar" label="Description (Arabic)" :value="old('description_ar', $item->description_ar ?? '')" dir="rtl" />
         </div>
 
         {{-- Cover image upload — shows on the public library card --}}
@@ -79,6 +74,7 @@
     </form>
 </div>
 @endsection
+
 @push('scripts')
 <script>
 function uploadLibImage(input) {

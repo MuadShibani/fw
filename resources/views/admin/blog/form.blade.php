@@ -41,16 +41,9 @@
             <textarea name="summary_ar" rows="2" class="form-input" dir="rtl" required>{{ old('summary_ar', $item->summary_ar ?? '') }}</textarea>
         </div>
 
-        {{-- ── MAIN CONTENT (Quill) ── --}}
-        <div class="form-group mt-4">
-            <label>Content (English) * <span class="label-hint">Rich text</span></label>
-            <div id="quill_en" class="quill-editor-box">{!! \App\Support\Content::format(old('content_en', $item->content_en ?? '')) !!}</div>
-            <input type="hidden" name="content_en" id="content_en_hidden">
-        </div>
-        <div class="form-group">
-            <label>Content (Arabic) * <span class="label-hint">Rich text</span></label>
-            <div id="quill_ar" class="quill-editor-box" dir="rtl">{!! \App\Support\Content::format(old('content_ar', $item->content_ar ?? '')) !!}</div>
-            <input type="hidden" name="content_ar" id="content_ar_hidden">
+        <div class="mt-4">
+            <x-quill-editor name="content_en" label="Content (English)" :value="old('content_en', $item->content_en ?? '')" :required="true" />
+            <x-quill-editor name="content_ar" label="Content (Arabic)" :value="old('content_ar', $item->content_ar ?? '')" :required="true" dir="rtl" />
         </div>
 
         <div class="form-actions">
@@ -59,41 +52,4 @@
         </div>
     </form>
 </div>
-
-@push('styles')
-<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
-@endpush
-
-@push('scripts')
-<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
-<script>
-var quillEn = new Quill('#quill_en', {
-    theme: 'snow',
-    modules: { toolbar: [
-        [{ header: [1,2,3,false] }],
-        ['bold','italic','underline','strike'],
-        [{ list:'ordered'},{list:'bullet'}],
-        [{ align:[] }],
-        ['link','blockquote'],
-        ['clean']
-    ]}
-});
-var quillAr = new Quill('#quill_ar', {
-    theme: 'snow',
-    modules: { toolbar: [
-        [{ header: [1,2,3,false] }],
-        ['bold','italic','underline','strike'],
-        [{ list:'ordered'},{list:'bullet'}],
-        [{ align:[] }],
-        ['link','blockquote'],
-        ['clean']
-    ]}
-});
-
-document.getElementById('blogForm').addEventListener('submit', function(e) {
-    document.getElementById('content_en_hidden').value = quillEn.root.innerHTML;
-    document.getElementById('content_ar_hidden').value = quillAr.root.innerHTML;
-});
-</script>
-@endpush
 @endsection
