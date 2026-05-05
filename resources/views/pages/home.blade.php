@@ -325,7 +325,7 @@
         </div>
         <div class="news-grid">
             @foreach ($latestNews as $i => $item)
-                <a href="/media/{{ $item->id }}" class="news-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
+                <a href="/media/{{ $item->id }}" class="news-card" data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s">
                     <div class="news-img-wrap">
                         <img src="{{ $item->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.$item->id }}"
                              alt="{{ $item->{'title_'.$lang} }}" class="news-img" loading="lazy">
@@ -354,7 +354,7 @@
         </div>
         <div class="news-grid">
             @forelse ($latestBlog as $i => $post)
-                <a href="/blog/{{ $post->id }}" class="news-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
+                <a href="/blog/{{ $post->id }}" class="news-card" data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s">
                     <div class="news-img-wrap">
                         <img src="{{ $post->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.($post->id + 1000) }}"
                              alt="{{ $post->{'title_'.$lang} }}" class="news-img" loading="lazy">
@@ -387,7 +387,7 @@
                 <a href="{{ $event->registration_link ?: '/events' }}"
                    {{ $event->registration_link ? 'target="_blank"' : '' }}
                    class="news-card event-news-card"
-                   data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
+                   data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s">
                     <div class="news-img-wrap">
                         <div class="event-card-img-placeholder">
                             <div class="event-card-date-large">
