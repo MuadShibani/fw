@@ -54,6 +54,7 @@ class HeroSlideController extends Controller
             'cta_label_en' => 'nullable|string|max:100',
             'cta_label_ar' => 'nullable|string|max:100',
             'cta_link'     => 'nullable|string|max:500',
+            'text_color'   => ['nullable', 'string', 'regex:/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/'],
             'sort_order'   => 'nullable|integer',
             'is_active'    => 'nullable',
         ]);

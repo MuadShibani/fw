@@ -19,6 +19,7 @@
             'cta_label_en' => $cf['cta_primary']['en'] ?? 'Learn More',
             'cta_label_ar' => $cf['cta_primary']['ar'] ?? 'اعرف المزيد',
             'cta_link'     => '/about',
+            'text_color'   => null,
         ]];
     }
 @endphp
@@ -26,14 +27,19 @@
 <section class="hero-slider" id="heroSlider" aria-roledescription="carousel">
     <div class="hero-slides">
         @foreach ($slides as $i => $slide)
+            @php
+                $bgStyle = !empty($slide->image_url) ? "background-image:url('".e($slide->image_url)."');" : '';
+                $textColor = !empty($slide->text_color) ? $slide->text_color : null;
+                $textStyle = $textColor ? "color:{$textColor};" : '';
+            @endphp
             <div class="hero-slide {{ $i === 0 ? 'is-active' : '' }}"
-                 @if(!empty($slide->image_url)) style="background-image:url('{{ $slide->image_url }}');" @endif
+                 @if($bgStyle) style="{{ $bgStyle }}" @endif
                  aria-hidden="{{ $i === 0 ? 'false' : 'true' }}">
                 <div class="hero-bg-pattern"></div>
                 <div class="container">
                     <div class="hero-content">
-                        <h1 class="hero-title animate__animated animate__fadeInUp">{{ $slide->{'title_'.$lang} }}</h1>
-                        <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">{{ $slide->{'subtitle_'.$lang} }}</p>
+                        <h1 class="hero-title animate__animated animate__fadeInUp" @if($textStyle) style="{{ $textStyle }}" @endif>{{ $slide->{'title_'.$lang} }}</h1>
+                        <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s" @if($textStyle) style="{{ $textStyle }}" @endif>{{ $slide->{'subtitle_'.$lang} }}</p>
                         <div class="hero-actions animate__animated animate__fadeInUp animate__delay-2s">
                             @if(!empty($slide->cta_link))
                                 <a href="{{ $slide->cta_link }}" class="btn btn-primary">{{ $slide->{'cta_label_'.$lang} ?: ($lang==='en'?'Learn More':'اعرف المزيد') }}</a>
@@ -59,16 +65,44 @@
 
 @push('styles')
 <style>
-.hero-slider { position: relative; overflow: hidden; }
-.hero-slides { position: relative; }
+/* Slider container — keeps consistent height across slides */
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(420px, 65vh, 640px);
+    background: linear-gradient(135deg, var(--cream, #faf6ee) 0%, #f0ede0 100%);
+}
+.hero-slides { position: relative; min-height: inherit; }
+
+/* Each slide stacks on top of the others; only .is-active is visible */
 .hero-slide {
-    position: absolute; top: 0; left: 0; right: 0;
+    position: absolute; inset: 0;
     background-size: cover; background-position: center;
+    padding: 6rem 0 5rem;
+    display: flex; align-items: center;
     opacity: 0; visibility: hidden;
     transition: opacity .8s ease;
 }
-.hero-slide.is-active { position: relative; opacity: 1; visibility: visible; }
+.hero-slide.is-active { opacity: 1; visibility: visible; z-index: 1; }
+
+/* Dark overlay only when an image is set so text stays readable */
+.hero-slide[style*="background-image"]::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(82,64,55,.78) 0%, rgba(82,64,55,.55) 100%);
+    pointer-events: none;
+}
+.hero-slide[style*="background-image"] .hero-title,
+.hero-slide[style*="background-image"] .hero-subtitle { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.hero-slide[style*="background-image"] .hero-subtitle { color: rgba(255,255,255,.92); }
+
+/* Make sure content sits above the overlay */
+.hero-slide .container { position: relative; z-index: 1; width: 100%; }
+
+/* Subtle dot pattern only on the gradient (no-image) slides */
 .hero-slider .hero-bg-pattern { position: absolute; inset: 0; pointer-events: none; }
+.hero-slide[style*="background-image"] .hero-bg-pattern { display: none; }
+
+/* Nav arrows */
 .hero-arrow {
     position: absolute; top: 50%; transform: translateY(-50%);
     width: 44px; height: 44px; border-radius: 50%;
@@ -77,22 +111,34 @@
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
     transition: background .2s ease, transform .2s ease;
-    z-index: 2;
+    z-index: 3;
 }
 .hero-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.05); }
 .hero-arrow-prev { left: 1rem; }
 .hero-arrow-next { right: 1rem; }
+
+/* Dots */
 .hero-dots {
     position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
-    display: flex; gap: .5rem; z-index: 2;
+    display: flex; gap: .5rem; z-index: 3;
 }
 .hero-dot {
     width: 10px; height: 10px; border-radius: 50%;
-    background: rgba(255,255,255,.5); border: 0; padding: 0; cursor: pointer;
+    background: rgba(255,255,255,.6); border: 0; padding: 0; cursor: pointer;
     transition: background .2s ease, transform .2s ease;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .hero-dot.is-active { background: #fff; transform: scale(1.25); }
-.hero-dot:hover { background: rgba(255,255,255,.85); }
+.hero-dot:hover { background: rgba(255,255,255,.9); }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-slider { min-height: clamp(380px, 70vh, 520px); }
+    .hero-slide { padding: 4rem 0 3rem; }
+    .hero-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
+    .hero-arrow-prev { left: .5rem; }
+    .hero-arrow-next { right: .5rem; }
+}
 </style>
 @endpush
 

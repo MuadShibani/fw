@@ -13,6 +13,7 @@ class HeroSlide extends Model
         'subtitle_en', 'subtitle_ar',
         'image_url',
         'cta_label_en', 'cta_label_ar', 'cta_link',
+        'text_color',
         'sort_order', 'is_active',
     ];
 
