@@ -9,6 +9,7 @@ use App\Models\Program;
 use App\Models\Stat;
 use App\Models\Event;
 use App\Models\Page;
+use App\Models\HeroSlide;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,8 @@ class HomeController extends Controller
     {
         return view('pages.home', [
             'homePage'       => Page::find('home'),
+            'heroSlides'     => HeroSlide::where('is_active', true)
+                                          ->orderBy('sort_order')->orderBy('id')->get(),
             'stats'          => Stat::orderBy('sort_order')->get(),
             'programs'       => Program::all(),
             'latestNews'     => News::orderBy('date', 'desc')->limit(3)->get(),

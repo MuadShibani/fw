@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ImageUploadController;
 use App\Http\Controllers\Admin\DocumentUploadController;
 use App\Http\Controllers\Admin\StatsController;
+use App\Http\Controllers\Admin\HeroSlideController;
 
 Route::post('/lang', [LanguageController::class, 'switch'])->name('lang.switch');
 
@@ -123,6 +124,14 @@ Route::prefix('admin')->name('admin.')->middleware(\App\Http\Middleware\AdminAut
     Route::get('/settings',          [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings',         [SettingsController::class, 'update'])->name('settings.update');
     Route::post('/settings/password',[SettingsController::class, 'changePassword'])->name('settings.password');
+
+    // Hero Slides — homepage carousel
+    Route::get('/hero',              [HeroSlideController::class, 'index'])->name('hero.index');
+    Route::get('/hero/create',       [HeroSlideController::class, 'create'])->name('hero.create');
+    Route::post('/hero',             [HeroSlideController::class, 'store'])->name('hero.store');
+    Route::get('/hero/{id}/edit',    [HeroSlideController::class, 'edit'])->name('hero.edit');
+    Route::put('/hero/{id}',         [HeroSlideController::class, 'update'])->name('hero.update');
+    Route::delete('/hero/{id}',      [HeroSlideController::class, 'destroy'])->name('hero.destroy');
 
     // Stats
     Route::get('/stats',              [StatsController::class, 'index'])->name('stats.index');

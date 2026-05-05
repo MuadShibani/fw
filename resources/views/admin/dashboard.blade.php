@@ -76,6 +76,18 @@
         </div>
         <a href="/admin/accelerator" class="stat-link">Manage →</a>
     </div>
+    <div class="stat-card-admin">
+        <div class="stat-icon" style="background:#fef2f2">🎞</div>
+        <div class="stat-info">
+            <div class="stat-value">{{ $counts['hero_slides'] }}</div>
+            <div class="stat-label">Hero Slides
+                @if(($counts['active_slides'] ?? 0) > 0)
+                    <span class="badge-active">{{ $counts['active_slides'] }} active</span>
+                @endif
+            </div>
+        </div>
+        <a href="/admin/hero" class="stat-link">Manage →</a>
+    </div>
 </div>
 
 <div class="dashboard-panels">
@@ -147,6 +159,7 @@
     <div class="admin-panel">
         <div class="panel-header"><h2>Quick Actions</h2></div>
         <div class="quick-actions">
+            <a href="/admin/hero/create"              class="quick-action-btn">🎞 Add Hero Slide</a>
             <a href="/admin/news/create"              class="quick-action-btn">📰 Post News</a>
             <a href="/admin/blog/create"              class="quick-action-btn">✍️ Write Blog Post</a>
             <a href="/admin/events/create"            class="quick-action-btn">📅 Create Event</a>

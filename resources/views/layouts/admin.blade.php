@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     @stack('styles')
 </head>
 <body class="admin-body">
@@ -31,6 +32,7 @@
                     <span class="sidebar-icon">⊞</span> Dashboard
                 </a>
                 <div class="sidebar-section-label">Content</div>
+                <a href="/admin/hero"     class="sidebar-link {{ request()->is('admin/hero*')    ? 'active' : '' }}"><span class="sidebar-icon">🎞</span> Hero Slides</a>
                 <a href="/admin/news"     class="sidebar-link {{ request()->is('admin/news*')    ? 'active' : '' }}"><span class="sidebar-icon">📰</span> News</a>
                 <a href="/admin/blog"     class="sidebar-link {{ request()->is('admin/blog*')    ? 'active' : '' }}"><span class="sidebar-icon">✍️</span> Blog</a>
                 <a href="/admin/events"   class="sidebar-link {{ request()->is('admin/events*')  ? 'active' : '' }}"><span class="sidebar-icon">📅</span> Events</a>

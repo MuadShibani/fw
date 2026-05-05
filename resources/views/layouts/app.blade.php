@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     @stack('styles')
 </head>
@@ -30,7 +31,6 @@
         <div class="container">
             <div class="top-bar-inner">
                 <div class="top-bar-contact">
-                    <span>📞 +967 1 234 567</span>
                     <span>✉️ wathba@deeproot.consulting</span>
                 </div>
                 <div class="top-bar-social">

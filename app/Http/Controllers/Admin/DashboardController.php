@@ -12,6 +12,7 @@ use App\Models\Startup;
 use App\Models\Cohort;
 use App\Models\Message;
 use App\Models\WiifPortfolio;
+use App\Models\HeroSlide;
 
 class DashboardController extends Controller
 {
@@ -29,6 +30,8 @@ class DashboardController extends Controller
                 'wiif_portfolio'  => WiifPortfolio::count(),
                 'messages'        => Message::count(),
                 'unread_messages' => Message::where('is_read', false)->count(),
+                'hero_slides'     => HeroSlide::count(),
+                'active_slides'   => HeroSlide::where('is_active', true)->count(),
             ],
             'recentNews'      => News::orderBy('date', 'desc')->limit(5)->get(),
             'recentBlog'      => Blog::orderBy('date', 'desc')->limit(5)->get(),

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             StatSeeder::class,
             ProgramSeeder::class,
+            HeroSlideSeeder::class,
         ]);
     }
 }
