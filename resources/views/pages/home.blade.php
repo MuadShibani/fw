@@ -4,6 +4,95 @@
 @section('content')
 @php $hp = $homePage; $cf = $hp?->custom_fields ?? []; @endphp
 
+@push('styles')
+<style>
+/* Smooth scroll-triggered reveal — elements stay hidden until they enter the viewport */
+[data-reveal] { opacity: 0; will-change: opacity, transform; }
+[data-reveal].is-revealed { opacity: 1; }
+[data-reveal] { animation-duration: .9s; animation-fill-mode: both; }
+.stat-value[data-counter] { font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1 !important; animation: none !important; transform: none !important; }
+}
+</style>
+@endpush
+
+@push('scripts')
+<script>
+(function () {
+    // ── Scroll-triggered reveal using animate.css ────────────────────────────
+    var revealEls = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window && revealEls.length) {
+        var revealIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var el = entry.target;
+                var anim = el.getAttribute('data-reveal') || 'fadeInUp';
+                var delay = el.getAttribute('data-reveal-delay');
+                if (delay) el.style.animationDelay = delay;
+                el.classList.add('is-revealed', 'animate__animated', 'animate__' + anim);
+                revealIO.unobserve(el);
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+        revealEls.forEach(function (el) { revealIO.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
+    }
+
+    // ── Counter animation on stat values ─────────────────────────────────────
+    function animateCounter(el) {
+        var text = el.getAttribute('data-counter-original') || el.textContent.trim();
+        // Match: optional non-digit prefix, the number (with commas/decimals), trailing suffix
+        var m = text.match(/^(\D*?)([\d,]+(?:\.\d+)?)(.*)$/);
+        if (!m) return;
+        var prefix = m[1];
+        var numStr = m[2];
+        var suffix = m[3];
+        var target = parseFloat(numStr.replace(/,/g, ''));
+        if (isNaN(target)) return;
+        el.setAttribute('data-counter-original', text);
+        var hasDecimal = numStr.indexOf('.') !== -1;
+        var decimals = hasDecimal ? (numStr.split('.')[1] || '').length : 0;
+
+        function format(v) {
+            var rounded = decimals ? Number(v.toFixed(decimals)) : Math.floor(v);
+            return prefix + rounded.toLocaleString(undefined, {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            }) + suffix;
+        }
+
+        var duration = 1600;
+        var startTime = null;
+        function tick(now) {
+            if (!startTime) startTime = now;
+            var t = Math.min(1, (now - startTime) / duration);
+            // easeOutCubic
+            var eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = format(target * eased);
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = format(target);
+        }
+        // Start at 0 so the count-up is visible
+        el.textContent = format(0);
+        requestAnimationFrame(tick);
+    }
+
+    var counters = document.querySelectorAll('[data-counter]');
+    if ('IntersectionObserver' in window && counters.length) {
+        var counterIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                animateCounter(entry.target);
+                counterIO.unobserve(entry.target);
+            });
+        }, { threshold: 0.4 });
+        counters.forEach(function (el) { counterIO.observe(el); });
+    }
+})();
+</script>
+@endpush
+
 {{-- Hero Slider --}}
 @php
     // Build the slide list. If no editable slides exist yet, fall back to the
@@ -200,8 +289,8 @@
     <div class="container">
         <div class="stats-grid">
             @foreach ($stats as $i => $stat)
-                <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay: {{ $i * 0.12 }}s">
-                    <div class="stat-value">{{ $stat->value }}</div>
+                <div class="stat-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
+                    <div class="stat-value" data-counter>{{ $stat->value }}</div>
                     <div class="stat-label">{{ $stat->{'label_'.$lang} }}</div>
                 </div>
             @endforeach
@@ -218,7 +307,7 @@
         </div>
         <div class="programs-grid programs-grid-2x2">
             @foreach ($programs as $i => $program)
-                <a href="{{ $program->path }}" class="program-card animate__animated animate__fadeIn" style="--program-color:{{ $program->color }}; animation-delay: {{ $i * 0.15 }}s">
+                <a href="{{ $program->path }}" class="program-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.12 }}s" style="--program-color:{{ $program->color }}">
                     <div class="program-card-accent"></div>
                     <h3 class="program-title">{{ $program->{'title_'.$lang} }}</h3>
                     <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
@@ -235,8 +324,8 @@
             <h2 class="section-title">{{ $lang==='en'?'Latest News':'آخر الأخبار' }}</h2>
         </div>
         <div class="news-grid">
-            @foreach ($latestNews as $item)
-                <a href="/media/{{ $item->id }}" class="news-card">
+            @foreach ($latestNews as $i => $item)
+                <a href="/media/{{ $item->id }}" class="news-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
                     <div class="news-img-wrap">
                         <img src="{{ $item->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.$item->id }}"
                              alt="{{ $item->{'title_'.$lang} }}" class="news-img" loading="lazy">
@@ -264,8 +353,8 @@
             <p class="section-subtitle">{{ $lang==='en'?'Insights, stories and updates from the Wathba ecosystem.':'رؤى وقصص وتحديثات من منظومة وثبة.' }}</p>
         </div>
         <div class="news-grid">
-            @forelse ($latestBlog as $post)
-                <a href="/blog/{{ $post->id }}" class="news-card">
+            @forelse ($latestBlog as $i => $post)
+                <a href="/blog/{{ $post->id }}" class="news-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
                     <div class="news-img-wrap">
                         <img src="{{ $post->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.($post->id + 1000) }}"
                              alt="{{ $post->{'title_'.$lang} }}" class="news-img" loading="lazy">
@@ -294,10 +383,11 @@
             <h2 class="section-title">{{ $lang==='en'?'Upcoming Events':'الفعاليات القادمة' }}</h2>
         </div>
         <div class="news-grid">
-            @forelse ($upcomingEvents as $event)
+            @forelse ($upcomingEvents as $i => $event)
                 <a href="{{ $event->registration_link ?: '/events' }}"
                    {{ $event->registration_link ? 'target="_blank"' : '' }}
-                   class="news-card event-news-card">
+                   class="news-card event-news-card"
+                   data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
                     <div class="news-img-wrap">
                         <div class="event-card-img-placeholder">
                             <div class="event-card-date-large">
