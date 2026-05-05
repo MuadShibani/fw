@@ -207,35 +207,87 @@
 {{-- Cohorts --}}
 <section class="section section-alt">
     <div class="container">
-        <div class="section-header"><h2 class="section-title">{{ $lang==='en' ? 'Cohorts' : 'الدفعات' }}</h2></div>
-        <div class="table-wrap">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>{{ $lang==='en' ? 'Cohort' : 'الدفعة' }}</th>
-                        <th>{{ $lang==='en' ? 'Status' : 'الحالة' }}</th>
-                        <th>{{ $lang==='en' ? 'Start Date' : 'تاريخ البدء' }}</th>
-                        <th>{{ $lang==='en' ? 'End Date' : 'تاريخ الانتهاء' }}</th>
-                        <th>{{ $lang==='en' ? 'Startups' : 'الشركات' }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($cohorts as $cohort)
-                    <tr>
-                        <td><strong>{{ $cohort->{'name_'.$lang} }}</strong></td>
-                        <td><span class="status-badge status-{{ strtolower($cohort->status) }}">{{ $cohort->status }}</span></td>
-                        <td>{{ \Carbon\Carbon::parse($cohort->start_date)->format('d M Y') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($cohort->end_date)->format('d M Y') }}</td>
-                        <td>{{ $cohort->startups_count }}</td>
-                    </tr>
-                    @empty
-                    <tr><td colspan="5" class="empty-state">{{ $lang==='en' ? 'No cohorts yet.' : 'لا توجد دفعات بعد.' }}</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
+        <div class="section-header">
+            <h2 class="section-title">{{ $lang==='en' ? 'Cohorts' : 'الدفعات' }}</h2>
+            <p class="section-subtitle">{{ $lang==='en' ? 'Each cohort enrolls up to 10 startups. Click a cohort to view its participants.' : 'تضم كل دفعة ما يصل إلى 10 شركات ناشئة. اضغط على الدفعة لعرض المشاركين.' }}</p>
+        </div>
+
+        <div class="cohorts-stack">
+            @forelse ($cohorts as $cohort)
+                @php $startupsList = $cohort->startups_list ?? []; @endphp
+                <details class="cohort-card" @if($loop->first) open @endif>
+                    <summary class="cohort-card-header">
+                        <div class="cohort-card-title">
+                            <strong>{{ $cohort->{'name_'.$lang} }}</strong>
+                            <span class="status-badge status-{{ strtolower($cohort->status) }}">{{ $cohort->status }}</span>
+                        </div>
+                        <div class="cohort-card-meta">
+                            <span>📅 {{ \Carbon\Carbon::parse($cohort->start_date)->format('d M Y') }} — {{ \Carbon\Carbon::parse($cohort->end_date)->format('d M Y') }}</span>
+                            <span>👥 {{ count($startupsList) ?: $cohort->startups_count }} {{ $lang==='en' ? 'startups' : 'شركة' }}</span>
+                        </div>
+                        <span class="cohort-card-toggle" aria-hidden="true">▾</span>
+                    </summary>
+
+                    @if (!empty($startupsList))
+                        <div class="cohort-startups-grid">
+                            @foreach ($startupsList as $s)
+                                <div class="cohort-startup-card">
+                                    @if(!empty($s['logo_url']))
+                                        <img src="{{ $s['logo_url'] }}" alt="{{ $s['name'] ?? '' }}" class="cohort-startup-logo" loading="lazy">
+                                    @else
+                                        <div class="cohort-startup-logo cohort-startup-logo-placeholder">{{ mb_substr($s['name'] ?? '?', 0, 1) }}</div>
+                                    @endif
+                                    <div class="cohort-startup-info">
+                                        <h4 class="cohort-startup-name">{{ $s['name'] ?? '' }}</h4>
+                                        @if(!empty($s['sector_'.$lang]) || !empty($s['sector_en']))
+                                            <span class="cohort-startup-sector">{{ $s['sector_'.$lang] ?? $s['sector_en'] ?? '' }}</span>
+                                        @endif
+                                        @if(!empty($s['description_'.$lang]) || !empty($s['description_en']))
+                                            <p class="cohort-startup-desc">{{ $s['description_'.$lang] ?? $s['description_en'] ?? '' }}</p>
+                                        @endif
+                                        @if(!empty($s['founder_name']))
+                                            <p class="cohort-startup-founder">👤 {{ $s['founder_name'] }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="empty-state">{{ $lang==='en' ? 'Startup roster coming soon.' : 'قائمة الشركات الناشئة قريباً.' }}</p>
+                    @endif
+                </details>
+            @empty
+                <p class="empty-state">{{ $lang==='en' ? 'No cohorts yet.' : 'لا توجد دفعات بعد.' }}</p>
+            @endforelse
         </div>
     </div>
 </section>
+
+@push('styles')
+<style>
+.cohorts-stack { display: flex; flex-direction: column; gap: 1rem; }
+.cohort-card { background: #fff; border: 1px solid #e5e0d8; border-radius: 12px; overflow: hidden; }
+.cohort-card[open] { box-shadow: 0 2px 8px rgba(82, 64, 55, .08); }
+.cohort-card-header { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; cursor: pointer; list-style: none; }
+.cohort-card-header::-webkit-details-marker { display: none; }
+.cohort-card-title { display: flex; align-items: center; gap: .75rem; flex: 1 1 auto; }
+.cohort-card-title strong { font-size: 1.1rem; }
+.cohort-card-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; color: #6b5b50; font-size: .9rem; }
+.cohort-card-toggle { display: inline-block; transition: transform .2s ease; color: #b04c2c; }
+.cohort-card[open] .cohort-card-toggle { transform: rotate(180deg); }
+.cohort-startups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; padding: 0 1.25rem 1.25rem; }
+.cohort-startup-card { display: flex; gap: .75rem; padding: 1rem; background: #faf6ee; border-radius: 10px; border: 1px solid #ece5d6; }
+.cohort-startup-logo { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.cohort-startup-logo-placeholder { display: flex; align-items: center; justify-content: center; background: #b04c2c; color: #fff; font-weight: 600; font-size: 1.25rem; text-transform: uppercase; }
+.cohort-startup-info { flex: 1 1 auto; min-width: 0; }
+.cohort-startup-name { margin: 0 0 .25rem; font-size: .95rem; font-weight: 600; color: #524037; }
+.cohort-startup-sector { display: inline-block; padding: .15rem .5rem; background: #ecce9e; color: #524037; border-radius: 99px; font-size: .7rem; margin-bottom: .35rem; }
+.cohort-startup-desc { margin: .35rem 0 .25rem; font-size: .82rem; color: #6b5b50; line-height: 1.45; }
+.cohort-startup-founder { margin: .25rem 0 0; font-size: .78rem; color: #8a7666; }
+[dir="rtl"] .cohort-card-toggle { transform: rotate(0); }
+[dir="rtl"] .cohort-card[open] .cohort-card-toggle { transform: rotate(180deg); }
+</style>
+@endpush
 
 @include('partials.related-news')
 @endsection

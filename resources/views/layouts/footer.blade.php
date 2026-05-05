@@ -63,11 +63,6 @@
                         <a href="mailto:wathba@deeproot.consulting">wathba@deeproot.consulting</a>
                     </li>
                 </ul>
-
-                <div class="eu-badge">
-                    <p class="eu-label">{{ $lang === 'en' ? 'Funded by the European Union' : 'بتمويل من الاتحاد الأوروبي' }}</p>
-                    <div class="eu-flag">★ ★ ★</div>
-                </div>
             </div>
 
         </div>
