@@ -259,13 +259,21 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Visual side — curved organic image */
+/* Visual side — curved organic image inside a wrapper that can overflow.
+   Chips are siblings of .hero-visual so they can poke OUT above and below
+   without being clipped by the curve's overflow:hidden. */
+.hero-visual-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin-inline: auto;
+    /* Reserve room above + below for the floating chips */
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+}
 .hero-visual {
     position: relative;
     aspect-ratio: 1 / 1;
     width: 100%;
-    max-width: 520px;
-    margin-inline: auto;
     border-radius: 35% 65% 55% 45% / 50% 45% 55% 50%;
     overflow: hidden;
     background-color: #f0ede0;
@@ -281,36 +289,40 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     pointer-events: none;
 }
 
-/* Floating chips that overlap the visual */
-.hero-chips {
-    position: absolute; inset: 0;
-    pointer-events: none;
-}
+/* Floating chips — true overhangs above and below the curved image */
 .hero-chip {
     position: absolute;
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: .75rem 1rem;
+    border-radius: 16px;
+    padding: .85rem 1.1rem;
     box-shadow: var(--shadow-float);
-    font-size: .9rem;
+    font-size: .92rem;
     color: var(--brown);
-    pointer-events: auto;
-    display: flex; align-items: center; gap: .65rem;
-    max-width: 260px;
+    display: flex; align-items: center; gap: .75rem;
+    max-width: 280px;
+    z-index: 2;
 }
 .hero-chip-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
+    width: 40px; height: 40px;
+    border-radius: 12px;
     display: inline-flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
+    font-size: 1.2rem; flex-shrink: 0;
 }
-.hero-chip-1 { top: 18%;  inset-inline-start: -18px; }
-.hero-chip-2 { bottom: 14%; inset-inline-end: -10px; }
+/* Top chip: sticks ABOVE the image, slightly off the trailing edge */
+.hero-chip-1 {
+    top: 0;
+    inset-inline-end: clamp(-1rem, -2vw, -2.5rem);
+}
+/* Bottom chip: sticks BELOW the image, slightly off the leading edge */
+.hero-chip-2 {
+    bottom: 0;
+    inset-inline-start: clamp(-1rem, -2vw, -2.5rem);
+}
 .hero-chip-1 .hero-chip-icon { background: #e5f3df; color: #4a8f3a; }
 .hero-chip-2 .hero-chip-icon { background: #fdecd9; color: #b06b1d; }
-.hero-chip strong { display: block; font-weight: 700; color: var(--brown); margin-bottom: 1px; }
-.hero-chip span  { color: var(--brown-soft); font-size: .8rem; }
+.hero-chip strong { display: block; font-weight: 700; color: var(--brown); margin-bottom: 2px; font-size: .98rem; }
+.hero-chip span  { color: var(--brown-soft); font-size: .82rem; }
 
 /* Slider arrows + dots — keep but soften */
 .hero-arrow {
@@ -345,11 +357,12 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 
 /* Mobile — stack image above text */
 @media (max-width: 900px) {
-    .hero-slides { min-height: clamp(640px, 95vh, 800px); }
+    .hero-slides { min-height: clamp(680px, 100vh, 860px); }
     .hero-split { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-visual { max-width: 360px; }
-    .hero-chip-1 { inset-inline-start: -10px; top: 8%; }
-    .hero-chip-2 { inset-inline-end: -10px; bottom: 8%; }
+    .hero-visual-wrap { max-width: 360px; padding: 2.5rem 0; }
+    .hero-chip { font-size: .85rem; padding: .7rem .9rem; max-width: 240px; }
+    .hero-chip-1 { inset-inline-end: -.5rem; top: 0; }
+    .hero-chip-2 { inset-inline-start: -.5rem; bottom: 0; }
     .hero-text { max-width: 100%; text-align: start; }
     .hero-arrow { width: 36px; height: 36px; font-size: 1.1rem; }
 }

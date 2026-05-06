@@ -126,21 +126,20 @@
                                 <a href="/contact" class="btn btn-outline">{{ $lang==='en'?'Contact Us':'تواصل معنا' }}</a>
                             </div>
                         </div>
-                        <div class="hero-visual animate__animated animate__fadeIn animate__delay-1s" @if($imgStyle) style="{{ $imgStyle }}" @endif>
-                            <div class="hero-chips">
-                                <div class="hero-chip hero-chip-1">
-                                    <div class="hero-chip-icon">🌱</div>
-                                    <div>
-                                        <strong>{{ $lang==='en' ? 'Backed by Wathba' : 'مدعومة من وثبة' }}</strong>
-                                        <span>{{ $lang==='en' ? '6-month accelerator program' : 'برنامج تسريع 6 أشهر' }}</span>
-                                    </div>
+                        <div class="hero-visual-wrap animate__animated animate__fadeIn animate__delay-1s">
+                            <div class="hero-visual" @if($imgStyle) style="{{ $imgStyle }}" @endif></div>
+                            <div class="hero-chip hero-chip-1 animate__animated animate__fadeInDown animate__delay-2s">
+                                <div class="hero-chip-icon">🌱</div>
+                                <div>
+                                    <strong>{{ $lang==='en' ? 'Backed by Wathba' : 'مدعومة من وثبة' }}</strong>
+                                    <span>{{ $lang==='en' ? '6-month accelerator program' : 'برنامج تسريع 6 أشهر' }}</span>
                                 </div>
-                                <div class="hero-chip hero-chip-2">
-                                    <div class="hero-chip-icon">💼</div>
-                                    <div>
-                                        <strong>{{ $lang==='en' ? 'Diaspora investors' : 'مستثمرو الشتات' }}</strong>
-                                        <span>{{ $lang==='en' ? 'Connecting capital to founders' : 'ربط رأس المال بالمؤسسين' }}</span>
-                                    </div>
+                            </div>
+                            <div class="hero-chip hero-chip-2 animate__animated animate__fadeInUp animate__delay-2s">
+                                <div class="hero-chip-icon">💼</div>
+                                <div>
+                                    <strong>{{ $lang==='en' ? 'Diaspora investors' : 'مستثمرو الشتات' }}</strong>
+                                    <span>{{ $lang==='en' ? 'Connecting capital to founders' : 'ربط رأس المال بالمؤسسين' }}</span>
                                 </div>
                             </div>
                         </div>
