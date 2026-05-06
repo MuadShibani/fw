@@ -6,13 +6,107 @@
 
 @push('styles')
 <style>
-/* Smooth scroll-triggered reveal — elements stay hidden until they enter the viewport */
-[data-reveal] { opacity: 0; will-change: opacity, transform; }
-[data-reveal].is-revealed { opacity: 1; }
-[data-reveal] { animation-duration: .9s; animation-fill-mode: both; }
+/* ── Scroll-triggered reveal ─────────────────────────────────────────────────
+   Elements stay invisible until they enter the viewport, then animate.css
+   handles the fade. animation-fill-mode: both means the keyframe's "from"
+   state (opacity 0) is held during the delay and the "to" state stays
+   after, so we don't need a separate is-revealed { opacity: 1 } rule —
+   that rule was overriding the start of the fade and making cards pop in
+   instantly. */
+[data-reveal] {
+    opacity: 0;
+    will-change: opacity, transform;
+}
+[data-reveal].animate__animated {
+    --animate-duration: 1.1s;
+    animation-fill-mode: both;
+}
 .stat-value[data-counter] { font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) {
     [data-reveal] { opacity: 1 !important; animation: none !important; transform: none !important; }
+}
+
+/* ── Spacious / overlapping homepage layout ─────────────────────────────── */
+.home-section { padding: clamp(4rem, 9vw, 8rem) 0; background: #fff; }
+.home-section.home-section-cream { background: #faf6ee; }
+.home-section .section-header { max-width: 760px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
+.home-section .section-title { font-size: clamp(1.85rem, 3.6vw, 2.85rem); font-weight: 800; letter-spacing: -.01em; color: #524037; margin: 0 0 .9rem; }
+.home-section .section-subtitle { font-size: clamp(1rem, 1.4vw, 1.15rem); color: #6b5b50; line-height: 1.65; margin: 0; }
+
+/* Bigger card sizes / more whitespace */
+.home-section .news-grid {
+    display: grid; gap: clamp(1.25rem, 2vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.home-section .news-card {
+    background: #fff;
+    border: 1px solid #ece5d6;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform .35s ease, box-shadow .35s ease;
+    text-decoration: none;
+    color: inherit;
+}
+.home-section .news-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px -18px rgba(82,64,55,.25); }
+.home-section .news-img-wrap { aspect-ratio: 16/10; }
+.home-section .news-img { width: 100%; height: 100%; object-fit: cover; }
+.home-section .news-body { padding: clamp(1.25rem, 2vw, 1.75rem); }
+.home-section .news-title { font-size: 1.25rem; line-height: 1.35; margin: .5rem 0 .65rem; color: #524037; }
+.home-section .news-summary { color: #6b5b50; line-height: 1.6; }
+
+/* Programs: bigger cards with airy padding */
+.home-section .programs-grid-2x2 {
+    display: grid; gap: clamp(1.25rem, 2vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.home-section .program-card {
+    background: #fff;
+    border: 1px solid #ece5d6;
+    border-radius: 22px;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    min-height: 220px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    text-decoration: none; color: inherit;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    position: relative; overflow: hidden;
+}
+.home-section .program-card::before {
+    content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 6px;
+    background: var(--program-color, #b04c2c);
+}
+.home-section .program-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 44px -22px rgba(82,64,55,.25);
+    border-color: var(--program-color, #b04c2c);
+}
+.home-section .program-title { font-size: 1.5rem; line-height: 1.3; margin: 0 0 .75rem; color: #524037; }
+.home-section .program-link { color: var(--program-color, #b04c2c); font-weight: 600; }
+
+/* Stats — overlap into the previous section for that interlapped feel */
+.stats-strip-wrap {
+    position: relative;
+    margin-top: clamp(-3rem, -5vw, -5rem);
+    z-index: 2;
+}
+.stats-strip-wrap .container { padding-left: 1rem; padding-right: 1rem; }
+.stats-strip {
+    background: #fff;
+    border-radius: 24px;
+    padding: clamp(1.75rem, 3vw, 2.75rem) clamp(1.5rem, 3vw, 3rem);
+    box-shadow: 0 24px 60px -28px rgba(82,64,55,.35);
+    border: 1px solid #ece5d6;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: clamp(1rem, 2vw, 2rem);
+}
+.stats-strip .stat-card { background: transparent; padding: 0; text-align: center; border: 0; }
+.stats-strip .stat-value { font-size: clamp(2rem, 3.4vw, 2.75rem); font-weight: 800; color: #b04c2c; letter-spacing: -.01em; line-height: 1.1; }
+.stats-strip .stat-label { color: #6b5b50; font-size: .95rem; margin-top: .35rem; }
+
+.section-cta { text-align: center; margin-top: clamp(2rem, 4vw, 3rem); }
+
+@media (max-width: 768px) {
+    .home-section { padding: 4rem 0; }
+    .stats-strip-wrap { margin-top: -2.25rem; }
 }
 </style>
 @endpush
@@ -30,13 +124,17 @@
                 var anim = el.getAttribute('data-reveal') || 'fadeInUp';
                 var delay = el.getAttribute('data-reveal-delay');
                 if (delay) el.style.animationDelay = delay;
-                el.classList.add('is-revealed', 'animate__animated', 'animate__' + anim);
+                // animate.css's animation-fill-mode:both holds the start (opacity 0)
+                // during the delay and the end (opacity 1) after the run, so we
+                // don't need a separate visibility class.
+                el.classList.add('animate__animated', 'animate__' + anim);
                 revealIO.unobserve(el);
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
         revealEls.forEach(function (el) { revealIO.observe(el); });
     } else {
-        revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
+        // No IntersectionObserver — just make everything visible.
+        revealEls.forEach(function (el) { el.style.opacity = '1'; });
     }
 
     // ── Counter animation on stat values ─────────────────────────────────────
@@ -158,7 +256,9 @@
 .hero-slider {
     position: relative;
     overflow: hidden;
-    min-height: clamp(420px, 65vh, 640px);
+    min-height: clamp(540px, 78vh, 760px);
+    /* Extra bottom padding so the floating .stats-strip-wrap doesn't crowd the CTAs */
+    padding-bottom: clamp(3.5rem, 6vw, 6rem);
     background: linear-gradient(135deg, var(--cream, #faf6ee) 0%, #f0ede0 100%);
 }
 .hero-slides { position: relative; min-height: inherit; }
@@ -167,7 +267,7 @@
 .hero-slide {
     position: absolute; inset: 0;
     background-size: cover; background-position: center;
-    padding: 6rem 0 5rem;
+    padding: clamp(5rem, 9vw, 8rem) 0 clamp(5rem, 8vw, 7rem);
     display: flex; align-items: center;
     opacity: 0; visibility: hidden;
     transition: opacity .8s ease;
@@ -220,10 +320,16 @@
 .hero-dot.is-active { background: #fff; transform: scale(1.25); }
 .hero-dot:hover { background: rgba(255,255,255,.9); }
 
+/* Bigger title/subtitle so the hero feels more spacious */
+.hero-content { max-width: 760px; }
+.hero-title { font-size: clamp(2.25rem, 5.4vw, 3.75rem); line-height: 1.1; letter-spacing: -.015em; margin-bottom: 1.5rem; }
+.hero-subtitle { font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.6; max-width: 620px; margin-bottom: 2.5rem; }
+.hero-actions .btn { padding: .9rem 1.75rem; font-size: 1.02rem; }
+
 /* Mobile */
 @media (max-width: 768px) {
-    .hero-slider { min-height: clamp(380px, 70vh, 520px); }
-    .hero-slide { padding: 4rem 0 3rem; }
+    .hero-slider { min-height: clamp(440px, 80vh, 600px); padding-bottom: 2.5rem; }
+    .hero-slide { padding: 4rem 0 4rem; }
     .hero-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
     .hero-arrow-prev { left: .5rem; }
     .hero-arrow-next { right: .5rem; }
@@ -284,10 +390,10 @@
 </script>
 @endpush
 
-{{-- Stats --}}
-<section class="stats-section">
+{{-- Stats — floating strip that overlaps the hero and the next section --}}
+<div class="stats-strip-wrap" data-reveal="fadeInUp">
     <div class="container">
-        <div class="stats-grid">
+        <div class="stats-strip">
             @foreach ($stats as $i => $stat)
                 <div class="stat-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
                     <div class="stat-value" data-counter>{{ $stat->value }}</div>
@@ -296,12 +402,12 @@
             @endforeach
         </div>
     </div>
-</section>
+</div>
 
 {{-- Wathba Components — 2x2 grid --}}
-<section class="section">
+<section class="home-section">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fadeIn">
             <h2 class="section-title">{{ $lang==='en'?'Wathba Components':'مكونات وثبة' }}</h2>
             <p class="section-subtitle">{{ $lang==='en'?'Four integrated components working together to empower Yemen entrepreneurs.':'أربعة مكونات متكاملة تعمل معاً لتمكين رواد الأعمال في اليمن.' }}</p>
         </div>
@@ -318,10 +424,11 @@
 </section>
 
 {{-- Latest News --}}
-<section class="section section-alt">
+<section class="home-section home-section-cream">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fadeIn">
             <h2 class="section-title">{{ $lang==='en'?'Latest News':'آخر الأخبار' }}</h2>
+            <p class="section-subtitle">{{ $lang==='en'?'Updates from across the Wathba ecosystem.':'آخر المستجدات من جميع أنحاء منظومة وثبة.' }}</p>
         </div>
         <div class="news-grid">
             @foreach ($latestNews as $i => $item)
@@ -346,9 +453,9 @@
 </section>
 
 {{-- Latest Blog Posts --}}
-<section class="section">
+<section class="home-section">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fadeIn">
             <h2 class="section-title">{{ $lang==='en'?'Latest from our Blog':'آخر مقالات المدونة' }}</h2>
             <p class="section-subtitle">{{ $lang==='en'?'Insights, stories and updates from the Wathba ecosystem.':'رؤى وقصص وتحديثات من منظومة وثبة.' }}</p>
         </div>
@@ -377,10 +484,11 @@
 </section>
 
 {{-- Upcoming Events — 3 in a row, same as news --}}
-<section class="section section-alt">
+<section class="home-section home-section-cream">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fadeIn">
             <h2 class="section-title">{{ $lang==='en'?'Upcoming Events':'الفعاليات القادمة' }}</h2>
+            <p class="section-subtitle">{{ $lang==='en'?'Workshops, webinars, and networking opportunities.':'ورش عمل وندوات وفرص للتواصل.' }}</p>
         </div>
         <div class="news-grid">
             @forelse ($upcomingEvents as $i => $event)
