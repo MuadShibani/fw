@@ -259,21 +259,31 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Visual side — curved organic image inside a wrapper that can overflow.
-   Chips are siblings of .hero-visual so they can poke OUT above and below
-   without being clipped by the curve's overflow:hidden. */
+/* Visual side — three nested boxes:
+   .hero-visual-wrap   — flexbox holder that centers the frame in its column
+   .hero-visual-frame  — a square container the EXACT size of the image; this
+                          is the positioning context for the chips
+   .hero-visual        — the curved photo (overflow:hidden for the curve)
+   Chips are siblings of .hero-visual inside .hero-visual-frame, so their
+   absolute positioning is relative to the image's actual on-screen box —
+   never the column or anything wider. */
 .hero-visual-wrap {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 520px;
-    margin-inline: auto;
     /* Reserve room above + below for the floating chips */
     padding: clamp(2rem, 4vw, 3.5rem) 0;
 }
-.hero-visual {
+.hero-visual-frame {
     position: relative;
-    aspect-ratio: 1 / 1;
     width: 100%;
+    max-width: 520px;
+    aspect-ratio: 1 / 1; /* hard-locks frame to image's square */
+}
+.hero-visual {
+    position: absolute;
+    inset: 0;
     border-radius: 35% 65% 55% 45% / 50% 45% 55% 50%;
     overflow: hidden;
     background-color: #f0ede0;
@@ -314,34 +324,32 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 1.2rem; flex-shrink: 0;
 }
-/* Top chip: sits OVER the image, anchored 20px from its trailing edge,
-   peeking ~14px above the curve. Explicit left/right (instead of logical
-   inset-inline-*) keeps positioning predictable across LTR/RTL. */
-.hero-chip-1 {
+/* Chips are positioned relative to .hero-visual-frame which is the exact
+   size of the image. Using percentages of the frame keeps them anchored
+   to the image's corners no matter how wide the column is. */
+.hero-visual-frame .hero-chip-1 {
     top: -14px;
-    right: 20px;
+    right: 6%;
     left: auto;
     animation:
         hero-chip-fadein 1.4s ease-out 2.6s both,
         hero-chip-bob    4.5s ease-in-out 4.0s infinite;
 }
-[dir="rtl"] .hero-chip-1 {
+[dir="rtl"] .hero-visual-frame .hero-chip-1 {
     right: auto;
-    left: 20px;
+    left: 6%;
 }
-/* Bottom chip: sits OVER the image, anchored 20px from its leading edge,
-   peeking ~14px below the curve. */
-.hero-chip-2 {
+.hero-visual-frame .hero-chip-2 {
     bottom: -14px;
-    left: 20px;
+    left: 6%;
     right: auto;
     animation:
         hero-chip-fadein 1.4s ease-out 2.9s both,
         hero-chip-bob    4.5s ease-in-out 4.3s infinite reverse;
 }
-[dir="rtl"] .hero-chip-2 {
+[dir="rtl"] .hero-visual-frame .hero-chip-2 {
     left: auto;
-    right: 20px;
+    right: 6%;
 }
 .hero-chip-1 .hero-chip-icon { background: #e5f3df; color: #4a8f3a; }
 .hero-chip-2 .hero-chip-icon { background: #fdecd9; color: #b06b1d; }
@@ -418,10 +426,9 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 @media (max-width: 900px) {
     .hero-slides { min-height: clamp(680px, 100vh, 860px); }
     .hero-split { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-visual-wrap { max-width: 360px; padding: 2.5rem 0; }
+    .hero-visual-wrap { padding: 2.5rem 0; }
+    .hero-visual-frame { max-width: 360px; }
     .hero-chip { font-size: .85rem; padding: .7rem .9rem; max-width: 240px; }
-    .hero-chip-1 { inset-inline-end: -.5rem; top: 0; }
-    .hero-chip-2 { inset-inline-start: -.5rem; bottom: 0; }
     .hero-text { max-width: 100%; text-align: start; }
     .hero-arrow { width: 36px; height: 36px; font-size: 1.1rem; }
 }

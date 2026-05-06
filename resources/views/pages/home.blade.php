@@ -127,19 +127,21 @@
                             </div>
                         </div>
                         <div class="hero-visual-wrap">
-                            <div class="hero-visual" @if($imgStyle) style="{{ $imgStyle }}" @endif></div>
-                            <div class="hero-chip hero-chip-1">
-                                <div class="hero-chip-icon">🌱</div>
-                                <div>
-                                    <strong>{{ $lang==='en' ? 'Backed by Wathba' : 'مدعومة من وثبة' }}</strong>
-                                    <span>{{ $lang==='en' ? '6-month accelerator program' : 'برنامج تسريع 6 أشهر' }}</span>
+                            <div class="hero-visual-frame">
+                                <div class="hero-visual" @if($imgStyle) style="{{ $imgStyle }}" @endif></div>
+                                <div class="hero-chip hero-chip-1">
+                                    <div class="hero-chip-icon">🌱</div>
+                                    <div>
+                                        <strong>{{ $lang==='en' ? 'Backed by Wathba' : 'مدعومة من وثبة' }}</strong>
+                                        <span>{{ $lang==='en' ? '6-month accelerator program' : 'برنامج تسريع 6 أشهر' }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="hero-chip hero-chip-2">
-                                <div class="hero-chip-icon">💼</div>
-                                <div>
-                                    <strong>{{ $lang==='en' ? 'Diaspora investors' : 'مستثمرو الشتات' }}</strong>
-                                    <span>{{ $lang==='en' ? 'Connecting capital to founders' : 'ربط رأس المال بالمؤسسين' }}</span>
+                                <div class="hero-chip hero-chip-2">
+                                    <div class="hero-chip-icon">💼</div>
+                                    <div>
+                                        <strong>{{ $lang==='en' ? 'Diaspora investors' : 'مستثمرو الشتات' }}</strong>
+                                        <span>{{ $lang==='en' ? 'Connecting capital to founders' : 'ربط رأس المال بالمؤسسين' }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
