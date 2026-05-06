@@ -117,25 +117,25 @@
                 <div class="container">
                     <div class="hero-split">
                         <div class="hero-text">
-                            <h1 class="hero-title animate__animated animate__fadeInUp" @if($textStyle) style="{{ $textStyle }}" @endif>{{ $slide->{'title_'.$lang} }}</h1>
-                            <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s" @if($textStyle) style="{{ $textStyle }}" @endif>{{ $slide->{'subtitle_'.$lang} }}</p>
-                            <div class="hero-actions animate__animated animate__fadeInUp animate__delay-2s">
+                            <h1 class="hero-title" @if($textStyle) style="{{ $textStyle }}" @endif>{{ $slide->{'title_'.$lang} }}</h1>
+                            <p class="hero-subtitle" @if($textStyle) style="{{ $textStyle }}" @endif>{{ $slide->{'subtitle_'.$lang} }}</p>
+                            <div class="hero-actions">
                                 @if(!empty($slide->cta_link))
                                     <a href="{{ $slide->cta_link }}" class="btn btn-primary">{{ $slide->{'cta_label_'.$lang} ?: ($lang==='en'?'Learn More':'اعرف المزيد') }}</a>
                                 @endif
                                 <a href="/contact" class="btn btn-outline">{{ $lang==='en'?'Contact Us':'تواصل معنا' }}</a>
                             </div>
                         </div>
-                        <div class="hero-visual-wrap animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="hero-visual-wrap">
                             <div class="hero-visual" @if($imgStyle) style="{{ $imgStyle }}" @endif></div>
-                            <div class="hero-chip hero-chip-1 animate__animated animate__fadeInDown animate__delay-2s">
+                            <div class="hero-chip hero-chip-1">
                                 <div class="hero-chip-icon">🌱</div>
                                 <div>
                                     <strong>{{ $lang==='en' ? 'Backed by Wathba' : 'مدعومة من وثبة' }}</strong>
                                     <span>{{ $lang==='en' ? '6-month accelerator program' : 'برنامج تسريع 6 أشهر' }}</span>
                                 </div>
                             </div>
-                            <div class="hero-chip hero-chip-2 animate__animated animate__fadeInUp animate__delay-2s">
+                            <div class="hero-chip hero-chip-2">
                                 <div class="hero-chip-icon">💼</div>
                                 <div>
                                     <strong>{{ $lang==='en' ? 'Diaspora investors' : 'مستثمرو الشتات' }}</strong>
@@ -183,10 +183,13 @@
         slides[to].classList.add('is-active');
         slides[to].setAttribute('aria-hidden', 'false');
         dots[to] && dots[to].classList.add('is-active');
-        // Re-trigger entrance animations
-        slides[to].querySelectorAll('.animate__animated').forEach(function (el) {
+        // Re-trigger entrance fade by removing and re-adding the .is-active
+        // class. Hero elements are styled to animate when .is-active is on,
+        // so toggling it replays the keyframes from the start.
+        var newSlide = slides[to];
+        newSlide.querySelectorAll('.hero-title, .hero-subtitle, .hero-actions, .hero-visual-wrap, .hero-chip').forEach(function (el) {
+            // Force reflow so the animation restarts cleanly.
             el.style.animation = 'none';
-            // force reflow
             void el.offsetWidth;
             el.style.animation = '';
         });
