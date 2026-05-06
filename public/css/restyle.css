@@ -314,21 +314,34 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 1.2rem; flex-shrink: 0;
 }
-/* Top chip: sits OVER the top-right of the image, peeking above the curve */
+/* Top chip: sits OVER the image, anchored 20px from its trailing edge,
+   peeking ~14px above the curve. Explicit left/right (instead of logical
+   inset-inline-*) keeps positioning predictable across LTR/RTL. */
 .hero-chip-1 {
-    top: 4%;
-    inset-inline-end: 6%;
+    top: -14px;
+    right: 20px;
+    left: auto;
     animation:
-        hero-chip-fadein 1s ease-out 1.4s both,
-        hero-chip-bob 4.5s ease-in-out 2.5s infinite;
+        hero-chip-fadein 1.4s ease-out 2.6s both,
+        hero-chip-bob    4.5s ease-in-out 4.0s infinite;
 }
-/* Bottom chip: sits OVER the bottom-left of the image, peeking below */
+[dir="rtl"] .hero-chip-1 {
+    right: auto;
+    left: 20px;
+}
+/* Bottom chip: sits OVER the image, anchored 20px from its leading edge,
+   peeking ~14px below the curve. */
 .hero-chip-2 {
-    bottom: 4%;
-    inset-inline-start: 6%;
+    bottom: -14px;
+    left: 20px;
+    right: auto;
     animation:
-        hero-chip-fadein 1s ease-out 1.6s both,
-        hero-chip-bob 4.5s ease-in-out 2.7s infinite reverse;
+        hero-chip-fadein 1.4s ease-out 2.9s both,
+        hero-chip-bob    4.5s ease-in-out 4.3s infinite reverse;
+}
+[dir="rtl"] .hero-chip-2 {
+    left: auto;
+    right: 20px;
 }
 .hero-chip-1 .hero-chip-icon { background: #e5f3df; color: #4a8f3a; }
 .hero-chip-2 .hero-chip-icon { background: #fdecd9; color: #b06b1d; }
@@ -345,17 +358,18 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 
 /* ── Hero entrance fade (title, subtitle, actions, image) ───────────── */
-/* A clean opacity-only fade so things appear smoothly the first time. */
+/* A slow clean opacity-only fade with a generous stagger between elements
+   so each one visibly appears one-after-the-other rather than all at once. */
 .hero-slide.is-active .hero-title,
 .hero-slide.is-active .hero-subtitle,
 .hero-slide.is-active .hero-actions,
 .hero-slide.is-active .hero-visual-wrap {
-    animation: hero-fadein 1.2s ease-out both;
+    animation: hero-fadein 1.6s ease-out both;
 }
-.hero-slide.is-active .hero-title       { animation-delay: .15s; }
-.hero-slide.is-active .hero-subtitle    { animation-delay: .55s; }
-.hero-slide.is-active .hero-actions     { animation-delay: .9s;  }
-.hero-slide.is-active .hero-visual-wrap { animation-delay: .35s; }
+.hero-slide.is-active .hero-title       { animation-delay: .35s; }
+.hero-slide.is-active .hero-visual-wrap { animation-delay: .9s;  }
+.hero-slide.is-active .hero-subtitle    { animation-delay: 1.4s; }
+.hero-slide.is-active .hero-actions     { animation-delay: 2.0s; }
 
 @keyframes hero-fadein {
     from { opacity: 0; }
