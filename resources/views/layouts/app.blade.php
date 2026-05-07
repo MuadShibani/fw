@@ -54,16 +54,16 @@
         $partnerLang = session('lang', 'en');
         $euAlt = $partnerLang === 'ar' ? 'بتمويل من الاتحاد الأوروبي' : 'Funded by the European Union';
     @endphp
-    <div class="partner-bar" aria-label="{{ $partnerLang === 'ar' ? 'شعارات الاتحاد الأوروبي والشركاء' : 'European Union and partner logos' }}" style="height:64px;overflow:hidden;background:#f3efe5;border-bottom:1px solid #e4d8c4;box-sizing:border-box;">
-        <div class="container partner-bar-inner" style="height:64px;min-height:64px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:.75rem;flex-wrap:nowrap;overflow-x:auto;">
-            <div class="partner-bar-logo-card partner-bar-logo-card-light" style="height:52px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:.35rem .65rem;background:#fff;border:1px solid #e5e0d6;border-radius:6px;box-sizing:border-box;">
+    <div class="partner-bar" aria-label="{{ $partnerLang === 'ar' ? 'شعارات الاتحاد الأوروبي والشركاء' : 'European Union and partner logos' }}" style="height:64px;overflow:hidden;background:#fff;border-bottom:1px solid #ece5d6;box-sizing:border-box;">
+        <div class="container partner-bar-inner" style="height:64px;min-height:64px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:nowrap;overflow-x:auto;">
+            <div class="partner-bar-logo-item" style="display:flex;align-items:center;justify-content:center;flex:0 0 auto;">
                 <img src="{{ asset('images/eu.jpeg') }}" alt="{{ $euAlt }}" loading="lazy" class="partner-bar-logo partner-bar-logo-eu" style="display:block;height:38px;width:auto;max-width:250px;max-height:52px;object-fit:contain;">
             </div>
-            <div class="partner-bar-logo-card partner-bar-logo-card-dark partner-bar-logo-card-partner" style="height:52px;min-width:118px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:.45rem 1.1rem;background:#524037;border:1px solid #524037;border-radius:6px;box-sizing:border-box;">
-                <img src="{{ asset('images/logo-rowad.png') }}" alt="Rowad Foundation" loading="lazy" class="partner-bar-logo" style="display:block;height:34px;width:auto;max-width:82px;max-height:52px;object-fit:contain;">
+            <div class="partner-bar-logo-item" style="display:flex;align-items:center;justify-content:center;flex:0 0 auto;">
+                <img src="{{ asset('images/logo-rowad-clear.jpg') }}" alt="Rowad Foundation" loading="lazy" class="partner-bar-logo partner-bar-logo-rowad" style="display:block;height:44px;width:auto;max-width:120px;max-height:52px;object-fit:contain;">
             </div>
-            <div class="partner-bar-logo-card partner-bar-logo-card-light partner-bar-logo-card-partner" style="height:52px;min-width:118px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:.45rem 1.1rem;background:#fff;border:1px solid #e5e0d6;border-radius:6px;box-sizing:border-box;">
-                <img src="{{ asset('images/logo-deeproot.png') }}" alt="Deep Root" loading="lazy" class="partner-bar-logo" style="display:block;height:34px;width:auto;max-width:82px;max-height:52px;object-fit:contain;">
+            <div class="partner-bar-logo-item" style="display:flex;align-items:center;justify-content:center;flex:0 0 auto;">
+                <img src="{{ asset('images/logo-deeproot-clear.png') }}" alt="Deep Root" loading="lazy" class="partner-bar-logo partner-bar-logo-deeproot" style="display:block;height:44px;width:auto;max-width:120px;max-height:52px;object-fit:contain;">
             </div>
         </div>
     </div>
