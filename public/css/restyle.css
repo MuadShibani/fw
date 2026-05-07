@@ -295,7 +295,7 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     position: absolute; inset: 0;
     display: flex; align-items: center;
     opacity: 0; visibility: hidden;
-    transition: opacity .8s ease;
+    transition: opacity 2.2s ease-in-out, visibility 2.2s ease-in-out;
     padding: 0;
 }
 .hero-slide.is-active { opacity: 1; visibility: visible; z-index: 1; }
@@ -402,8 +402,8 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     right: 6%;
     left: auto;
     animation:
-        hero-chip-fadein 1.4s ease-out 2.6s both,
-        hero-chip-bob    4.5s ease-in-out 4.0s infinite;
+        hero-chip-fadein 2.4s ease-out 4.0s both,
+        hero-chip-bob    5.5s ease-in-out 6.4s infinite;
 }
 [dir="rtl"] .hero-visual-frame .hero-chip-1 {
     right: auto;
@@ -414,8 +414,8 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     left: 6%;
     right: auto;
     animation:
-        hero-chip-fadein 1.4s ease-out 2.9s both,
-        hero-chip-bob    4.5s ease-in-out 4.3s infinite reverse;
+        hero-chip-fadein 2.4s ease-out 4.5s both,
+        hero-chip-bob    5.5s ease-in-out 6.9s infinite reverse;
 }
 [dir="rtl"] .hero-visual-frame .hero-chip-2 {
     left: auto;
@@ -442,12 +442,12 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 .hero-slide.is-active .hero-subtitle,
 .hero-slide.is-active .hero-actions,
 .hero-slide.is-active .hero-visual-wrap {
-    animation: hero-fadein 1.6s ease-out both;
+    animation: hero-fadein 2.8s ease-in-out both;
 }
-.hero-slide.is-active .hero-title       { animation-delay: .35s; }
-.hero-slide.is-active .hero-visual-wrap { animation-delay: .9s;  }
-.hero-slide.is-active .hero-subtitle    { animation-delay: 1.4s; }
-.hero-slide.is-active .hero-actions     { animation-delay: 2.0s; }
+.hero-slide.is-active .hero-title       { animation-delay: .45s; }
+.hero-slide.is-active .hero-visual-wrap { animation-delay: 1.2s;  }
+.hero-slide.is-active .hero-subtitle    { animation-delay: 2.0s; }
+.hero-slide.is-active .hero-actions     { animation-delay: 2.8s; }
 
 @keyframes hero-fadein {
     from { opacity: 0; }
