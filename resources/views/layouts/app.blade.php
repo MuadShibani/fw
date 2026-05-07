@@ -49,6 +49,26 @@
     {{-- Navigation --}}
     @include('layouts.navbar')
 
+    {{-- Partner bar — EU + partner logos, shown on every page --}}
+    @php
+        $partnerLang = session('lang', 'en');
+        $euLogo = $partnerLang === 'ar' ? 'images/eu.jpeg' : 'images/logo-eu.png';
+        $euAlt  = $partnerLang === 'ar' ? 'بتمويل من الاتحاد الأوروبي' : 'Funded by the European Union';
+    @endphp
+    <div class="partner-bar">
+        <div class="container partner-bar-inner">
+            <div class="partner-bar-eu">
+                <img src="{{ asset($euLogo) }}" alt="{{ $euAlt }}" loading="lazy">
+            </div>
+            <div class="partner-bar-divider" aria-hidden="true"></div>
+            <div class="partner-bar-partners">
+                <img src="{{ asset('images/logo-rowad.png') }}" alt="Rowad Foundation" loading="lazy">
+                <span class="partner-bar-sep" aria-hidden="true">|</span>
+                <img src="{{ asset('images/logo-deeproot.png') }}" alt="Deep Root" loading="lazy">
+            </div>
+        </div>
+    </div>
+
     {{-- Main --}}
     <main>
         @yield('content')

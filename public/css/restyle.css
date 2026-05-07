@@ -173,6 +173,52 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     transform: translateY(-1px);
 }
 
+/* ── Partner bar (between navbar and content) ─────────────────────────── */
+.partner-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    padding: .35rem 0;
+}
+.partner-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    min-height: 44px;
+}
+.partner-bar-eu img,
+.partner-bar-partners img {
+    display: block;
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+.partner-bar-partners {
+    display: flex;
+    align-items: center;
+    gap: clamp(.75rem, 1.5vw, 1.25rem);
+}
+.partner-bar-partners img { height: 30px; }
+.partner-bar-sep {
+    color: var(--line);
+    font-weight: 300;
+    font-size: 1.2rem;
+    user-select: none;
+}
+.partner-bar-divider {
+    flex: 1 1 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+    max-width: 60%;
+}
+@media (max-width: 640px) {
+    .partner-bar { padding: .5rem 0; }
+    .partner-bar-inner { flex-direction: column; min-height: 0; gap: .65rem; }
+    .partner-bar-divider { display: none; }
+    .partner-bar-eu img { height: 26px; }
+    .partner-bar-partners img { height: 24px; }
+}
+
 /* ── Cards (applied on the public site grids) ─────────────────────────── */
 .news-card, .blog-card, .event-card, .library-card, .program-card,
 .investor-card, .startup-card, .cohort-startup-card, .stat-card-admin {
