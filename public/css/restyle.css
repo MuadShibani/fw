@@ -235,6 +235,25 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     transform: translateY(-6px);
     box-shadow: var(--shadow-card-hover);
 }
+.program-card {
+    min-height: 168px;
+}
+.program-logo-wrap {
+    width: 86px;
+    height: 58px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.program-logo {
+    max-width: 100%;
+    max-height: 58px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
 
 /* ── Page hero (used on /blog, /events, /library, /media, /contact, etc.) */
 .page-hero {

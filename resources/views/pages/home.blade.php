@@ -232,6 +232,16 @@
 </div>
 
 {{-- Wathba Components — 2x2 grid --}}
+@php
+    $componentOrder = ['sil' => 1, 'accelerator' => 2, 'yain' => 3, 'wiif' => 4];
+    $componentLogos = [
+        'sil' => 'images/logo-sil.png',
+        'accelerator' => 'images/logo-wathba-accelerator.jpg',
+        'yain' => 'images/logo-wathba-component.jpeg',
+        'wiif' => 'images/logo-wathba-component.jpeg',
+    ];
+    $orderedPrograms = $programs->sortBy(fn ($program) => $componentOrder[$program->id] ?? 99)->values();
+@endphp
 <section class="home-section">
     <div class="container">
         <div class="section-header" data-reveal="fadeIn">
@@ -239,9 +249,14 @@
             <p class="section-subtitle">{{ $lang==='en'?'Four integrated components working together to empower Yemen entrepreneurs.':'أربعة مكونات متكاملة تعمل معاً لتمكين رواد الأعمال في اليمن.' }}</p>
         </div>
         <div class="programs-grid programs-grid-2x2">
-            @foreach ($programs as $i => $program)
+            @foreach ($orderedPrograms as $i => $program)
                 <a href="{{ $program->path }}" class="program-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.12 }}s" style="--program-color:{{ $program->color }}">
                     <div class="program-card-accent"></div>
+                    @if (isset($componentLogos[$program->id]))
+                        <div class="program-logo-wrap">
+                            <img src="{{ asset($componentLogos[$program->id]) }}" alt="{{ $program->{'title_'.$lang} }}" class="program-logo" loading="lazy">
+                        </div>
+                    @endif
                     <h3 class="program-title">{{ $program->{'title_'.$lang} }}</h3>
                     <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
                 </a>
@@ -353,6 +368,5 @@
     </div>
 </section>
 @endsection
-
 
 
