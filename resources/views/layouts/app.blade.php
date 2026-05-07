@@ -52,22 +52,18 @@
     {{-- Partner bar — EU + partner logos, shown on every page --}}
     @php
         $partnerLang = session('lang', 'en');
-        $euLogo = $partnerLang === 'ar' ? 'images/eu.jpeg' : 'images/logo-eu.png';
-        $euAlt  = $partnerLang === 'ar' ? 'بتمويل من الاتحاد الأوروبي' : 'Funded by the European Union';
+        $euAlt = $partnerLang === 'ar' ? 'بتمويل من الاتحاد الأوروبي' : 'Funded by the European Union';
     @endphp
-    <div class="partner-bar" style="background:#fff;border-bottom:1px solid #ece5d6;padding:.4rem 0;max-height:70px;">
-        <div class="container partner-bar-inner" style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:nowrap;min-height:48px;max-height:62px;">
-            <div class="partner-bar-eu" style="display:flex;align-items:center;flex:0 0 auto;">
-                <img src="{{ asset($euLogo) }}" alt="{{ $euAlt }}" loading="lazy"
-                     style="display:block;height:40px;width:auto;max-width:160px;max-height:46px;object-fit:contain;">
+    <div class="partner-bar" aria-label="{{ $partnerLang === 'ar' ? 'شعارات الاتحاد الأوروبي والشركاء' : 'European Union and partner logos' }}">
+        <div class="container partner-bar-inner">
+            <div class="partner-bar-eu">
+                <img src="{{ asset('images/eu.jpeg') }}" alt="{{ $euAlt }}" loading="lazy" class="partner-bar-logo partner-bar-logo-eu">
             </div>
-            <div class="partner-bar-divider" aria-hidden="true" style="flex:1 1 auto;height:1px;background:linear-gradient(90deg,transparent,#ece5d6,transparent);min-width:1rem;"></div>
-            <div class="partner-bar-partners" style="display:flex;flex-direction:row;align-items:center;flex:0 0 auto;gap:.85rem;flex-wrap:nowrap;">
-                <img src="{{ asset('images/logo-rowad.png') }}" alt="Rowad Foundation" loading="lazy"
-                     style="display:block;height:40px;width:auto;max-width:130px;max-height:46px;object-fit:contain;">
-                <span class="partner-bar-sep" aria-hidden="true" style="color:#ece5d6;font-size:1.4rem;line-height:1;">|</span>
-                <img src="{{ asset('images/logo-deeproot.png') }}" alt="Deep Root" loading="lazy"
-                     style="display:block;height:40px;width:auto;max-width:130px;max-height:46px;object-fit:contain;">
+            <div class="partner-bar-divider" aria-hidden="true"></div>
+            <div class="partner-bar-partners">
+                <img src="{{ asset('images/logo-rowad.png') }}" alt="Rowad Foundation" loading="lazy" class="partner-bar-logo">
+                <span class="partner-bar-sep" aria-hidden="true">|</span>
+                <img src="{{ asset('images/logo-deeproot.png') }}" alt="Deep Root" loading="lazy" class="partner-bar-logo">
             </div>
         </div>
     </div>

@@ -174,22 +174,21 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 
 /* ── Partner bar (between navbar and content) ─────────────────────────── */
-/* A thin horizontal strip with all logos in one row.  The !important on
-   the image sizes guards against any global img rule (e.g. width:100%)
-   from app.css blowing the logos up to full page height. */
 .partner-bar {
     background: #fff;
     border-bottom: 1px solid var(--line);
-    padding: .4rem 0;
+    box-sizing: border-box;
+    height: 70px;
+    overflow: hidden;
 }
 .partner-bar-inner {
     display: flex !important;
     flex-direction: row !important;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(1rem, 3vw, 2.5rem);
-    min-height: 48px;
-    max-height: 56px;
+    gap: clamp(.75rem, 2vw, 1.5rem);
+    height: 70px;
+    min-height: 70px;
     flex-wrap: nowrap;
 }
 .partner-bar-eu,
@@ -201,13 +200,20 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 .partner-bar-partners {
     gap: clamp(.5rem, 1.2vw, 1rem);
 }
-.partner-bar img {
+.partner-bar-logo {
     display: block !important;
-    height: 36px !important;
+    height: 46px !important;
     width: auto !important;
-    max-width: 220px !important;
-    max-height: 40px !important;
+    max-width: 150px !important;
+    max-height: 70px !important;
     object-fit: contain;
+    flex: 0 1 auto;
+}
+.partner-bar-logo-eu {
+    width: min(42vw, 310px) !important;
+    height: auto !important;
+    max-width: 310px !important;
+    max-height: 52px !important;
 }
 .partner-bar-sep {
     color: var(--line);
@@ -224,10 +230,11 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 /* Keep it horizontal even on small screens — just shrink the logos */
 @media (max-width: 640px) {
-    .partner-bar { padding: .35rem 0 !important; max-height: 56px !important; }
-    .partner-bar-inner { gap: .75rem !important; min-height: 38px !important; max-height: 48px !important; }
+    .partner-bar { height: 56px !important; }
+    .partner-bar-inner { gap: .5rem !important; height: 56px !important; min-height: 56px !important; }
     .partner-bar-divider { display: none !important; }
-    .partner-bar img { height: 26px !important; max-height: 30px !important; max-width: 110px !important; }
+    .partner-bar-logo { height: 32px !important; max-height: 40px !important; max-width: 80px !important; }
+    .partner-bar-logo-eu { width: min(44vw, 150px) !important; height: auto !important; max-height: 34px !important; max-width: 150px !important; }
     .partner-bar-sep { font-size: 1rem !important; }
 }
 
