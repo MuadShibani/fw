@@ -240,6 +240,12 @@
         'yain' => 'images/wathba.png',
         'wiif' => 'images/wathba.png',
     ];
+    $componentLogoStyles = [
+        'sil' => 'max-width:52px;max-height:30px;',
+        'accelerator' => 'max-width:44px;max-height:34px;',
+        'yain' => 'max-width:46px;max-height:32px;',
+        'wiif' => 'max-width:46px;max-height:32px;',
+    ];
     $orderedPrograms = $programs->sortBy(fn ($program) => $componentOrder[$program->id] ?? 99)->values();
 @endphp
 <section class="home-section">
@@ -250,15 +256,15 @@
         </div>
         <div class="programs-grid programs-grid-2x2">
             @foreach ($orderedPrograms as $i => $program)
-                <a href="{{ $program->path }}" class="program-card program-card-{{ $program->id }}" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.12 }}s" style="--program-color:{{ $program->color }}">
+                <a href="{{ $program->path }}" class="program-card program-card-{{ $program->id }}" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.12 }}s" style="--program-color:{{ $program->color }};display:grid;grid-template-rows:40px 2.4rem auto;align-content:start;row-gap:.55rem;min-height:150px;padding:1.45rem 2rem;">
                     <div class="program-card-accent"></div>
                     @if (isset($componentLogos[$program->id]))
-                        <div class="program-logo-wrap">
-                            <img src="{{ asset($componentLogos[$program->id]) }}" alt="{{ $program->{'title_'.$lang} }}" class="program-logo program-logo-{{ $program->id }}" loading="lazy">
+                        <div class="program-logo-wrap" style="width:56px;height:40px;margin:0;display:flex;align-items:center;justify-content:flex-start;position:relative;z-index:1;">
+                            <img src="{{ asset($componentLogos[$program->id]) }}" alt="{{ $program->{'title_'.$lang} }}" class="program-logo program-logo-{{ $program->id }}" loading="lazy" style="width:auto;height:auto;object-fit:contain;display:block;{{ $componentLogoStyles[$program->id] ?? 'max-width:48px;max-height:32px;' }}">
                         </div>
                     @endif
-                    <h3 class="program-title">{{ $program->{'title_'.$lang} }}</h3>
-                    <span class="program-link">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
+                    <h3 class="program-title" style="margin:0;align-self:start;">{{ $program->{'title_'.$lang} }}</h3>
+                    <span class="program-link" style="margin:0;align-self:start;">{{ $lang==='en'?'Learn More':'اعرف المزيد' }} <span>{{ $isRTL?'←':'→' }}</span></span>
                 </a>
             @endforeach
         </div>
@@ -368,4 +374,3 @@
     </div>
 </section>
 @endsection
-
