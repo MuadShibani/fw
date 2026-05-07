@@ -54,16 +54,16 @@
         $partnerLang = session('lang', 'en');
         $euAlt = $partnerLang === 'ar' ? 'بتمويل من الاتحاد الأوروبي' : 'Funded by the European Union';
     @endphp
-    <div class="partner-bar" aria-label="{{ $partnerLang === 'ar' ? 'شعارات الاتحاد الأوروبي والشركاء' : 'European Union and partner logos' }}">
-        <div class="container partner-bar-inner">
-            <div class="partner-bar-eu">
-                <img src="{{ asset('images/eu.jpeg') }}" alt="{{ $euAlt }}" loading="lazy" class="partner-bar-logo partner-bar-logo-eu">
+    <div class="partner-bar" aria-label="{{ $partnerLang === 'ar' ? 'شعارات الاتحاد الأوروبي والشركاء' : 'European Union and partner logos' }}" style="height:64px;overflow:hidden;background:#f3efe5;border-bottom:1px solid #e4d8c4;box-sizing:border-box;">
+        <div class="container partner-bar-inner" style="height:64px;min-height:64px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:.75rem;flex-wrap:nowrap;overflow-x:auto;">
+            <div class="partner-bar-logo-card partner-bar-logo-card-light" style="height:52px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:.35rem .65rem;background:#fff;border:1px solid #e5e0d6;border-radius:6px;box-sizing:border-box;">
+                <img src="{{ asset('images/eu.jpeg') }}" alt="{{ $euAlt }}" loading="lazy" class="partner-bar-logo partner-bar-logo-eu" style="display:block;height:38px;width:auto;max-width:250px;max-height:52px;object-fit:contain;">
             </div>
-            <div class="partner-bar-divider" aria-hidden="true"></div>
-            <div class="partner-bar-partners">
-                <img src="{{ asset('images/logo-rowad.png') }}" alt="Rowad Foundation" loading="lazy" class="partner-bar-logo">
-                <span class="partner-bar-sep" aria-hidden="true">|</span>
-                <img src="{{ asset('images/logo-deeproot.png') }}" alt="Deep Root" loading="lazy" class="partner-bar-logo">
+            <div class="partner-bar-logo-card partner-bar-logo-card-dark" style="height:52px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:.35rem .75rem;background:#524037;border:1px solid #524037;border-radius:6px;box-sizing:border-box;">
+                <img src="{{ asset('images/logo-rowad.png') }}" alt="Rowad Foundation" loading="lazy" class="partner-bar-logo" style="display:block;height:38px;width:auto;max-width:92px;max-height:52px;object-fit:contain;">
+            </div>
+            <div class="partner-bar-logo-card partner-bar-logo-card-light" style="height:52px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:.35rem .75rem;background:#fff;border:1px solid #e5e0d6;border-radius:6px;box-sizing:border-box;">
+                <img src="{{ asset('images/logo-deeproot.png') }}" alt="Deep Root" loading="lazy" class="partner-bar-logo" style="display:block;height:42px;width:auto;max-width:96px;max-height:52px;object-fit:contain;">
             </div>
         </div>
     </div>

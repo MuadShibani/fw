@@ -175,67 +175,64 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 
 /* ── Partner bar (between navbar and content) ─────────────────────────── */
 .partner-bar {
-    background: #fff;
-    border-bottom: 1px solid var(--line);
+    background: #f3efe5;
+    border-bottom: 1px solid #e4d8c4;
     box-sizing: border-box;
-    height: 70px;
+    height: 64px;
     overflow: hidden;
 }
 .partner-bar-inner {
     display: flex !important;
     flex-direction: row !important;
     align-items: center;
-    justify-content: space-between;
-    gap: clamp(.75rem, 2vw, 1.5rem);
-    height: 70px;
-    min-height: 70px;
+    justify-content: center;
+    gap: .75rem;
+    height: 64px;
+    min-height: 64px;
     flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
-.partner-bar-eu,
-.partner-bar-partners {
-    display: flex;
+.partner-bar-inner::-webkit-scrollbar {
+    display: none;
+}
+.partner-bar-logo-card {
+    display: flex !important;
     align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 52px;
+    padding: .35rem .75rem;
+    border-radius: 6px;
     flex: 0 0 auto;
 }
-.partner-bar-partners {
-    gap: clamp(.5rem, 1.2vw, 1rem);
+.partner-bar-logo-card-light {
+    background: #fff;
+    border: 1px solid #e5e0d6;
+}
+.partner-bar-logo-card-dark {
+    background: var(--brown);
+    border: 1px solid var(--brown);
 }
 .partner-bar-logo {
     display: block !important;
-    height: 46px !important;
+    height: 38px !important;
     width: auto !important;
-    max-width: 150px !important;
-    max-height: 70px !important;
+    max-width: 96px !important;
+    max-height: 52px !important;
     object-fit: contain;
-    flex: 0 1 auto;
 }
 .partner-bar-logo-eu {
-    width: min(42vw, 310px) !important;
-    height: auto !important;
-    max-width: 310px !important;
-    max-height: 52px !important;
-}
-.partner-bar-sep {
-    color: var(--line);
-    font-weight: 300;
-    font-size: 1.4rem;
-    user-select: none;
-    line-height: 1;
-}
-.partner-bar-divider {
-    flex: 1 1 auto;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line), transparent);
-    min-width: 1rem;
+    height: 38px !important;
+    max-width: min(44vw, 250px) !important;
 }
 /* Keep it horizontal even on small screens — just shrink the logos */
 @media (max-width: 640px) {
     .partner-bar { height: 56px !important; }
-    .partner-bar-inner { gap: .5rem !important; height: 56px !important; min-height: 56px !important; }
-    .partner-bar-divider { display: none !important; }
-    .partner-bar-logo { height: 32px !important; max-height: 40px !important; max-width: 80px !important; }
-    .partner-bar-logo-eu { width: min(44vw, 150px) !important; height: auto !important; max-height: 34px !important; max-width: 150px !important; }
-    .partner-bar-sep { font-size: 1rem !important; }
+    .partner-bar-inner { justify-content: flex-start !important; gap: .5rem !important; height: 56px !important; min-height: 56px !important; padding: 0 1rem !important; }
+    .partner-bar-logo-card { height: 44px !important; padding: .25rem .5rem !important; }
+    .partner-bar-logo { height: 30px !important; max-height: 44px !important; max-width: 72px !important; }
+    .partner-bar-logo-eu { height: 30px !important; max-width: 156px !important; }
 }
 
 /* ── Cards (applied on the public site grids) ─────────────────────────── */
