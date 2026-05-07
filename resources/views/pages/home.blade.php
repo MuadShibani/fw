@@ -123,7 +123,6 @@
                                 @if(!empty($slide->cta_link))
                                     <a href="{{ $slide->cta_link }}" class="btn btn-primary">{{ $slide->{'cta_label_'.$lang} ?: ($lang==='en'?'Learn More':'اعرف المزيد') }}</a>
                                 @endif
-                                <a href="/contact" class="btn btn-outline">{{ $lang==='en'?'Contact Us':'تواصل معنا' }}</a>
                             </div>
                         </div>
                         <div class="hero-visual-wrap">
@@ -354,3 +353,7 @@
     </div>
 </section>
 @endsection
+
+
+
+

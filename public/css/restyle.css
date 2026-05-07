@@ -152,6 +152,27 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 .btn-outline { background: transparent; color: var(--brown); border: 1.5px solid currentColor; }
 .btn-outline:hover { background: rgba(82,64,55,.06); }
 
+/* Language switcher — solid, readable pill so it doesn't blend into the navbar */
+.btn-lang {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    font-size: .92rem;
+    color: var(--brown);
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+    line-height: 1;
+}
+.btn-lang:hover {
+    background: var(--cream);
+    border-color: var(--rust);
+    color: var(--rust);
+    transform: translateY(-1px);
+}
+
 /* ── Cards (applied on the public site grids) ─────────────────────────── */
 .news-card, .blog-card, .event-card, .library-card, .program-card,
 .investor-card, .startup-card, .cohort-startup-card, .stat-card-admin {
