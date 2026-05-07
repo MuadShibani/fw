@@ -236,23 +236,48 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     box-shadow: var(--shadow-card-hover);
 }
 .program-card {
-    min-height: 168px;
+    min-height: 190px;
+    display: grid;
+    grid-template-rows: 76px auto auto;
+    align-content: start;
+    padding: 1.5rem 2rem !important;
 }
 .program-logo-wrap {
-    width: 86px;
-    height: 58px;
-    margin-bottom: 1rem;
+    width: 150px;
+    height: 68px;
+    margin-bottom: .75rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
+    z-index: 1;
 }
 .program-logo {
-    max-width: 100%;
+    max-width: 130px;
     max-height: 58px;
     width: auto;
     height: auto;
     object-fit: contain;
     display: block;
+}
+.program-logo-sil {
+    max-width: 126px;
+    max-height: 54px;
+}
+.program-logo-accelerator {
+    max-width: 116px;
+    max-height: 60px;
+}
+.program-logo-yain,
+.program-logo-wiif {
+    max-width: 108px;
+    max-height: 58px;
+}
+.program-card .program-title {
+    margin: 0 0 .75rem;
+}
+.program-card .program-link {
+    align-self: start;
 }
 
 /* ── Page hero (used on /blog, /events, /library, /media, /contact, etc.) */
