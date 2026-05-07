@@ -259,13 +259,13 @@
         </div>
         <div class="news-grid">
             @foreach ($latestNews as $i => $item)
-                <a href="/media/{{ $item->id }}" class="news-card" data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s">
-                    <div class="news-img-wrap">
+                <a href="/media/{{ $item->id }}" class="news-card" data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s" style="display:block;">
+                    <div class="news-img-wrap" style="height:220px;aspect-ratio:auto;line-height:0;overflow:hidden;">
                         <img src="{{ $item->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.$item->id }}"
-                             alt="{{ $item->{'title_'.$lang} }}" class="news-img" loading="lazy">
+                             alt="{{ $item->{'title_'.$lang} }}" class="news-img" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <span class="news-badge">{{ $item->category }}</span>
                     </div>
-                    <div class="news-body">
+                    <div class="news-body" style="display:block;margin:0;min-height:0;padding:1.5rem 1.75rem 1.75rem;">
                         <p class="news-date">{{ \Carbon\Carbon::parse($item->date)->format('d M Y') }}</p>
                         <h3 class="news-title">{{ $item->{'title_'.$lang} }}</h3>
                         <p class="news-summary">{{ $item->{'summary_'.$lang} }}</p>
@@ -288,13 +288,13 @@
         </div>
         <div class="news-grid">
             @forelse ($latestBlog as $i => $post)
-                <a href="/blog/{{ $post->id }}" class="news-card" data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s">
-                    <div class="news-img-wrap">
+                <a href="/blog/{{ $post->id }}" class="news-card" data-reveal="fadeIn" data-reveal-delay="{{ $i * 0.12 }}s" style="display:block;">
+                    <div class="news-img-wrap" style="height:220px;aspect-ratio:auto;line-height:0;overflow:hidden;">
                         <img src="{{ $post->{'image_'.$lang} ?? 'https://picsum.photos/400/250?random='.($post->id + 1000) }}"
-                             alt="{{ $post->{'title_'.$lang} }}" class="news-img" loading="lazy">
+                             alt="{{ $post->{'title_'.$lang} }}" class="news-img" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
                         <span class="news-badge" style="background:#A2C59A;color:#524037">✍️ {{ $post->{'author_'.$lang} }}</span>
                     </div>
-                    <div class="news-body">
+                    <div class="news-body" style="display:block;margin:0;min-height:0;padding:1.5rem 1.75rem 1.75rem;">
                         <p class="news-date">📅 {{ \Carbon\Carbon::parse($post->date)->format('d M Y') }}</p>
                         <h3 class="news-title">{{ $post->{'title_'.$lang} }}</h3>
                         <p class="news-summary">{{ $post->{'summary_'.$lang} }}</p>
@@ -353,7 +353,6 @@
     </div>
 </section>
 @endsection
-
 
 
 
