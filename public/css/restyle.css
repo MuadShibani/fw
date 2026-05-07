@@ -174,49 +174,61 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 
 /* ── Partner bar (between navbar and content) ─────────────────────────── */
+/* A thin horizontal strip with all logos in one row.  The !important on
+   the image sizes guards against any global img rule (e.g. width:100%)
+   from app.css blowing the logos up to full page height. */
 .partner-bar {
     background: #fff;
     border-bottom: 1px solid var(--line);
-    padding: .35rem 0;
+    padding: .4rem 0;
 }
 .partner-bar-inner {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
     justify-content: space-between;
     gap: clamp(1rem, 3vw, 2.5rem);
-    min-height: 44px;
+    min-height: 48px;
+    max-height: 56px;
+    flex-wrap: nowrap;
 }
-.partner-bar-eu img,
-.partner-bar-partners img {
-    display: block;
-    height: 32px;
-    width: auto;
-    object-fit: contain;
-}
+.partner-bar-eu,
 .partner-bar-partners {
     display: flex;
     align-items: center;
-    gap: clamp(.75rem, 1.5vw, 1.25rem);
+    flex: 0 0 auto;
 }
-.partner-bar-partners img { height: 30px; }
+.partner-bar-partners {
+    gap: clamp(.5rem, 1.2vw, 1rem);
+}
+.partner-bar img {
+    display: block !important;
+    height: 36px !important;
+    width: auto !important;
+    max-width: 220px !important;
+    max-height: 40px !important;
+    object-fit: contain;
+}
 .partner-bar-sep {
     color: var(--line);
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     user-select: none;
+    line-height: 1;
 }
 .partner-bar-divider {
     flex: 1 1 auto;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--line), transparent);
-    max-width: 60%;
+    min-width: 1rem;
 }
+/* Keep it horizontal even on small screens — just shrink the logos */
 @media (max-width: 640px) {
-    .partner-bar { padding: .5rem 0; }
-    .partner-bar-inner { flex-direction: column; min-height: 0; gap: .65rem; }
+    .partner-bar { padding: .35rem 0; }
+    .partner-bar-inner { gap: .75rem; min-height: 40px; max-height: 48px; }
     .partner-bar-divider { display: none; }
-    .partner-bar-eu img { height: 26px; }
-    .partner-bar-partners img { height: 24px; }
+    .partner-bar img { height: 26px !important; max-height: 30px !important; max-width: 140px !important; }
+    .partner-bar-sep { font-size: 1rem; }
 }
 
 /* ── Cards (applied on the public site grids) ─────────────────────────── */
