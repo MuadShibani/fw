@@ -241,10 +241,10 @@
         'wiif' => 'images/wathba.png',
     ];
     $componentLogoStyles = [
-        'sil' => 'max-width:52px;max-height:30px;',
-        'accelerator' => 'max-width:44px;max-height:34px;',
-        'yain' => 'max-width:46px;max-height:32px;',
-        'wiif' => 'max-width:46px;max-height:32px;',
+        'sil' => 'max-width:92px;max-height:48px;',
+        'accelerator' => 'max-width:78px;max-height:56px;',
+        'yain' => 'max-width:78px;max-height:50px;',
+        'wiif' => 'max-width:78px;max-height:50px;',
     ];
     $orderedPrograms = $programs->sortBy(fn ($program) => $componentOrder[$program->id] ?? 99)->values();
 @endphp
@@ -256,10 +256,10 @@
         </div>
         <div class="programs-grid programs-grid-2x2">
             @foreach ($orderedPrograms as $i => $program)
-                <a href="{{ $program->path }}" class="program-card program-card-{{ $program->id }}" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.12 }}s" style="--program-color:{{ $program->color }};display:grid;grid-template-rows:40px 2.4rem auto;align-content:start;row-gap:.55rem;min-height:150px;padding:1.45rem 2rem;">
+                <a href="{{ $program->path }}" class="program-card program-card-{{ $program->id }}" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.12 }}s" style="--program-color:{{ $program->color }};display:grid;grid-template-rows:62px 2.4rem auto;align-content:start;row-gap:.65rem;min-height:172px;padding:1.45rem 2rem;">
                     <div class="program-card-accent"></div>
                     @if (isset($componentLogos[$program->id]))
-                        <div class="program-logo-wrap" style="width:56px;height:40px;margin:0;display:flex;align-items:center;justify-content:flex-start;position:relative;z-index:1;">
+                        <div class="program-logo-wrap" style="width:100px;height:62px;margin:0;display:flex;align-items:center;justify-content:flex-start;position:relative;z-index:1;">
                             <img src="{{ asset($componentLogos[$program->id]) }}" alt="{{ $program->{'title_'.$lang} }}" class="program-logo program-logo-{{ $program->id }}" loading="lazy" style="width:auto;height:auto;object-fit:contain;display:block;{{ $componentLogoStyles[$program->id] ?? 'max-width:48px;max-height:32px;' }}">
                         </div>
                     @endif
