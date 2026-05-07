@@ -236,16 +236,17 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     box-shadow: var(--shadow-card-hover);
 }
 .program-card {
-    min-height: 190px;
+    min-height: 160px;
     display: grid;
-    grid-template-rows: 76px auto auto;
+    grid-template-rows: 44px auto auto;
     align-content: start;
+    row-gap: .75rem;
     padding: 1.5rem 2rem !important;
 }
 .program-logo-wrap {
-    width: 150px;
-    height: 68px;
-    margin-bottom: .75rem;
+    width: 64px;
+    height: 44px;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -253,31 +254,33 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
     z-index: 1;
 }
 .program-logo {
-    max-width: 130px;
-    max-height: 58px;
+    max-width: 64px;
+    max-height: 44px;
     width: auto;
     height: auto;
     object-fit: contain;
     display: block;
 }
 .program-logo-sil {
-    max-width: 126px;
-    max-height: 54px;
+    max-width: 64px;
+    max-height: 36px;
 }
 .program-logo-accelerator {
-    max-width: 116px;
-    max-height: 60px;
+    max-width: 54px;
+    max-height: 40px;
 }
 .program-logo-yain,
 .program-logo-wiif {
-    max-width: 108px;
-    max-height: 58px;
+    max-width: 62px;
+    max-height: 38px;
 }
 .program-card .program-title {
-    margin: 0 0 .75rem;
+    margin: 0;
+    min-height: 1.8rem;
 }
 .program-card .program-link {
     align-self: start;
+    margin-top: 0;
 }
 
 /* ── Page hero (used on /blog, /events, /library, /media, /contact, etc.) */
