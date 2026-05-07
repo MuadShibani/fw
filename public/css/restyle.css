@@ -224,11 +224,11 @@ h1, h2, h3, h4 { color: var(--brown); font-weight: 700; letter-spacing: -.005em;
 }
 /* Keep it horizontal even on small screens — just shrink the logos */
 @media (max-width: 640px) {
-    .partner-bar { padding: .35rem 0; }
-    .partner-bar-inner { gap: .75rem; min-height: 40px; max-height: 48px; }
-    .partner-bar-divider { display: none; }
-    .partner-bar img { height: 26px !important; max-height: 30px !important; max-width: 140px !important; }
-    .partner-bar-sep { font-size: 1rem; }
+    .partner-bar { padding: .35rem 0 !important; max-height: 56px !important; }
+    .partner-bar-inner { gap: .75rem !important; min-height: 38px !important; max-height: 48px !important; }
+    .partner-bar-divider { display: none !important; }
+    .partner-bar img { height: 26px !important; max-height: 30px !important; max-width: 110px !important; }
+    .partner-bar-sep { font-size: 1rem !important; }
 }
 
 /* ── Cards (applied on the public site grids) ─────────────────────────── */
