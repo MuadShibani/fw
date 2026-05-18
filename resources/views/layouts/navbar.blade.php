@@ -9,10 +9,10 @@
         [
             'en' => 'Wathba Components', 'ar' => 'مكونات وثبة', 'path' => '#',
             'children' => [
-                ['en' => 'Accelerator',          'ar' => 'المسرعة',                    'path' => '/accelerator'],
-                ['en' => 'Angel Network (YAIN)', 'ar' => 'شبكة المستثمرين',            'path' => '/yain'],
-                ['en' => 'Impact Fund (WIIF)',   'ar' => 'صندوق الاستثمار',            'path' => '/wiif'],
-                ['en' => 'Social Innovation Lab','ar' => 'مختبر الابتكار الاجتماعي',  'path' => '/sil'],
+                ['en' => 'Social Innovation Lab (SIL)',           'ar' => 'مختبر الابتكار الاجتماعي (SIL)',         'path' => '/sil'],
+                ['en' => 'Wathba Accelerator Program (WAP)',      'ar' => 'برنامج وثبة للتسريع (WAP)',              'path' => '/accelerator'],
+                ['en' => 'Yemen Angel Investment Network (YAIN)', 'ar' => 'شبكة المستثمرين الملائكيين اليمنية (YAIN)', 'path' => '/yain'],
+                ['en' => 'Wathba Impact Investment Fund (WIIF)',  'ar' => 'صندوق وثبة للاستثمار المؤثر (WIIF)',     'path' => '/wiif'],
             ]
         ],
         [

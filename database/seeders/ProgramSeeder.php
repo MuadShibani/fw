@@ -13,10 +13,25 @@ class ProgramSeeder extends Seeder
 
         $items = [
             [
-                'id'             => 'accelerator',
+                'id'             => 'sil',
                 'sort_order'     => 1,
-                'title_en'       => 'Wathba Accelerator',
-                'title_ar'       => 'مسرعة وثبة',
+                'title_en'       => 'Social Innovation Lab',
+                'title_ar'       => 'مختبر الابتكار الاجتماعي',
+                'description_en' => 'Fostering social entrepreneurship and community-driven solutions for Yemen\'s most pressing challenges.',
+                'description_ar' => 'تعزيز ريادة الأعمال الاجتماعية والحلول المجتمعية لأكثر تحديات اليمن إلحاحاً.',
+                'color'          => '#ECCE9E',
+                'path'           => '/sil',
+                'features'       => json_encode([
+                    ['en' => 'Innovation Grants',  'ar' => 'منح الابتكار'],
+                    ['en' => 'Community Programs', 'ar' => 'البرامج المجتمعية'],
+                    ['en' => 'Impact Measurement', 'ar' => 'قياس الأثر'],
+                ]),
+            ],
+            [
+                'id'             => 'accelerator',
+                'sort_order'     => 2,
+                'title_en'       => 'Wathba Accelerator Program',
+                'title_ar'       => 'برنامج وثبة للتسريع',
                 'description_en' => 'A dedicated program supporting startups through 5 planned cohorts over 6 months each, providing mentorship and roadmaps.',
                 'description_ar' => 'برنامج مخصص لدعم الشركات الناشئة من خلال 5 دفعات مخططة مدة كل منها 6 أشهر، يوفر التوجيه وخرائط الطريق.',
                 'color'          => '#9FD4D5',
@@ -29,7 +44,7 @@ class ProgramSeeder extends Seeder
             ],
             [
                 'id'             => 'yain',
-                'sort_order'     => 2,
+                'sort_order'     => 3,
                 'title_en'       => 'Yemen Angel Investment Network',
                 'title_ar'       => 'شبكة المستثمرين الملائكيين اليمنية',
                 'description_en' => 'Connecting angel investors and champions with promising Yemeni startups to bridge the funding gap.',
@@ -44,7 +59,7 @@ class ProgramSeeder extends Seeder
             ],
             [
                 'id'             => 'wiif',
-                'sort_order'     => 3,
+                'sort_order'     => 4,
                 'title_en'       => 'Wathba Impact Investment Fund',
                 'title_ar'       => 'صندوق وثبة للاستثمار المؤثر',
                 'description_en' => 'A fund overview focused on capital structure, portfolio company profiles, and SDG alignment.',
@@ -55,21 +70,6 @@ class ProgramSeeder extends Seeder
                     ['en' => 'Capital Structure',   'ar' => 'هيكل رأس المال'],
                     ['en' => 'Portfolio Companies', 'ar' => 'شركات المحفظة'],
                     ['en' => 'SDG Alignment',       'ar' => 'أهداف التنمية المستدامة'],
-                ]),
-            ],
-            [
-                'id'             => 'sil',
-                'sort_order'     => 4,
-                'title_en'       => 'Social Innovation Lab',
-                'title_ar'       => 'مختبر الابتكار الاجتماعي',
-                'description_en' => 'Fostering social entrepreneurship and community-driven solutions for Yemen\'s most pressing challenges.',
-                'description_ar' => 'تعزيز ريادة الأعمال الاجتماعية والحلول المجتمعية لأكثر تحديات اليمن إلحاحاً.',
-                'color'          => '#ECCE9E',
-                'path'           => '/sil',
-                'features'       => json_encode([
-                    ['en' => 'Innovation Grants',  'ar' => 'منح الابتكار'],
-                    ['en' => 'Community Programs', 'ar' => 'البرامج المجتمعية'],
-                    ['en' => 'Impact Measurement', 'ar' => 'قياس الأثر'],
                 ]),
             ],
         ];
