@@ -38,10 +38,13 @@
                 <a href="/admin/events"   class="sidebar-link {{ request()->is('admin/events*')  ? 'active' : '' }}"><span class="sidebar-icon">📅</span> Events</a>
                 <a href="/admin/library"  class="sidebar-link {{ request()->is('admin/library*') ? 'active' : '' }}"><span class="sidebar-icon">📁</span> Library</a>
                 <div class="sidebar-section-label">Programs</div>
-                <a href="/admin/accelerator" class="sidebar-link {{ request()->is('admin/accelerator*') ? 'active' : '' }}"><span class="sidebar-icon">🚀</span> Accelerator</a>
-                <a href="/admin/yain"        class="sidebar-link {{ request()->is('admin/yain*')        ? 'active' : '' }}"><span class="sidebar-icon">👥</span> YAIN</a>
-                <a href="/admin/wiif"        class="sidebar-link {{ request()->is('admin/wiif*')        ? 'active' : '' }}"><span class="sidebar-icon">📊</span> WIIF</a>
-                <a href="/admin/sil"         class="sidebar-link {{ request()->is('admin/sil*')         ? 'active' : '' }}"><span class="sidebar-icon">💡</span> SIL</a>
+                <a href="/admin/accelerator"           class="sidebar-link {{ request()->is('admin/accelerator*')         ? 'active' : '' }}"><span class="sidebar-icon">🚀</span> Accelerator</a>
+                <a href="/admin/program-features"      class="sidebar-link {{ request()->is('admin/program-features*')    ? 'active' : '' }}"><span class="sidebar-icon">📋</span> Program Features</a>
+                <a href="/admin/program-milestones"    class="sidebar-link {{ request()->is('admin/program-milestones*')  ? 'active' : '' }}"><span class="sidebar-icon">🗺</span> Timeline Roadmap</a>
+                <a href="/admin/yain"                  class="sidebar-link {{ request()->is('admin/yain*')                ? 'active' : '' }}"><span class="sidebar-icon">👥</span> YAIN</a>
+                <a href="/admin/wiif"                  class="sidebar-link {{ request()->is('admin/wiif*')                ? 'active' : '' }}"><span class="sidebar-icon">📊</span> WIIF Portfolio</a>
+                <a href="/admin/wiif-members"          class="sidebar-link {{ request()->is('admin/wiif-members*')        ? 'active' : '' }}"><span class="sidebar-icon">🤝</span> WIIF GPs & Committee</a>
+                <a href="/admin/sil"                   class="sidebar-link {{ request()->is('admin/sil*')                 ? 'active' : '' }}"><span class="sidebar-icon">💡</span> SIL</a>
                 <div class="sidebar-section-label">System</div>
                 <a href="/admin/pages"    class="sidebar-link {{ request()->is('admin/pages*')   ? 'active' : '' }}"><span class="sidebar-icon">📄</span> Pages</a>
                 <a href="/admin/messages" class="sidebar-link {{ request()->is('admin/messages*')? 'active' : '' }}">

@@ -25,6 +25,9 @@ use App\Http\Controllers\Admin\ImageUploadController;
 use App\Http\Controllers\Admin\DocumentUploadController;
 use App\Http\Controllers\Admin\StatsController;
 use App\Http\Controllers\Admin\HeroSlideController;
+use App\Http\Controllers\Admin\WiifMemberController;
+use App\Http\Controllers\Admin\ProgramFeatureController;
+use App\Http\Controllers\Admin\ProgramMilestoneController;
 
 Route::post('/lang', [LanguageController::class, 'switch'])->name('lang.switch');
 
@@ -124,6 +127,30 @@ Route::prefix('admin')->name('admin.')->middleware(\App\Http\Middleware\AdminAut
     Route::get('/settings',          [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings',         [SettingsController::class, 'update'])->name('settings.update');
     Route::post('/settings/password',[SettingsController::class, 'changePassword'])->name('settings.password');
+
+    // WIIF — General Partners + Investment Committee
+    Route::get('/wiif-members',              [WiifMemberController::class, 'index'])->name('wiif-members.index');
+    Route::get('/wiif-members/create',       [WiifMemberController::class, 'create'])->name('wiif-members.create');
+    Route::post('/wiif-members',             [WiifMemberController::class, 'store'])->name('wiif-members.store');
+    Route::get('/wiif-members/{id}/edit',    [WiifMemberController::class, 'edit'])->name('wiif-members.edit');
+    Route::put('/wiif-members/{id}',         [WiifMemberController::class, 'update'])->name('wiif-members.update');
+    Route::delete('/wiif-members/{id}',      [WiifMemberController::class, 'destroy'])->name('wiif-members.destroy');
+
+    // Accelerator — Program Features
+    Route::get('/program-features',           [ProgramFeatureController::class, 'index'])->name('program-features.index');
+    Route::get('/program-features/create',    [ProgramFeatureController::class, 'create'])->name('program-features.create');
+    Route::post('/program-features',          [ProgramFeatureController::class, 'store'])->name('program-features.store');
+    Route::get('/program-features/{id}/edit', [ProgramFeatureController::class, 'edit'])->name('program-features.edit');
+    Route::put('/program-features/{id}',      [ProgramFeatureController::class, 'update'])->name('program-features.update');
+    Route::delete('/program-features/{id}',   [ProgramFeatureController::class, 'destroy'])->name('program-features.destroy');
+
+    // Accelerator — Program Milestones (timeline roadmap)
+    Route::get('/program-milestones',           [ProgramMilestoneController::class, 'index'])->name('program-milestones.index');
+    Route::get('/program-milestones/create',    [ProgramMilestoneController::class, 'create'])->name('program-milestones.create');
+    Route::post('/program-milestones',          [ProgramMilestoneController::class, 'store'])->name('program-milestones.store');
+    Route::get('/program-milestones/{id}/edit', [ProgramMilestoneController::class, 'edit'])->name('program-milestones.edit');
+    Route::put('/program-milestones/{id}',      [ProgramMilestoneController::class, 'update'])->name('program-milestones.update');
+    Route::delete('/program-milestones/{id}',   [ProgramMilestoneController::class, 'destroy'])->name('program-milestones.destroy');
 
     // Hero Slides — homepage carousel
     Route::get('/hero',              [HeroSlideController::class, 'index'])->name('hero.index');

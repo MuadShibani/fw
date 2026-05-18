@@ -8,6 +8,9 @@ use App\Models\Cohort;
 use App\Models\Investor;
 use App\Models\Startup;
 use App\Models\WiifPortfolio;
+use App\Models\WiifMember;
+use App\Models\ProgramFeature;
+use App\Models\ProgramMilestone;
 use App\Models\Setting;
 use App\Models\News;
 
@@ -39,6 +42,8 @@ class PageViewController extends Controller
         return view('pages.accelerator', [
             'page'         => Page::findOrFail('accelerator'),
             'cohorts'      => Cohort::orderBy('start_date', 'desc')->get(),
+            'features'     => ProgramFeature::orderBy('sort_order')->orderBy('id')->get(),
+            'milestones'   => ProgramMilestone::orderBy('sort_order')->orderBy('id')->get(),
             'relatedNews'  => $this->relatedNews(['Accelerator', 'Cohort']),
         ]);
     }
@@ -58,6 +63,8 @@ class PageViewController extends Controller
         return view('pages.wiif', [
             'page'         => Page::findOrFail('wiif'),
             'portfolio'    => WiifPortfolio::orderBy('investment_date', 'desc')->get(),
+            'gps'          => WiifMember::gps()->get(),
+            'committee'    => WiifMember::committee()->get(),
             'relatedNews'  => $this->relatedNews(['WIIF', 'Fund', 'Investment']),
         ]);
     }

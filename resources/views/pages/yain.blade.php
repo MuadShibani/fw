@@ -47,23 +47,27 @@
 <section class="section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">{{ $cf['portfolioTitle'][$lang] ?? ($lang==='en'?'Portfolio Companies':'شركات المحفظة') }}</h2>
+            <h2 class="section-title">{{ $cf['portfolioTitle'][$lang] ?? ($lang==='en' ? "Companies' Profile" : 'بطاقة الشركات') }}</h2>
             <p class="section-subtitle">{{ $cf['portfolioSubtitle'][$lang] ?? '' }}</p>
         </div>
-        <div class="startups-grid">
+        <div class="company-profile-grid">
             @forelse ($startups as $startup)
-                <div class="startup-card">
-                    <img src="{{ $startup->logo_url }}" alt="{{ $startup->name }}" class="startup-logo" loading="lazy">
-                    <div class="startup-info">
-                        <h3>{{ $startup->name }}</h3>
-                        <span class="startup-sector">{{ $startup->sector }}</span>
-                        <span class="startup-stage stage-{{ strtolower(str_replace([' ','-'],'-',$startup->stage)) }}">{{ $startup->stage }}</span>
-                        <div class="prose-content">{!! \App\Support\Content::format($startup->{'description_'.$lang}) !!}</div>
-                        @if ($startup->founder_name)<p class="startup-founder">👤 {{ $startup->founder_name }}</p>@endif
+                <article class="company-card">
+                    <div class="company-card-photo">
+                        <img src="{{ $startup->logo_url }}" alt="{{ $startup->name }}" loading="lazy">
                     </div>
-                </div>
+                    <h3 class="company-card-name">{{ $startup->name }}</h3>
+                    <div class="company-card-chips">
+                        <span class="chip chip-sector">{{ $startup->sector }}</span>
+                        <span class="chip chip-stage chip-stage-{{ strtolower(str_replace([' ','-','/'],'-',$startup->stage)) }}">{{ $startup->stage }}</span>
+                    </div>
+                    <div class="company-card-desc prose-content">{!! \App\Support\Content::format($startup->{'description_'.$lang}) !!}</div>
+                    @if ($startup->founder_name)
+                        <p class="company-card-founder">👤 {{ $startup->founder_name }}</p>
+                    @endif
+                </article>
             @empty
-                <p class="empty-state">{{ $lang==='en'?'No startups listed.':'لا توجد شركات.' }}</p>
+                <p class="empty-state">{{ $lang==='en' ? 'No companies listed.' : 'لا توجد شركات.' }}</p>
             @endforelse
         </div>
     </div>

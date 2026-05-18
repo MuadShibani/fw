@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             StatSeeder::class,
             ProgramSeeder::class,
             HeroSlideSeeder::class,
+            WiifMemberSeeder::class,
+            ProgramFeatureSeeder::class,
+            ProgramMilestoneSeeder::class,
         ]);
     }
 }
