@@ -16,7 +16,7 @@
             <td><span class="status-badge status-{{ strtolower($cohort->status) }}">{{ $cohort->status }}</span></td>
             <td>{{ $cohort->start_date->format('d M Y') }}</td>
             <td>{{ $cohort->end_date->format('d M Y') }}</td>
-            <td>{{ $cohort->startups_count }}</td>
+            <td>{{ count($cohort->startups_list ?? []) ?: $cohort->startups_count }}</td>
             <td class="actions-cell">
                 <a href="/admin/accelerator/cohorts/{{ $cohort->id }}/edit" class="btn btn-xs">Edit</a>
                 <form action="/admin/accelerator/cohorts/{{ $cohort->id }}" method="POST" class="inline" onsubmit="return confirm('Delete?')">

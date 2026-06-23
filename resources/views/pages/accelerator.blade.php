@@ -149,18 +149,7 @@
                                     @else
                                         <div class="cohort-startup-logo cohort-startup-logo-placeholder">{{ mb_substr($s['name'] ?? '?', 0, 1) }}</div>
                                     @endif
-                                    <div class="cohort-startup-info">
-                                        <h4 class="cohort-startup-name">{{ $s['name'] ?? '' }}</h4>
-                                        @if(!empty($s['sector_'.$lang]) || !empty($s['sector_en']))
-                                            <span class="cohort-startup-sector">{{ $s['sector_'.$lang] ?? $s['sector_en'] ?? '' }}</span>
-                                        @endif
-                                        @if(!empty($s['description_'.$lang]) || !empty($s['description_en']))
-                                            <p class="cohort-startup-desc">{{ $s['description_'.$lang] ?? $s['description_en'] ?? '' }}</p>
-                                        @endif
-                                        @if(!empty($s['founder_name']))
-                                            <p class="cohort-startup-founder">👤 {{ $s['founder_name'] }}</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="cohort-startup-name">{{ $s['name'] ?? '' }}</h4>
                                 </div>
                             @endforeach
                         </div>
@@ -187,15 +176,11 @@
 .cohort-card-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; color: #6b5b50; font-size: .9rem; }
 .cohort-card-toggle { display: inline-block; transition: transform .2s ease; color: #b04c2c; }
 .cohort-card[open] .cohort-card-toggle { transform: rotate(180deg); }
-.cohort-startups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; padding: 0 1.25rem 1.25rem; }
-.cohort-startup-card { display: flex; gap: .75rem; padding: 1rem; background: #faf6ee; border-radius: 10px; border: 1px solid #ece5d6; }
-.cohort-startup-logo { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
-.cohort-startup-logo-placeholder { display: flex; align-items: center; justify-content: center; background: #b04c2c; color: #fff; font-weight: 600; font-size: 1.25rem; text-transform: uppercase; }
-.cohort-startup-info { flex: 1 1 auto; min-width: 0; }
-.cohort-startup-name { margin: 0 0 .25rem; font-size: .95rem; font-weight: 600; color: #524037; }
-.cohort-startup-sector { display: inline-block; padding: .15rem .5rem; background: #ecce9e; color: #524037; border-radius: 99px; font-size: .7rem; margin-bottom: .35rem; }
-.cohort-startup-desc { margin: .35rem 0 .25rem; font-size: .82rem; color: #6b5b50; line-height: 1.45; }
-.cohort-startup-founder { margin: .25rem 0 0; font-size: .78rem; color: #8a7666; }
+.cohort-startups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 1rem; padding: 0 1.25rem 1.25rem; }
+.cohort-startup-card { display: flex; flex-direction: column; align-items: center; gap: .65rem; padding: 1rem .75rem; background: #faf6ee; border-radius: 10px; border: 1px solid #ece5d6; text-align: center; }
+.cohort-startup-logo { width: 72px; height: 72px; border-radius: 10px; object-fit: contain; flex-shrink: 0; background: #fff; border: 1px solid #ece5d6; padding: .35rem; }
+.cohort-startup-logo-placeholder { display: flex; align-items: center; justify-content: center; background: #b04c2c; color: #fff; font-weight: 600; font-size: 1.4rem; text-transform: uppercase; padding: 0; }
+.cohort-startup-name { margin: 0; font-size: .9rem; font-weight: 700; color: #524037; line-height: 1.3; }
 [dir="rtl"] .cohort-card-toggle { transform: rotate(0); }
 [dir="rtl"] .cohort-card[open] .cohort-card-toggle { transform: rotate(180deg); }
 </style>
