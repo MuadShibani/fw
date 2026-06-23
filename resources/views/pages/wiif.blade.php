@@ -31,90 +31,90 @@
 </section>
 
 {{-- General Partners --}}
-@if (!empty($gps) && $gps->count() > 0)
-<section class="section section-alt">
-    <div class="container">
-        <div class="section-header" data-reveal="fadeIn">
-            <h2 class="section-title">{{ $lang==='en' ? 'General Partners' : 'الشركاء العامون' }}</h2>
-            <p class="section-subtitle">{{ $lang==='en' ? 'The partners overseeing the fund and shaping its strategy.' : 'الشركاء الذين يشرفون على الصندوق ويرسمون استراتيجيته.' }}</p>
-        </div>
-        <div class="member-grid">
-            @foreach ($gps as $i => $member)
-                <article class="member-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.08 }}s">
-                    <div class="member-photo">
-                        @if($member->image_url)
-                            <img src="{{ $member->image_url }}" alt="{{ $member->{'name_'.$lang} }}" loading="lazy">
-                        @else
-                            <div class="member-photo-placeholder">{{ mb_substr($member->{'name_'.$lang} ?? '?', 0, 1) }}</div>
-                        @endif
-                    </div>
-                    <h3 class="member-name">{{ $member->{'name_'.$lang} }}</h3>
-                    <p class="member-role">{{ $member->{'role_'.$lang} }}</p>
-                    @if ($member->{'bio_'.$lang})
-                        <div class="member-bio prose-content">{!! \App\Support\Content::format($member->{'bio_'.$lang}) !!}</div>
-                    @endif
-                </article>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
+{{--@if (!empty($gps) && $gps->count() > 0)--}}
+{{--<section class="section section-alt">--}}
+{{--    <div class="container">--}}
+{{--        <div class="section-header" data-reveal="fadeIn">--}}
+{{--            <h2 class="section-title">{{ $lang==='en' ? 'General Partners' : 'الشركاء العامون' }}</h2>--}}
+{{--            <p class="section-subtitle">{{ $lang==='en' ? 'The partners overseeing the fund and shaping its strategy.' : 'الشركاء الذين يشرفون على الصندوق ويرسمون استراتيجيته.' }}</p>--}}
+{{--        </div>--}}
+{{--        <div class="member-grid">--}}
+{{--            @foreach ($gps as $i => $member)--}}
+{{--                <article class="member-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.08 }}s">--}}
+{{--                    <div class="member-photo">--}}
+{{--                        @if($member->image_url)--}}
+{{--                            <img src="{{ $member->image_url }}" alt="{{ $member->{'name_'.$lang} }}" loading="lazy">--}}
+{{--                        @else--}}
+{{--                            <div class="member-photo-placeholder">{{ mb_substr($member->{'name_'.$lang} ?? '?', 0, 1) }}</div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                    <h3 class="member-name">{{ $member->{'name_'.$lang} }}</h3>--}}
+{{--                    <p class="member-role">{{ $member->{'role_'.$lang} }}</p>--}}
+{{--                    @if ($member->{'bio_'.$lang})--}}
+{{--                        <div class="member-bio prose-content">{!! \App\Support\Content::format($member->{'bio_'.$lang}) !!}</div>--}}
+{{--                    @endif--}}
+{{--                </article>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
+{{--@endif--}}
 
 {{-- Investment Committee --}}
-@if (!empty($committee) && $committee->count() > 0)
-<section class="section">
-    <div class="container">
-        <div class="section-header" data-reveal="fadeIn">
-            <h2 class="section-title">{{ $lang==='en' ? 'Investment Committee' : 'لجنة الاستثمار' }}</h2>
-            <p class="section-subtitle">{{ $lang==='en' ? 'The committee that evaluates and approves WIIF investments.' : 'اللجنة التي تقيّم استثمارات الصندوق وتعتمدها.' }}</p>
-        </div>
-        <div class="member-grid">
-            @foreach ($committee as $i => $member)
-                <article class="member-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.08 }}s">
-                    <div class="member-photo">
-                        @if($member->image_url)
-                            <img src="{{ $member->image_url }}" alt="{{ $member->{'name_'.$lang} }}" loading="lazy">
-                        @else
-                            <div class="member-photo-placeholder">{{ mb_substr($member->{'name_'.$lang} ?? '?', 0, 1) }}</div>
-                        @endif
-                    </div>
-                    <h3 class="member-name">{{ $member->{'name_'.$lang} }}</h3>
-                    <p class="member-role">{{ $member->{'role_'.$lang} }}</p>
-                    @if ($member->{'bio_'.$lang})
-                        <div class="member-bio prose-content">{!! \App\Support\Content::format($member->{'bio_'.$lang}) !!}</div>
-                    @endif
-                </article>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
+{{--@if (!empty($committee) && $committee->count() > 0)--}}
+{{--<section class="section">--}}
+{{--    <div class="container">--}}
+{{--        <div class="section-header" data-reveal="fadeIn">--}}
+{{--            <h2 class="section-title">{{ $lang==='en' ? 'Investment Committee' : 'لجنة الاستثمار' }}</h2>--}}
+{{--            <p class="section-subtitle">{{ $lang==='en' ? 'The committee that evaluates and approves WIIF investments.' : 'اللجنة التي تقيّم استثمارات الصندوق وتعتمدها.' }}</p>--}}
+{{--        </div>--}}
+{{--        <div class="member-grid">--}}
+{{--            @foreach ($committee as $i => $member)--}}
+{{--                <article class="member-card" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.08 }}s">--}}
+{{--                    <div class="member-photo">--}}
+{{--                        @if($member->image_url)--}}
+{{--                            <img src="{{ $member->image_url }}" alt="{{ $member->{'name_'.$lang} }}" loading="lazy">--}}
+{{--                        @else--}}
+{{--                            <div class="member-photo-placeholder">{{ mb_substr($member->{'name_'.$lang} ?? '?', 0, 1) }}</div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                    <h3 class="member-name">{{ $member->{'name_'.$lang} }}</h3>--}}
+{{--                    <p class="member-role">{{ $member->{'role_'.$lang} }}</p>--}}
+{{--                    @if ($member->{'bio_'.$lang})--}}
+{{--                        <div class="member-bio prose-content">{!! \App\Support\Content::format($member->{'bio_'.$lang}) !!}</div>--}}
+{{--                    @endif--}}
+{{--                </article>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
+{{--@endif--}}
 
 {{-- Portfolio Companies (kept as profile-style cards for consistency) --}}
-<section class="section section-alt">
-    <div class="container">
-        <div class="section-header" data-reveal="fadeIn">
-            <h2 class="section-title">{{ $lang==='en' ? "Portfolio Companies" : 'شركات المحفظة' }}</h2>
-        </div>
-        <div class="company-profile-grid">
-            @forelse ($portfolio as $company)
-                <article class="company-card">
-                    <div class="company-card-photo">
-                        <img src="{{ $company->logo_url }}" alt="{{ $company->name }}" loading="lazy">
-                    </div>
-                    <h3 class="company-card-name">{{ $company->name }}</h3>
-                    <div class="company-card-chips">
-                        <span class="chip chip-sector">{{ $company->{'sector_'.$lang} }}</span>
-                    </div>
-                    <div class="company-card-desc prose-content">{!! \App\Support\Content::format($company->{'description_'.$lang}) !!}</div>
-                    <p class="company-card-founder">📅 {{ \Carbon\Carbon::parse($company->investment_date)->format('M Y') }}</p>
-                </article>
-            @empty
-                <p class="empty-state">{{ $lang==='en' ? 'No portfolio companies yet.' : 'لا توجد شركات في المحفظة بعد.' }}</p>
-            @endforelse
-        </div>
-    </div>
-</section>
+{{--<section class="section section-alt">--}}
+{{--    <div class="container">--}}
+{{--        <div class="section-header" data-reveal="fadeIn">--}}
+{{--            <h2 class="section-title">{{ $lang==='en' ? "Portfolio Companies" : 'شركات المحفظة' }}</h2>--}}
+{{--        </div>--}}
+{{--        <div class="company-profile-grid">--}}
+{{--            @forelse ($portfolio as $company)--}}
+{{--                <article class="company-card">--}}
+{{--                    <div class="company-card-photo">--}}
+{{--                        <img src="{{ $company->logo_url }}" alt="{{ $company->name }}" loading="lazy">--}}
+{{--                    </div>--}}
+{{--                    <h3 class="company-card-name">{{ $company->name }}</h3>--}}
+{{--                    <div class="company-card-chips">--}}
+{{--                        <span class="chip chip-sector">{{ $company->{'sector_'.$lang} }}</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="company-card-desc prose-content">{!! \App\Support\Content::format($company->{'description_'.$lang}) !!}</div>--}}
+{{--                    <p class="company-card-founder">📅 {{ \Carbon\Carbon::parse($company->investment_date)->format('M Y') }}</p>--}}
+{{--                </article>--}}
+{{--            @empty--}}
+{{--                <p class="empty-state">{{ $lang==='en' ? 'No portfolio companies yet.' : 'لا توجد شركات في المحفظة بعد.' }}</p>--}}
+{{--            @endforelse--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 
 {{-- Meeting Request Modal --}}
 <div class="meeting-modal" id="wiifMeetingModal" hidden>
