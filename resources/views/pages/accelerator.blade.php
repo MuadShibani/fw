@@ -52,16 +52,16 @@
 </section>
 
 {{-- ── PROGRAM TIMELINE — interactive roadmap from DB ──────────── --}}
-<section class="section">
-    <div class="container">
-        <div class="section-header" data-reveal="fadeIn">
-            <h2 class="section-title">
-                {{ $cf['timelineTitle'][$lang] ?? ($lang==='en' ? 'Program Timeline' : 'الجدول الزمني للبرنامج') }}
-            </h2>
-            <p class="section-subtitle">{{ $lang==='en' ? 'Click any milestone to reveal its key activities and main output.' : 'اضغط على أي مرحلة لاستعراض أنشطتها الرئيسية ومخرجاتها.' }}</p>
-        </div>
+{{--<section class="section">--}}
+{{--    <div class="container">--}}
+{{--        <div class="section-header" data-reveal="fadeIn">--}}
+{{--            <h2 class="section-title">--}}
+{{--                {{ $cf['timelineTitle'][$lang] ?? ($lang==='en' ? 'Program Timeline' : 'الجدول الزمني للبرنامج') }}--}}
+{{--            </h2>--}}
+{{--            <p class="section-subtitle">{{ $lang==='en' ? 'Click any milestone to reveal its key activities and main output.' : 'اضغط على أي مرحلة لاستعراض أنشطتها الرئيسية ومخرجاتها.' }}</p>--}}
+{{--        </div>--}}
 
-        
+
 {{--        <div class="roadmap">--}}
 {{--            @forelse ($milestones as $i => $m)--}}
 {{--                <div class="roadmap-stage" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">--}}
@@ -91,8 +91,8 @@
 {{--                <p class="empty-state">{{ $lang==='en' ? 'Timeline coming soon.' : 'الجدول الزمني قريباً.' }}</p>--}}
 {{--            @endforelse--}}
 {{--        </div>--}}
-    </div>
-</section>
+{{--    </div>--}}
+{{--</section>--}}
 
 @push('scripts')
 <script>
