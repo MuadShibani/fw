@@ -61,35 +61,36 @@
             <p class="section-subtitle">{{ $lang==='en' ? 'Click any milestone to reveal its key activities and main output.' : 'اضغط على أي مرحلة لاستعراض أنشطتها الرئيسية ومخرجاتها.' }}</p>
         </div>
 
-        <div class="roadmap">
-            @forelse ($milestones as $i => $m)
-                <div class="roadmap-stage" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">
-                    <button type="button" class="roadmap-marker" data-roadmap-toggle="stage-{{ $m->id }}" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="stage-{{ $m->id }}" style="--roadmap-color: {{ $m->color ?: '#b04c2c' }}">
-                        <span class="roadmap-icon">{{ $m->icon ?: ($i + 1) }}</span>
-                        <span class="roadmap-stage-title">{{ $m->{'title_'.$lang} }}</span>
-                        @if($m->{'timeline_'.$lang})
-                            <span class="roadmap-stage-time">{{ $m->{'timeline_'.$lang} }}</span>
-                        @endif
-                    </button>
-                    <div class="roadmap-detail" id="stage-{{ $m->id }}" @if(!$loop->first) hidden @endif>
-                        @if($m->{'activities_'.$lang})
-                            <div class="roadmap-block">
-                                <span class="roadmap-block-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>
-                                <div class="prose-content">{!! \App\Support\Content::format($m->{'activities_'.$lang}) !!}</div>
-                            </div>
-                        @endif
-                        @if($m->{'output_'.$lang})
-                            <div class="roadmap-block roadmap-block-output">
-                                <span class="roadmap-block-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>
-                                <div class="prose-content">✅ {!! \App\Support\Content::format($m->{'output_'.$lang}) !!}</div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            @empty
-                <p class="empty-state">{{ $lang==='en' ? 'Timeline coming soon.' : 'الجدول الزمني قريباً.' }}</p>
-            @endforelse
-        </div>
+        
+{{--        <div class="roadmap">--}}
+{{--            @forelse ($milestones as $i => $m)--}}
+{{--                <div class="roadmap-stage" data-reveal="fadeInUp" data-reveal-delay="{{ $i * 0.1 }}s">--}}
+{{--                    <button type="button" class="roadmap-marker" data-roadmap-toggle="stage-{{ $m->id }}" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="stage-{{ $m->id }}" style="--roadmap-color: {{ $m->color ?: '#b04c2c' }}">--}}
+{{--                        <span class="roadmap-icon">{{ $m->icon ?: ($i + 1) }}</span>--}}
+{{--                        <span class="roadmap-stage-title">{{ $m->{'title_'.$lang} }}</span>--}}
+{{--                        @if($m->{'timeline_'.$lang})--}}
+{{--                            <span class="roadmap-stage-time">{{ $m->{'timeline_'.$lang} }}</span>--}}
+{{--                        @endif--}}
+{{--                    </button>--}}
+{{--                    <div class="roadmap-detail" id="stage-{{ $m->id }}" @if(!$loop->first) hidden @endif>--}}
+{{--                        @if($m->{'activities_'.$lang})--}}
+{{--                            <div class="roadmap-block">--}}
+{{--                                <span class="roadmap-block-label">{{ $lang==='en' ? 'Key Activities' : 'الأنشطة الرئيسية' }}</span>--}}
+{{--                                <div class="prose-content">{!! \App\Support\Content::format($m->{'activities_'.$lang}) !!}</div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                        @if($m->{'output_'.$lang})--}}
+{{--                            <div class="roadmap-block roadmap-block-output">--}}
+{{--                                <span class="roadmap-block-label">{{ $lang==='en' ? 'Main Output' : 'المخرج الرئيسي' }}</span>--}}
+{{--                                <div class="prose-content">✅ {!! \App\Support\Content::format($m->{'output_'.$lang}) !!}</div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            @empty--}}
+{{--                <p class="empty-state">{{ $lang==='en' ? 'Timeline coming soon.' : 'الجدول الزمني قريباً.' }}</p>--}}
+{{--            @endforelse--}}
+{{--        </div>--}}
     </div>
 </section>
 
